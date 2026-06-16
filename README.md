@@ -10,8 +10,9 @@ model from:
 The model tracks four hormones — estradiol (E2), follicle-stimulating hormone (FSH),
 luteinizing hormone (LH), and progesterone (P4) — across two phase-specific ODE systems
 (Early Follicular Phase and Mid-Luteal Phase), each driven by an explicit GnRH pulse
-generator. It reproduces the paper's central claim: the cycle's irregular oscillations
-emerge from steroid-feedback dynamics rather than from an external clock.
+generator. It *attempts* to reproduce the paper's central claim: the cycle's irregular oscillations
+emerge from steroid-feedback dynamics rather than from an external clock. However, the equations 
+listed in the paper do not reproduce using an adaptive solver nor the Runge-Kutta solver.
 
 ## Contents
 
