@@ -98,7 +98,7 @@ P = dict(
     kP4_prod = 3.4,                                               # luteal P4 peaks ~40 nmol/L
 
     # slow ovarian states: follicle F, corpus luteum Lut
-    k_grow = 4.5e-5, K_Frec = 3.5, n_Frec = 4, Fmax = 10.0,       # FSH-saturated recruitment
+    k_grow = 4.0e-5, K_Frec = 3.5, n_Frec = 4, Fmax = 10.0,       # FSH-saturated recruitment
     k_atr  = 5.0e-5,                                              # baseline follicle loss
     K_P4gate = 2.5, n_P4gate = 4,                                 # low-P4 gate on follicle growth
     k_ov   = 5.0e-3, K_surge = 33.0, n_surge = 6,                 # LH surge ovulates the follicle
