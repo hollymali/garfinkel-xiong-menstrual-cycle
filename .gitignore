@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+
+# Local assistant workspace artifacts
+.claude/
+
+# Generated exploratory figures and local reference artifacts
+fig_sigmoid_*.png
+fig_v*_*.png
+updated equations.png
+GnRHpulses.pdf

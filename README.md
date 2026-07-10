@@ -20,6 +20,10 @@ listed in the paper do not reproduce using an adaptive solver nor the Runge-Kutt
 |------|-------------|
 | `menstrual_model.py` | The model: EFP/MLP ODE right-hand sides, Hill feedback functions, GnRH pulse generator, and integrators (adaptive `solve_ivp` RK45 plus a fixed-step classic RK4 matching the original Berkeley Madonna scheme). |
 | `plot_model.py` | Time-series diagnostics driver. Imports the model and renders 5×2 panels (GnRH/FSH/LH/E2/P4, full run + zoom). |
+| `sigmoid_model_v5.py` | Autonomous monthly-cycle model (mean-field GnRH coupling) calibrated to clinical hormone levels and phase structure. |
+| `reconstruct_pulses.py` | Reconstructs fast GnRH-driven LH pulse trains from frozen `sigmoid_model_v5` cycle states at key phases. |
+| `MODEL_EXTRACTED.md` | Full quantitative extraction/transcription notes for Appendices A–D of the Rasgon paper, including resolved ambiguities. |
+| `PARAMETERS.md` | Parameter provenance and calibration notes for the sigmoid redesign. |
 | `fig_efp_faithful.png` | Output of the faithful Early Follicular Phase transcription. |
 | `emergent-oscillations-in-mathematical-model-of-the-human-menstrual-cycle.pdf` | The source paper. |
 
@@ -33,6 +37,12 @@ python menstrual_model.py
 
 # Generate the time-series figures
 python plot_model.py
+
+# Run autonomous cycle model
+python sigmoid_model_v5.py
+
+# Reconstruct fast LH pulses from the autonomous cycle
+python reconstruct_pulses.py
 ```
 
 ## Modernization choices
