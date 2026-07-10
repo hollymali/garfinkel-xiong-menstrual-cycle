@@ -56,7 +56,14 @@ def hill_up(x, k, n, A, C):
 # EARLY FOLLICULAR PHASE (EFP)
 # ======================================================================================
 EFP = dict(kE2=0.011, kFSH=0.009, kLH=0.002, kP4=9.2e-5,
-           cE2=0.01, cFSH=2e-7, cLH=0.1, cP4=0.045)   # cFSH = the suspicious 2e-7
+           cE2=0.025, cFSH=5e-3, cLH=0.1, cP4=0.045)
+# cFSH raised 2e-7 -> 5e-3 so FSH rises into the GnRH->FSH->E2 positive-feedback band
+# (fsh_to_e2 sigmoid switches at FSH~6.7). cE2 raised 0.01 -> 0.025 so E2 settles ~570 and
+# drives the E2->FSH negative-feedback sigmoid to its floor (e2_to_fsh: 10 -> ~1), i.e. the
+# negative feedback is FULLY engaged. Beyond cE2~0.025 e2_to_fsh & FSH are saturated.
+# NOTE: still a fixed point, not a limit cycle. The E2-FSH subsystem Jacobian has
+# trace = -(kE2+kFSH) = -0.02 < 0 regardless of cE2, so it's a stable (damped) focus --
+# sustained oscillation needs a time delay / a 3rd slow variable in the loop, not more gain.
 
 
 def efp_multiplier(E2):
