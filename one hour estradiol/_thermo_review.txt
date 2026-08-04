@@ -1,0 +1,1193 @@
+===== PAGE 1 =====
+https://academic.oup.com/endo   1
+Endocrinology, 2021, Vol. 162, No. 8, 1–12
+doi:10.1210/endocr/bqab087
+Mini-Review
+ISSN Online 1945-7170
+This is an Open Access article distributed under the terms of the Creative Commons Attribution-NonCommercial-
+NoDerivs licence (http://creativecommons.org/licenses/by-nc-nd/4.0/), which permits non-commercial reproduction 
+and distribution of the work, in any medium, provided the original work is not altered or transformed in any way, and 
+that the work is properly cited. For commercial re-use, please contact journals.permissions@oup.com
+© The Author(s) 2021. Published by Oxford University Press on behalf of the Endocrine Society.
+Mini-Review
+The Effects of Estrogens on Neural Circuits That 
+Control T emperature
+Zhi  Zhang,1,2 Johnathon  R.  DiVittorio,1 Alexia  M.  Joseph,1 and 
+Stephanie M. Correa1,2
+1Department of Integrative Biology and Physiology, University of California Los Angeles, Los Angeles, CA 
+90095, USA; and 2Laboratory of Neuroendocrinology, Brain Research Institute, University of California Los 
+Angeles, Los Angeles, CA 90095, USA
+ORCiD number: 0000-0002-6221-689X (S. M. Correa).
+Abbreviations: AMPK, adenosine monophosphate–activated protein kinase; ARC, arcuate nucleus of the hypothalamus; 
+BAT, brown adipose tissue; CNO, clozapine-N-oxide; DMH, dorsomedial nucleus of the hypothalamus; DREADD, designer 
+receptor exclusively activated by designer drugs; E2, 17β-estradiol; ERα, estrogen receptor alpha; ERβ, estrogen receptor 
+beta; GPER1, G protein-coupled estrogen receptor; KNDy, kisspeptin/neurokinin B/dynorphin; MnPO, median preoptic 
+nucleus; MPA, medial preoptic area; NK3R, NK3 receptor; NKB, neurokinin B; POA, preoptic area; RPa, raphe pallidus; Ttail, 
+tail skin temperature; VMH, ventromedial nucleus of the hypothalamus
+Received: 2 December 2020; Editorial Decision: 22 April 2021; First Published Online: 3 May 2021; Corrected and Typeset: 
+28 June 2021. 
+Abstract 
+Declining and variable levels of estrogens around the time of menopause are associated 
+with a suite of metabolic, vascular, and neuroendocrine changes. The archetypal adverse 
+effects of perimenopause are vasomotor symptoms, which include hot flashes and night 
+sweats. Although vasomotor symptoms are routinely treated with hormone therapy, 
+the risks associated with these treatments encourage us to seek alternative treatment 
+avenues. Understanding the mechanisms underlying the effects of estrogens on tem-
+perature regulation is a first step toward identifying novel therapeutic targets. Here we 
+outline findings in rodents that reveal neural and molecular targets of estrogens within 
+brain regions that control distinct components of temperature homeostasis. These in-
+sights suggest that estrogens may alter the function of multiple specialized neural cir -
+cuits to coordinate the suite of changes after menopause. Thus, defining the precise cells 
+and neural circuits that mediate the effects of estrogens on temperature has promise to 
+identify strategies that would selectively counteract hot flashes or other negative side 
+effects without the health risks that accompany systemic hormone therapies.
+Key Words: hypothalamus, hot flashes, menopause, estrogens, temperature, neural circuits
+Hot flashes, characterized by episodic and transient in-
+creases in skin vasodilation, sweating, and shivering, 
+are reported by 75% to 80% of menopausal cis women 
+in the United States and occur over an average span of 
+7.4  years (1). Hot flashes are associated with periods of 
+estrogen withdrawal due to oophorectomy or menopause 
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 2 =====
+2  Endocrinology, 2021, Vol. 162, No. 8
+and can be effectively prevented with estrogen therapy 
+(2). Although hormone therapy is an effective treatment, 
+the associated risks, including reproductive cancers (3, 4), 
+have curbed the use of hormone therapy for the treatment 
+of hot flashes. Alternative treatments include less effective 
+lifestyle changes and pharmaceutical interventions (5-7) 
+but additional options are in development. Increasing evi-
+dence in rodents indicates that estrogens modulate body 
+temperature in females via the central nervous system (8, 
+9). Estrogen receptors are widely detected in the brain, es-
+pecially in brain regions that maintain temperature and 
+energy homeostasis (10, 11). Thus, we suggest that a full 
+understanding of hot flashes and the identification of alter-
+native treatments will require a dissection and mechanistic 
+interrogation of the effects of estrogens on the neural cir -
+cuits that maintain temperature homeostasis.
+In this review we will outline current knowledge on 
+the effects of estrogens on thermoregulation in female 
+rodents. Estrogens appear to modulate multiple inter -
+related components of thermoregulation, including heat 
+dissipation, heat production, and core body temperature 
+(8, 12). The effects of estrogens on temperature appear to 
+be mediated by distinct estrogen-sensitive neuron popula-
+tions and circuitry (12). However, the effect of estrogens 
+on these brain regions are not in isolation. Endogenous 
+estrogens are widely circulated and can act at multiple 
+estrogen-sensitive regions and tissues simultaneously. 
+Systemic manipulations of estrogen levels may overlook 
+the interactions between brain regions or tissues and the 
+synergistic or compensatory actions of estrogens (13). 
+Therefore, dissecting the effects of estrogens on individual 
+cell populations or circuit connections will be necessary 
+for a better understanding of the effects of estrogens on 
+thermoregulation.
+Estrogens and Estrogen Receptors
+As sex hormones, estrogens are best known for their repro-
+ductive function in females. There are 3 major endogenous 
+forms of estrogens: estrone, estradiol, and estriol, with 17β-
+estradiol (E2) being the major circulating estrogen in cyc-
+ling females. The majority of E2 is produced in the ovaries, 
+although local production of estrogens exists in many 
+nonreproductive organs, including the brain (14, 15). The 
+local synthesis of estrogens, independent of levels in the 
+systemic circulation, enables site-specific or cell-type spe-
+cific estrogen metabolism and function (14, 16). Biological 
+effects of estrogens are mediated largely by 3 receptors, es-
+trogen receptors alpha and beta (ERα and ERβ) (17, 18) 
+and the G protein–coupled estrogen receptor (GPER1) 
+(19). Estrogen receptor signaling can alter gene expression 
+through nucleus-initiated transcriptional effects of nuclear 
+receptors ERα and ERβ or through membrane-initiated 
+signaling pathways downstream of ERα, ER β, or GPER1 
+(see reviews (20-22)). The latter rapid nongenomic effects 
+may contribute to synaptic transmission as a “neurotrans-
+mitter” (23), through effects on ion channels or other 
+second messengers (20, 24). The heterogeneous expression 
+of estrogen receptors in the hypothalamus has been nicely 
+demonstrated at the transcript and protein levels (25-27). 
+ERα immunoreactivity shows dominant expression in spe-
+cific hypothalamic regions that are implicated in tempera-
+ture and metabolic regulation, including the preoptic area 
+(POA), ventromedial nucleus of the hypothalamus (VMH) 
+and arcuate nucleus of the hypothalamus (ARC) (Table 
+1). Receptor-selective pharmacological (28) and genetic 
+manipulations (29-31) suggest a primary role for ERα in 
+mediating the metabolic effects of estrogens on the hypo-
+thalamus, although other receptor(s) are clearly involved 
+in the effects of estrogens on temperature. For example, 
+T able 1. Candidate brain regions for estrogenic modulation of temperature in mice
+Brain 
+region 
+Cell types or molecular targets ERα expression* ERβ expression* Thermoregulatory roles
+MPA ERα-expressing neurons (47), GABAergic 
+neurons, warm-responsive neurons
+high low thermogenesis, heat 
+dissipation (50)
+MnPO NK3R-expressing neurons (116), 
+Glutamatergic neurons (130)
+high (67, 68)  
+low (50)
+low cutaneous vasoconstriction 
+(115), hot flashes (131)
+VMH ERα-expressing neurons (96), AMPK 
+(53), Rprm-expressing neurons (96)
+high low BAT thermogenesis (53, 96)
+ARC Kisspeptin or KNDy neurons (56, 72) high low cutaneous vasoconstriction 
+(56, 72)
+DMH Glutamatergic neurons low low BAT thermogenesis (50)
+Abbreviations: AMPK, adenosine monophosphate–activated protein kinase; ARC, arcuate nucleus; BAT, brown adipose tissue; DMH, dorsomedial nucleus of 
+the hypothalamus; ERα, estrogen receptor alpha; ERβ, estrogen receptor beta; GABAergic neurons, γ-aminobutyric acid–expressing neurons; KNDy, neurons 
+co-expressing kisspeptin/neurokinin B/dynorphin; MnPO, median preoptic nucleus; MPA, medial preoptic area; NK3R, NK3 receptor; VMH, ventromedial 
+ nucleus of the hypothalamus.
+* Based on immunoreactivity in mouse (26), unless otherwise noted
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 3 =====
+Endocrinology, 2021, Vol. 162, No. 8 3
+treating ovariectomized rats or mice with selective lig-
+ands for ERβ can mimic the effects of estradiol treatment 
+on lowering tail skin temperature (T tail) without affecting 
+body or uterine weights (32, 33). Similarly, a Gq-coupled 
+estrogen receptor agonist is able to decrease core body tem-
+perature similar to E2 in guinea pigs after ovariectomy (34). 
+However, it is unclear where these effects manifest within 
+neural circuitries in the brain. In this review, we primarily 
+describe the thermoregulatory effects mediated by ERα un-
+less otherwise indicated.
+Effects of Estrogens on Thermoregulatory 
+Neural Circuitry
+The hypothalamus is a pivotal center for maintaining stable 
+body temperature through the combination of feedforward 
+and feedback systems. The feedforward pathway transmits 
+sensory temperature information from the periphery to the 
+POA via relays from the lateral parabrachial nucleus and 
+spinal (or trigeminal) dorsal horn (10, 11). In addition, 
+the POA contains temperature-sensitive neurons with the 
+intrinsic ability to detect local brain temperature changes 
+(35). This peripheral and central temperature information 
+is integrated to direct various thermoregulatory responses. 
+The feedback thermoregulatory network includes hypothal-
+amic nuclei (eg, dorsomedial hypothalamus [DMH], VMH 
+and ARC) and caudal brain regions (eg, raphe pallidus 
+[RPa]) where distinct groups of premotor neurons inde-
+pendently regulate sympathetic activation of brown adipose 
+tissue (BAT) thermogenesis and tail artery vasoconstriction 
+(10, 36-38). Although the thermoregulatory network co-
+ordinates both heat dissipation and heat production, each 
+thermoregulatory effector is driven separately via parallel 
+but distinct efferent pathways (39). That is, certain neurons 
+and circuits may be dedicated to one specific thermal ef-
+fector. For example, synaptic connections from warm-
+responsive neurons in the POA to the DMH may regulate 
+thermogenesis without affecting heat dissipation at the skin 
+(40). In addition, 2 distinct populations of thermosensory 
+neurons in the lateral parabrachial nucleus were found to 
+innervate the POA and differentially affect vasodilation and 
+BAT thermogenesis (41, 42). Consistent with specialization 
+within these circuits, the POA is highly heterogeneous (27) 
+and integrates multiple nonthermal inputs (43) that may 
+also impact temperature homeostasis. For example, the 
+POA mediates the febrile response to inflammation (44, 45), 
+rhythmic temperature fluctuations along day-night periods 
+or the ovarian cycle in response to circadian or sex hor -
+mones inputs (46, 47), adaptive thermogenesis in response 
+to metabolic signals (43), the initiation of torpor in response 
+to fasting (48-50), and water balance and osmolarity as a 
+result of evaporative heat loss (51).
+Due to the molecular and functional complexity of 
+these thermoregulatory neurons, estrogens may modulate 
+the thermoregulatory circuitry in ways that compensate 
+or amplify their effects on individual neural popula-
+tions. Studies indicate that estrogens can act at multiple 
+thermosensory and thermoregulatory nodes to modulate 
+body temperature (Table 1). This modulation by estrogens 
+might be specific to one aspect of thermal responses, or 
+mixed (Table 1). For example, warm-responsive neurons 
+in the POA that suppress heat production and increase 
+heat loss also express estrogen receptors and show 
+changes in neuronal activity in response to E2 (47, 52). 
+E2 in the VMH increases core body temperature and BAT 
+thermogenesis in rats (53, 54). However, the effects of 
+E2 on neuronal activity can differ, as E2 can have either 
+inhibitory or excitatory effects on kisspeptin neurons 
+in the ARC or anteroventral periventricular nucleus, re-
+spectively (55). Given that the thermoregulatory circuitry 
+is sensitive to estrogens at multiple nodes (Table 1), the 
+bidirectional effects of estrogens may lead to opposing or 
+synergistic effects within the thermoregulatory circuitry. 
+Indeed, there is evidence that E2 can suppress kisspeptin 
+neurons in the ARC to reduce heat loss from the tail in 
+rats (56) but also can activate warm-sensitive neurons in 
+the medial POA (MPA) to increase tail heat loss in mice 
+(47, 50). These opposing effects of estrogens on neural 
+activity could be due to heterogeneity in the responses 
+to estrogens at the level of neuron type, interactions 
+with modulatory inputs from upstream circuit nodes, 
+or species differences. Nonetheless, the global effects of 
+estrogens on body temperature likely reflect the integra-
+tion of estrogen’s effects at multiple nodes of the thermo-
+regulatory circuitry.
+Thus, to explicitly understand the regulation of tem-
+perature by estrogens, or other hormones, it is important to 
+dissect the individual neuron populations, neuronal connec-
+tions, and circuit-level interactions. Fortunately, emerging 
+circuit-based approaches and single-cell resolution analyses 
+are facilitating such nuanced approaches.
+Effects of Estrogens on Facets of 
+Thermoregulation
+Heat Dissipation
+Estrogens affect heat dissipation by regulating cutaneous 
+vasoconstriction (CVC) and fluid vaporization. In rodents, 
+Ttail is greatly influenced by CVC, which is controlled by 
+the release of norepinephrine from sympathetic fibers in-
+nervating vascular smooth muscle in the skin (57) and 
+has been used as an indication of heat loss. In rats, T tail is 
+lower on the night of proestrus, when E2 is high, compared 
+with other stages when housed at 22 oC (58); however, this 
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 4 =====
+4  Endocrinology, 2021, Vol. 162, No. 8
+difference has not been observed in mice using the same 
+method for temperature measurement at ambient temper -
+atures between 22 and 24 oC (59). Depleting circulating 
+estrogens by ovariectomy increases Ttail in rats (60-62) and 
+sometimes in mice (3-5 weeks after ovariectomy) (63, 64). 
+Although the effects of the estrous cycle and ovariectomy 
+differ to some degree in rats and mice, E2 replacement de-
+creases tail skin temperature in ovariectomized rats (60-
+62, 65) and in mice when ambient temperature is below 
+the thermoneutral point (59, 64). Collectively, these studies 
+suggest that estrogens regulate CVC to suppress heat loss 
+and promote heat conservation. Moreover, the effects of 
+estrogens may also differ by species, time of estrogen de-
+pletion, and housing temperature.
+The precise mechanisms underlying the effects of 
+estrogens on heat dissipation remain largely unknown but 
+the evidence to date suggests that neurons in the median 
+preoptic nucleus (MnPO) play an important role. Neurons 
+in the MnPO receive cutaneous thermosensory inputs and 
+project both directly and indirectly to sympathetic pre-
+motor neurons in RPa that regulate sympathetic vasocon-
+strictor nerves (36). These MnPO neurons are regulated by 
+estrogens: E2 replacement in ovariectomized rats reduced 
+cFos expression in the MnPO and decreased tail skin heat 
+loss (66). The inhibitory effect of E2 on MnPO neurons 
+may be mediated by estrogen receptor expression in the 
+MnPO (67, 68) or via inputs from a subpopulation of es-
+trogen responsive neurons in the ARC (69) that co-express 
+kisspeptin, neurokinin B (NKB), and dynorphin (KNDy) 
+and are negatively inhibited by E2 through ERα (70, 71). 
+Ablation of KNDy neurons reduces tail skin temperature 
+and blocks E2-induced heat loss in ovariectomized rats 
+(56), whereas optogenetic activation of kisspeptin neurons 
+in the ARC of mice upregulates cFos expression in the 
+MnPO and increases heat loss at the tail (72). In add-
+ition, warm-responsive neurons in the MPA send inhibi-
+tory inputs to the RPa to modulate sympathetic CVC (73). 
+ERα neurons in the MPA are mostly GABAergic (27) and 
+temperature-responsive (50), indicating that E2 may also 
+regulate heat dissipation via temperature- and estrogen-
+sensitive neurons in the MPA. Together, these findings iden-
+tify multiple estrogen-sensitive regions (e.g., ARC, MnPO, 
+and MPA) in the hypothalamus and an estrogen-sensitive 
+circuit (ARC-MnPO-MPA-RPa) that controls heat dissipa-
+tion at the skin (Fig. 1).
+Estrogens also alter evaporative heat loss, which in-
+cludes sweating in humans, panting in dogs, and saliva-
+tion in rodents. E2 replacement does not seem to change 
+evaporative heat loss in ovariectomized rats (74) but does 
+alter the threshold of evaporative heat defense, increasing 
+evaporative water loss during heat stress at a lower core 
+temperature compared to untreated ovariectomized rats 
+(75). Similarly, young women in the high E2 preovulatory 
+phase of the menstrual cycle exhibited a lower esophageal 
+temperature threshold for sweating during exercise com-
+pared to women in the low E2 early follicular phase (76). 
+Accordingly, estrogen therapy is associated with a lower 
+body temperature threshold for sweating during exercise 
+(77). Together, these studies suggest that estrogens decrease 
+dry heat loss from skin vasodilation and increase vapor -
+izing heat loss at a lower temperature threshold. The pre-
+cise neural circuits controlling evaporative heat loss are less 
+RPa
+POA
+C
+P
+O
+A
+O
+O
+C
+CC
+E2
+KNDy
+ERα
+ERα
+TBAT
+CVC
+TcoreMnPO
+MPA
+WS
+ERα
+HHyyppootthhaallaammuuss
+SNS
+Figure 1. Estrogen-sensitive nodes and circuits involved in thermoregulation. E2 acts on the ARC to suppress the activity of KNDy neurons that 
+project to the MnPO. The warm-sensitive neurons in the MPA receive afferent inputs from the MnPO and inhibit premotor sympathetic neurons in 
+the RPa controlling cutaneous vascular constriction (CVC). E2 acts at the VMH to increase brown adipose tissue temperature (T BAT) or may act at 
+the MPA warm-sensitive neurons to suppress TBAT and CVC. Brown lines with bar head indicate inhibitory inputs and cyan lines with triangle head 
+indicate stimulatory inputs. Blue dashed lines indicate potential estrogen-sensitive thermoregulatory projections (37, 132, 133). Abbreviations: ARC, 
+arcuate nucleus of the hypothalamus; DMH, dorsomedial nucleus of the hypothalamus; KNDy, neurons co-expressing kisspeptin, neurokinin B, and 
+dynorphin; MnPO, median preoptic nucleus; MPA, medial preoptic area; POA, preoptic area of hypothalamus; RPa, raphe pallidus; SNS, sympathetic 
+nervous system; VMH, ventromedial nucleus of the hypothalamus; WS, warm-sensitive neurons.
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 5 =====
+Endocrinology, 2021, Vol. 162, No. 8 5
+clear but may involve the warm-sensitive neurons in the 
+POA and the downstream areas in the medulla, such as the 
+superior salivatory nucleus and rostral ventromedial me-
+dulla (10, 78, 79).
+In summary, it appears that E2 modulates different types 
+of heat loss (skin vasodilation and evaporative cooling). We 
+would speculate that this could happen through distinct 
+neuron populations or neural circuits within the brain. 
+Dissections of these estrogen-sensitive regions and their po-
+tential interaction is essential for understanding the effects 
+of estrogens on heat dissipation.
+Effects of Estrogens on Heat Production
+BAT is a specialized thermogenic organ that can effect-
+ively burn fatty acid into heat by uncoupling protein 1 
+(UCP1)-mediated oxidation (80). BAT is most commonly 
+found in rodents and humans at a very young age (81), 
+but BAT is recruitable and active in adult humans as well 
+(82, 83). Thermogenic activity within BAT is strongly de-
+pendent on sympathetic inputs, including norepinephrine 
+that binds to beta-adrenergic receptors in brown adipo-
+cytes (80, 84). Aside from the therapeutic potential for 
+BAT as a metabolic furnace to combat obesity, BAT has 
+a critical role in adaptive thermogenesis, is responsive to 
+estrogens, and may contribute to thermoregulatory dys-
+function in perimenopause (85, 86). Female rodents and 
+humans exhibit more BAT and higher thermogenic cap-
+acity in BAT than males (87, 88). E2 treatment induces 
+thermogenic gene expression in BAT from mice fed a high 
+fat diet (12, 89) or ovariectomized rats (53). ERα  is ex-
+pressed in brown adipocytes (90) and regulates thermo-
+genesis directly within BAT (91, 92). In addition to the 
+direct effect of estrogens on BAT thermogenesis, E2 de-
+livery to the brain increases the sympathetic activation 
+of BAT thermogenesis (53), pointing to a role for central 
+estrogen signaling in the regulation of BAT. In line with 
+these findings, ablation of ERα  in the central nervous 
+system reduces BAT activity and metabolic heat produc-
+tion (93). Further studies indicate that the effect of E2 on 
+BAT is mediated by ERα  in the VMH. Microinjection of 
+E2 in the VMH, but not the adjacent ARC, inhibits AMP-
+activated protein kinase (AMPK) and ceramide-induced 
+endoplasmic reticulum stress which in turn increases 
+sympathetic nerve activity in the BAT and increases 
+core body temperature (53, 54). By contrast, inhibition 
+of ERα  or activation of AMPK in the VMH suppresses 
+sympathetic BAT activation (53). This AMPK–sympa-
+thetic nervous system–BAT pathway may also contribute 
+to the fluctuation of body temperature observed over the 
+estrous cycle (53). Interestingly, activating rat-insulin-
+promoter neurons in the VMH promotes thermogenesis 
+in white adipose tissue also via AMPK and sympathetic 
+outflow but has no effect on BAT (94), suggesting that 
+white adipose tissue and BAT thermogenesis can be regu-
+lated by the VMH. However, whether estrogens employ 
+both of these neural pathways to modulate heat produc-
+tion remains unknown. Notably, AMPK is involved in 
+p53-induced autophagy (95) and we recently uncovered 
+a role for Reprimo ( Rprm), another p53-responsive gene, 
+in the regulation of thermogenesis. Silencing Rprm gene 
+function in the VMH increases core temperature and BAT 
+thermogenesis selectively in females and ectopic Rprm  
+expression in males is associated with reduced core tem-
+perature (96). It will be interesting to determine whether 
+Rprm or AMPK in the VMH are required for the changes 
+in thermogenesis or body temperature induced by the es-
+trous cycle, ovariectomy, or estrogen treatment.
+Estrogen signaling in the hypothalamus may also modu-
+late or interact with other signaling systems to alter heat 
+production. For example, estrogens can increase central 
+leptin sensitivity (97) and leptin signaling in the hypothal-
+amus can alter BAT thermogenesis (98). In the POA, es-
+tradiol could induce synthesis of prostaglandin E2 (99), 
+which is a critical mediator of the febrile response (44, 45). 
+Estrogens also increase physical activity (100, 101), which 
+may contribute to elevated heat production during cold ex-
+posure, particularly in mice (102). However, recent studies 
+suggest that increased movement and BAT thermogenesis 
+might be separately regulated by distinct estrogen-sensitive 
+neurons (96, 101). Indeed, temperature analyses that cor -
+rect for changes in movement suggest that motor activity 
+does not fully explain the elevated body temperature ob-
+served in mice during estrus, even though activity is in-
+creased (103). Similarly, E2 replacement in ovariectomized 
+rats increases heat production regardless of ambient tem-
+perature even when the locomotor activity is restricted 
+(74). Therefore, it is unlikely that estrogens employ motor 
+activity as a means to increase heat production, at least at 
+room temperature. Together, these studies point to a mo-
+lecular axis (ERα–AMPK/Rprm–sympathetic nervous 
+system–BAT) that mediates the effects of estrogens on heat 
+production. Further study is needed to understand how 
+other thermogenic effectors, such as metabolic and muscle 
+shivering thermogenesis, may be integrated in the coordin-
+ation of estrogen-induced heat production.
+Effects of Estrogens on Body Temperature
+As discussed above, estrogens modulate both heat dissi-
+pation and heat production, 2 key determinants of body 
+temperature balance. However, it is not firmly established 
+how estrogens affect core temperature. Core temperature 
+shows regular fluctuations that coincide with changes in 
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 6 =====
+6  Endocrinology, 2021, Vol. 162, No. 8
+ovarian hormones in humans (104) and mice (103, 105), 
+and female mice exhibit a higher core temperature than 
+males, a difference that disappears after gonadectomy 
+(105). In women, endogenous or exogenous increases 
+in E2 have been shown to reduce core body tempera-
+ture (76, 77, 106), while some studies show no differ -
+ence (107). Animal studies find that E2 replacement 
+following ovariectomy may increase (34, 53, 65), have 
+no influence (58, 63, 74, 108), or reduce (59, 75, 109) 
+core body temperature. These conflicting results may be 
+due to the complex interplay between heat dissipation 
+and thermogenesis which are both affected by estrogens. 
+For example, an early study showed that E2 simultan-
+eously increased heat production and heat loss, resulting 
+in increased metabolic heat production but no effect on 
+core body temperature in ovariectomized rats (74). It is 
+unknown whether the concurrent increases in heat pro-
+duction and heat loss are due to compensatory effects 
+or a selective activation of each effector by E2. Indeed, 
+increased BAT thermogenesis can be a compensatory and 
+secondary consequence of an impairment in the control 
+of vasoconstriction (110). However, the existing data 
+generally support the notion that E2 suppresses heat loss 
+and increases heat production, which would synergistic-
+ally increase but not decrease core body temperature (56, 
+58, 66, 109). Studies to investigate the interaction be-
+tween these opposing or overlapping effects of estrogens 
+would help rationalize the apparent conflicts in the lit-
+erature. In addition, careful dissection of the effects at 
+distinct thermoregulatory regions could clarify the direct 
+and indirect consequences of estrogen treatment that 
+contribute to changes core body temperature.
+In addition, ambient temperature is an essential vari-
+able that influences the effect of estrogens on body tem-
+perature. Vasodilation may predominate when ambient 
+temperature is within or below the thermoneutral point, 
+whereas evaporative heat loss becomes more efficient 
+during heat exposure. Indeed, studies in rats indicate 
+that E2 decreases core body temperature only when am-
+bient temperature is above the thermoneutral point (66, 
+75, 109). Changes in ambient temperature may recruit 
+temperature-sensitive neurons in the POA (47), an effect 
+that could be mediated through rapid estrogen actions 
+of ERα  or ERβ  (111). In addition, upon cold exposure, 
+both exogenous and endogenous E2 enhances cFos ex-
+pression in the MPA and the DMH (52), 2 key sites for 
+cold-defense thermogenesis. Together these lines of evi-
+dence suggest that warm- or cold-responsive signals may 
+integrate with estrogens at multiple brain sites to mo-
+bilize specific thermal effectors that regulate core body 
+temperature. Therefore, future studies should carefully 
+consider the effects of estrogen manipulations across a 
+range of ambient temperatures and thermoregulatory 
+responses.
+Estrogen-Sensitive Neurons and Hot Flashes
+Hot flashes are often preceded by a small increase in core 
+temperature and followed by a dip in core temperature 
+due to increased heat loss (112, 113). In line with the cru-
+cial role of estrogens in thermoregulation, varying levels 
+of estrogen are highly associated with hot flashes although 
+a direct causational relationship remains uncertain. It is 
+suggested that estrogen withdrawal rather than low es-
+trogen levels determines the onset of hot flashes, as differ -
+ences in plasma estrogen levels are not detected between 
+menopausal women with and without hot flashes (112) and 
+people with chronic estrogen deficiencies do not experi-
+ence hot flashes (114). It remains unclear how vasomotor 
+symptoms are precipitated by fluctuating estrogens during 
+the menopausal transition. Pioneering studies in women 
+and rodents have identified that NKB signaling through 
+the NK3 receptor (NK3R) as a potential therapeutic op-
+tion (reviewed in (8)). Treating rats with an NK3R agonist 
+causes vasodilation at the tail (115). In contrast, ablating 
+NK3R-expressing neurons in the POA reduces tail vaso-
+dilation (116). NK3R signaling also modulates tail vaso-
+dilation in mice (72) and vasomotor symptoms in women 
+(117, 118). NKB administration in healthy women induces 
+hot flashes with increased skin temperature (117) and NKB 
+receptor antagonists markedly reduce hot flash symptoms 
+(118-120). Current studies are evaluating the specificity 
+of NK3R antagonists as therapeutics. NK3R antagonist 
+treatment can disrupt ovarian function in cycling humans 
+(121). It is unclear if the effects on fertility are due to cen-
+tral or peripheral actions, as NK3R also is expressed in 
+visceral tissues (122). Nevertheless, this exciting break-
+through demonstrates the power and therapeutic potential 
+of neuroendocrine studies in rodents. Despite the promise 
+of treatments that target NKB signaling, emerging evidence 
+suggests that estrogens modulate vasodilation and heat dis-
+sipation responses (33, 50, 123). A full understanding of 
+hot flashes will require a dissection and mechanistic inter -
+rogation of the effects of estrogens on the neural circuits 
+that maintain temperature homeostasis.
+Estrogen-Sensitive Neurons and Torpor
+The control of body temperature is energetically costly 
+and a major component of energy homeostasis. Increased 
+thermogenesis during cold exposure consumes up to 60% 
+of total energy expenditure in mice (124). With insufficient 
+food availability, many species cease to defend their body 
+temperature and enter a hypothermic and hypometabolic 
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 7 =====
+Endocrinology, 2021, Vol. 162, No. 8 7
+state known as torpor (125). In the POA, the temperature-
+sensitive neurons are not only targets for the thermal in-
+puts but also influenced by other “temperature-insensitive” 
+neurons, hormones, and metabolic signals. Single-cell 
+RNA profiling of the POA has revealed that Esr1 tran-
+scripts are expressed within many of the neuronal clusters 
+implicated in the control of body temperature and metab-
+olism (27). The overlapping functions of estrogens and the 
+MPA on thermoregulation and energy balance suggest a 
+potential role of ERα  positive MPA neurons in the coord-
+ination of thermoregulation and metabolism. We recently 
+demonstrated that ablation of ERα  neurons in the MPA 
+increased core temperature in female but not male mice 
+(50), suggesting a female-specific effect on basal body 
+temperature. It is unclear if the effect on basal body tem-
+perature is due to sex-specific roles of ERα  neurons in the 
+MPA or more POA neurons being ablated in females than 
+in males. In complementary studies, chemogenetic activa-
+tion of ERα  MPA neurons drives a hypometabolic state 
+similar to torpor, the natural activity of ERα  neurons in 
+the MPA is altered during fasting-induced torpor, and 
+ablating ERα  MPA neurons attenuates torpor expression 
+in a sex-dependent manner (50). These results suggest that 
+ERα neurons in the MPA serve as an integrative center for 
+thermoregulation and metabolic homeostasis. Our findings 
+are concordant with other studies showing that deep hypo-
+thermia and hypometabolism in torpor or hibernation is 
+controlled by POA neurons in mice (48, 49). Although it is 
+tempting to speculate that POA neurons could be used to 
+induce therapeutic hypothermia, the potential application 
+to species that do not exhibit torpor, including humans, 
+requires further study. Additionally, it is important to note 
+that activating ERα  neurons is different from activating 
+ERα signaling and may not reflect the natural effects of 
+estrogens on thermoregulation and metabolic rate. Future 
+studies are required to understand how torpor-regulating 
+ERα neurons and the associated circuitry are sensitive to 
+estrogens or other signals of metabolic reserves.
+Strategies to Dissect the Effects of Estrogens 
+on Thermoregulation
+There is mounting evidence that estrogen-sensitive areas 
+of the brain regulate distinct aspects of thermoregulation 
+or metabolism; however, the effects of estrogens on these 
+brain regions are not in isolation. Endogenous estrogens 
+are widely distributed and can act at multiple estrogen-
+sensitive regions simultaneously. Systemic manipulations of 
+E2 signaling may overlook the interactions between these 
+brain regions and the synergistic or compensatory actions 
+of E2. Therefore, dissecting the effects of estrogens on indi-
+vidual regions or circuit connections will be necessary for a 
+better understanding of the modulatory effects of estrogens 
+on thermoregulation. Emerging viral and genetic tools 
+are facilitating circuit-based studies. Here, we outline the 
+most commonly used approaches for projection-specific or 
+multiplexed manipulations and highlight several opportun-
+ities for combining these systems neuroscience approaches 
+with endocrine manipulations.
+DREADDs (designer receptors exclusively activated by 
+designer drugs) are G protein–coupled receptors that can be 
+activated by the synthetic ligand clozapine-N-oxide (CNO) 
+(126). Depending on the receptor types, a Gq- or Gi-coupled 
+receptor can increase (hM3Dq) or decrease (hM4Di) neur-
+onal excitability. When combined with a double-floxed in-
+verse open reading frame (DIO) DREADDs can specifically 
+target a subpopulation of neurons that express Cre recom-
+binase. Similarly, optogenetic tools employ opsins that con-
+trol ion channels or proton pumps upon activation by specific 
+wavelengths of light (127). Similar to DREADDs, both ex-
+citatory and inhibitory opsins are available for bidirectional 
+modulation of neuronal activity. Because both DREADDs 
+and opsins can be expressed at the axon terminals, local in-
+fusion of CNO or light illumination on the projecting fibers 
+enables selective activation of circuit connections. For ex-
+ample, we recently identified differential effects on body tem-
+perature by activating distinct projections of ERα  neurons 
+from the MPA. By delivering CNO to regions that receive 
+neuronal projections, we found that local activation of pro-
+jections to the DMH led to a partial decrease in core body 
+temperature, whereas local activation of projections to the 
+ARC recapitulated the effect of systemic CNO delivery on 
+core body temperature (50). Similarly, activating terminals 
+in the POA from kisspeptin neurons in the ARC increases 
+tail skin temperature (72). Alternatively, optogenetic or 
+chemogenetic tools can be used in combination with a retro-
+gradely delivered Cre to selectively manipulate connections 
+within a circuit. By delivering Cre-dependent DREADDs 
+or opsins to one region and retrograde Cre to a region that 
+receives neuronal projections, only the neurons with func-
+tional connections will be activated or inhibited. However, 
+this method loses the specificity for neuron types as all the 
+neurons in the 2 regions that form connections will be af-
+fected, unless combinatorial genetic tools (eg, Cre and Flp 
+dependence) are used to label neuronal subsets more spe-
+cifically. In addition, because the same neurons may project 
+to multiple structures, the possible activation of collaterals 
+should be taken into consideration when manipulating re-
+gions that receive neuronal projections.
+Neuron-specific or projection-selective manipulations 
+can be combined with endocrine or genetic manipula-
+tions to reveal the modulatory effects of hormones. For 
+example, ovariectomy or ERα  ablation can severely blunt 
+the effects of activating neurons of the ventrolateral 
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 8 =====
+8  Endocrinology, 2021, Vol. 162, No. 8
+subregion of the VMH (101), revealing a permissive role 
+for ERα  signaling in output of the associated circuits. 
+On the other hand, estradiol delivered to the brain or lo-
+cally to a specific hypothalamic region can help to reveal 
+the role of the nucleus within a neural circuit (53, 128). 
+Because thermoregulation is modulated by other es-
+trogen receptors, similar studies to test the effects of ERβ 
+or GPER1 ablation in the context of neuron activation 
+within the thermoregulatory circuitry would be of great 
+interest. The approach of combining circuit manipula-
+tions with endocrine or genetic manipulations might also 
+help us unravel opposing effects of estradiol within a cir -
+cuit. There is evidence that E2 can activate MPA neurons 
+to facilitate heat loss while inhibiting KNDy neurons in 
+the ARC to reduce heat dissipation (Fig. 1). These an-
+tagonistic effects could be dissected by multiplexing 
+DREADD with KORD, another type of DREADD that 
+silences neurons using a different ligand, salvinorin B 
+(129). If neurons in the ARC were inhibited via KORD 
+while simultaneously activating the MPA neurons via 
+DREADD, one would predict that this simultaneous in-
+hibition and activation might phenocopy the effects of 
+E2 on skin vasoconstriction. Alternatively, activation 
+or inhibition could be performed in conjunction with 
+estrogen receptor ablation in the ARC, MPA, or other 
+thermoregulatory regions beyond the hypothalamus 
+(eg, nucleus of solitary tract and dorsal raphe nucleus). 
+Eliminating the effects of estrogens specifically in one re-
+gion while maintaining the effects elsewhere could help 
+unravel the respective contributions of estrogen signaling 
+throughout the thermoregulatory neurocircuitry.
+Conclusion
+Several estrogen-sensitive regions have been revealed as 
+candidates for mediating the effects of estrogens on body 
+temperature, but evidence suggests that these areas work syn-
+ergistically, antagonistically, and/or in parallel to modulate 
+whole-body thermoregulation. Whereas estrogens affect body 
+temperature by modulating both heat production and dissi-
+pation, many of these effects are mediated specifically or sim-
+ultaneously via different estrogen-sensitive regions (13). We 
+recommend a systems-level, circuit-based approach to dissect 
+the distinct thermal effectors modulated by estrogens. Further, 
+it is important to note that other hormones, such as leptin, 
+insulin, and thyroid hormone, potently affect metabolism 
+and thermoregulation through these estrogen-sensitive sites. 
+Thus, it is of interest to decipher the potential interactions of 
+estrogens with these hormones and their coordinated effects 
+on temperature and energy balance. Future studies taking a 
+circuit-based approach should also pay heed to connections 
+and crosstalk between the thermoregulation and energy 
+homeostasis systems, particularly as they both exhibit circuit-
+level modulation by estrogens.
+Given the widespread impact of menopausal hot flashes 
+on quality of life, it has become imperative to try to better 
+understand the neural circuits responsible for the physio-
+logical effects of estrogens on body temperature. A deeper 
+understanding of the modular and circuit-level conse-
+quences of estrogens will help to identify new potential tar-
+gets for the development of therapeutics that could mimic 
+the thermoregulatory effects of estrogens and avoid the det-
+rimental side effects of hormone therapy.
+Acknowledgments
+The authors acknowledge support from M. Massa, N. Sandoval, 
+and C. Goodpaster, who provided feedback on the manuscript.
+Financial Support: National Institutes of Health grants (R01 
+AG066821 and R21 CA249338) to S.M.C., an American Heart As-
+sociation Postdoctoral Fellowship (18POST33960457) to Z.Z., Pilot 
+Awards to Z.Z. and S.M.C. from the Iris Cantor-UCLA Women’s 
+Health Center/UCLA National Center of Excellence in Women’s 
+Health and NIH National Center for Advancing Translational Sci-
+ence (NCATS) UCLA Clinical and Translational Science Institute 
+(CTSI) (UL1TR001881).
+Additional Information
+Correspondence: Stephanie Correa, Ph.D., UCLA Dept. of Inte-
+grative Biology and Physiology 2028 Terasaki Life Sciences Build-
+ing, 610 Charles E Young Drive East, Box 957239 Los Angeles, CA 
+90095, USA. Email: stephaniecorrea@ucla.edu
+Disclosures: The authors have nothing to disclose.
+Data Availability: Data sharing is not applicable to this article 
+as no datasets were generated or analyzed during the current study.
+References
+ 1. Freeman  EW, Sammel  MD, Sanders  RJ. Risk of long-term 
+hot flashes after natural menopause: evidence from the Penn 
+Ovarian Aging Study cohort. Menopause. 2014;21(9):924-932.
+ 2. Stearns V, Ullmer L, López JF, Smith Y, Isaacs C, Hayes D. Hot 
+flushes. Lancet. 2002;360(9348):1851-1861.
+ 3. Marjoribanks J, Farquhar C, Roberts H, Lethaby A, Lee J. Long-
+term hormone therapy for perimenopausal and postmenopausal 
+women. Cochrane Database Syst Rev. 2017;1:CD004143.
+ 4. Collaborative Group on Epidemiological Studies of Ovarian C. 
+Menopausal hormone use and ovarian cancer risk: individual 
+participant meta-analysis of 52 epidemiological studies. The 
+Lancet. 2015;385(9980):1835-1842.
+ 5. Ayers B, Smith M, Hellier J, Mann E, Hunter MS. Effectiveness of 
+group and self-help cognitive behavior therapy in reducing prob-
+lematic menopausal hot flushes and night sweats (MENOS 2): a 
+randomized controlled trial. Menopause. 2012;19(7):749-759.
+ 6. Joffe H, Guthrie KA, LaCroix AZ, et al. Low-dose estradiol and 
+the serotonin-norepinephrine reuptake inhibitor venlafaxine for 
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 9 =====
+Endocrinology, 2021, Vol. 162, No. 8 9
+vasomotor symptoms: a randomized clinical trial. JAMA Intern 
+Med. 2014;174(7):1058-1066.
+ 7. Franco OH, Chowdhury R, Troup J, et al. Use of plant-based 
+therapies and menopausal symptoms: a systematic review and 
+meta-analysis. JAMA. 2016;315(23):2554-2563.
+ 8. Rance NE, Dacks PA, Mittelman-Smith MA, Romanovsky AA, 
+Krajewski-Hall  SJ. Modulation of body temperature and LH 
+secretion by hypothalamic KNDy (kisspeptin, neurokinin B and 
+dynorphin) neurons: a novel hypothesis on the mechanism of 
+hot flushes. Front Neuroendocrinol. 2013;34(3):211-227.
+ 9. López M, Tena-Sempere M. Estrogens and the control of energy 
+homeostasis: a brain perspective. Trends Endocrinol Metab. 
+2015;26(8):411-421.
+ 10. Madden CJ, Morrison SF. Central nervous system circuits that 
+control body temperature. Neurosci Lett. 2019;696:225-232.
+ 11. Tan CL, Knight ZA. Regulation of body temperature by the ner-
+vous system. Neuron. 2018;98(1):31-48.
+ 12. Xu  Y, López  M. Central regulation of energy metabolism by 
+estrogens. Mol Metab. 2018;15:104-115.
+ 13. Schwabe MR, Taxier LR, Frick KM. It takes a neural village: 
+circuit-based approaches for estrogenic regulation of episodic 
+memory. Front Neuroendocrinol. 2020;59:100860.
+ 14. Hojo Y, Kawato S. Neurosteroids in adult hippocampus of male 
+and female rodents: biosynthesis and actions of sex steroids. 
+Front Endocrinol (Lausanne). 2018;9:183.
+ 15. Compagnone  NA, Mellon  SH. Neurosteroids: biosyn-
+thesis and function of these novel neuromodulators. Front 
+Neuroendocrinol. 2000;21(1):1-56.
+ 16. Azcoitia  I, Sierra  A, Veiga  S, Honda  S, Harada  N, Garcia-
+Segura  LM. Brain aromatase is neuroprotective. J Neurobiol. 
+2001;47(4):318-329.
+ 17. Jensen EV. On the mechanism of estrogen action. Perspect Biol 
+Med. 1962;6:47-59.
+ 18. Kuiper  GG, Enmark  E, Pelto-Huikko  M, Nilsson  S, Gustafsson  JA. 
+Cloning of a novel receptor expressed in rat prostate and ovary. 
+Proc Natl Acad Sci U S A. 1996;93(12):5925-5930.
+ 19. Filardo  EJ, Thomas  P. Minireview: G protein-coupled es-
+trogen receptor-1, GPER-1: its mechanism of action and role 
+in female reproductive cancer, renal and vascular physiology. 
+Endocrinology. 2012;153(7):2953-2962.
+ 20. McEwen BS, Alves SE. Estrogen actions in the central nervous 
+system. Endocr Rev. 1999;20(3):279-307.
+ 21. Hall JM, Couse JF, Korach KS. The multifaceted mechanisms 
+of estradiol and estrogen receptor signaling. J Biol Chem. 
+2001;276(40):36869-36872.
+ 22. Micevych PE, Mermelstein PG, Sinchak K. Estradiol Membrane-
+Initiated Signaling in the Brain Mediates Reproduction. Trends 
+Neurosci. 2017;40(11):654-666.
+ 23. Balthazart J, Ball GF. Is brain estradiol a hormone or a neuro-
+transmitter? Trends Neurosci. 2006;29(5):241-249.
+ 24. Stincic  TL, Rønnekleiv  OK, Kelly  MJ. Diverse actions of es-
+tradiol on anorexigenic and orexigenic hypothalamic arcuate 
+neurons. Horm Behav. 2018;104:146-155.
+ 25. Shughrue  PJ, Lane  MV, Merchenthaler  I. Comparative distri-
+bution of estrogen receptor-alpha and -beta mRNA in the rat 
+central nervous system. J Comp Neurol. 1997;388(4):507-525.
+ 26. Merchenthaler  I, Lane  MV, Numan  S, Dellovade  TL. 
+Distribution of estrogen receptor alpha and beta in the mouse 
+central nervous system: in vivo autoradiographic and immuno-
+cytochemical analyses. J Comp Neurol. 2004;473(2):270-291.
+ 27. Moffitt JR, Bambah-Mukku D, Eichhorn SW, et al. Molecular, 
+spatial, and functional single-cell profiling of the hypothalamic 
+preoptic region. Science. 2018;362(6416):eaau5324.
+ 28. Roesch  DM. Effects of selective estrogen receptor agonists 
+on food intake and body weight gain in rats. Physiol Behav. 
+2006;87(1):39-44.
+ 29. Ohlsson C, Hellberg N, Parini P, et al. Obesity and disturbed 
+lipoprotein profile in estrogen receptor-alpha-deficient male 
+mice. Biochem Biophys Res Commun. 2000;278(3):640-645.
+ 30. Mauvais-Jarvis F, Clegg DJ, Hevener AL. The role of estrogens 
+in control of energy balance and glucose homeostasis. Endocr 
+Rev. 2013;34(3):309-338.
+ 31. Frank A, Brown LM, Clegg DJ. The role of hypothalamic estrogen 
+receptors in metabolic regulation. Front Neuroendocrinol. 
+2014;35(4):550-557.
+ 32. Opas EE, Scafonas A, Nantermet PV, et al. Control of rat tail 
+skin temperature regulation by estrogen receptor-beta selective 
+ligand. Maturitas. 2009;64(1):46-51.
+ 33. Fleischer AW, Schalk JC, Wetzel EA, et al. Long-term oral ad-
+ministration of a novel estrogen receptor beta agonist enhances 
+memory and alleviates drug-induced vasodilation in young 
+ovariectomized mice. Horm Behav. 2021;130:104948.
+ 34. Roepke  TA, Bosch  MA, Rick  EA, et  al. Contribution of a 
+membrane estrogen receptor to the estrogenic regulation of 
+body temperature and energy homeostasis. Endocrinology. 
+2010;151(10):4926-4937.
+ 35. Boulant JA, Dean JB. Temperature receptors in the central ner -
+vous system. Annu Rev Physiol. 1986;48:639-654.
+ 36. Blessing W, McAllen R, McKinley M. Control of the cutaneous 
+circulation by the central nervous system. Compr Physiol. 
+2016;6(3):1161-1197.
+ 37. Contreras C, Nogueiras R, Diéguez C, Rahmouni K, López M. 
+Traveling from the hypothalamus to the adipose tissue: the 
+thermogenic pathway. Redox Biol. 2017;12:854-863.
+ 38. Caron A, Richard D. Neuronal systems and circuits involved in 
+the control of food intake and adaptive thermogenesis. Ann N 
+Y Acad Sci. 2017;1391(1):35-53.
+ 39. McAllen RM. Preoptic thermoregulatory mechanisms in detail. 
+Am J Physiol Regul Integr Comp Physiol. 2004;287(2):R272
+-R273.
+ 40. Tan  CL, Cooke  EK, Leib  DE, et  al. Warm-Sensitive Neurons 
+that Control Body Temperature. Cell. 2016;167(1):47-59.e15.
+ 41. Nakamura  K, Morrison  SF. A thermosensory pathway that 
+controls body temperature. Nat Neurosci. 2008;11(1):62-71.
+ 42. Yang  WZ, Du  X, Zhang  W, et  al. Parabrachial neuron types 
+categorically encode thermoregulation variables during heat de-
+fense. Sci Adv. 2020;6(36):eabb9414.
+ 43. Yu S, François M, Huesing C, Münzberg H. The hypothalamic 
+preoptic area and body weight control. Neuroendocrinology. 
+2018;106(2):187-194.
+ 44. Lazarus M, Yoshida K, Coppari R, et al. EP3 prostaglandin re-
+ceptors in the median preoptic nucleus are critical for fever re-
+sponses. Nat Neurosci. 2007;10(9):1131-1133.
+ 45. Machado  NLS, Bandaru  SS, Abbott  SBG, Saper  CB. EP3R-
+expressing glutamatergic preoptic neurons mediate inflamma-
+tory fever. J Neurosci. 2020;40(12):2573-2588.
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 10 =====
+10  Endocrinology, 2021, Vol. 162, No. 8
+ 46. Krueger JM, Takahashi S. Thermoregulation and sleep. Closely 
+linked but separable. Ann N Y Acad Sci. 1997;813:281-286.
+ 47. Silva  NL, Boulant  JA. Effects of testosterone, estradiol, and 
+temperature on neurons in preoptic tissue slices. Am J Physiol. 
+1986;250(4 Pt 2):R625-R632.
+ 48. Hrvatin S, Sun S, Wilcox OF, et al. Neurons that regulate mouse 
+torpor. Nature. 2020;583(7814):115-121.
+ 49. Takahashi TM, Sunagawa GA, Soya S, et al. A discrete neur -
+onal circuit induces a hibernation-like state in rodents. Nature. 
+2020;583(7814):109-114.
+ 50. Zhang  Z, Reis  FMCV, He  Y, et  al. Estrogen-sensitive medial 
+preoptic area neurons coordinate torpor in mice. Nat Commun. 
+2020;11(1):6378.
+ 51. Hori  T, Nakashima  T, Koga  H, Kiyohara  T, Inoue  T. 
+Convergence of thermal, osmotic and cardiovascular signals on 
+preoptic and anterior hypothalamic neurons in the rat. Brain 
+Res Bull. 1988;20(6):879-885.
+ 52. Uchida  Y, Kano  M, Yasuhara  S, Kobayashi  A, Tokizawa  K, 
+Nagashima  K. Estrogen modulates central and peripheral re-
+sponses to cold in female rats. J Physiol Sci. 2010;60(2):151-160.
+ 53. Martinez de Morentin PB, Gonzalez-Garcia I, Martins L, et al. 
+Estradiol regulates brown adipose tissue thermogenesis via 
+hypothalamic AMPK. Cell Metab. 2014;20(1):41-53.
+ 54. González-García  I, Contreras  C, Estévez-Salguero  Á, et  al. 
+Estradiol regulates energy balance by ameliorating hypothal-
+amic ceramide-induced ER stress. Cell Rep. 2018;25(2):413-
+423.e5.
+ 55. Smith JT, Cunningham MJ, Rissman EF, Clifton DK, Steiner RA. 
+Regulation of Kiss1 gene expression in the brain of the female 
+mouse. Endocrinology. 2005;146(9):3686-3692.
+ 56. Mittelman-Smith  MA, Williams  H, Krajewski-Hall  SJ, 
+McMullen  NT, Rance  NE. Role for kisspeptin/neurokinin B/
+dynorphin (KNDy) neurons in cutaneous vasodilatation and the 
+estrogen modulation of body temperature. Proc Natl Acad Sci 
+U S A. 2012;109(48):19846-19851.
+ 57. Ootsuka Y, Tanaka M. Control of cutaneous blood flow by cen-
+tral nervous system. Temperature (Austin). 2015;2(3):392-405.
+ 58. Williams H, Dacks PA, Rance NE. An improved method for re-
+cording tail skin temperature in the rat reveals changes during 
+the estrous cycle and effects of ovarian steroids. Endocrinology. 
+2010;151(11):5389-5394.
+ 59. Krajewski-Hall  SJ, Blackmore  EM, McMinn  JR, Rance  NE. 
+Estradiol alters body temperature regulation in the female 
+mouse. Temperature (Austin). 2018;5(1):56-69.
+ 60. Berendsen  HH, Weekers  AH, Kloosterboer  HJ. Effect of 
+tibolone and raloxifene on the tail temperature of oestrogen-
+deficient rats. Eur J Pharmacol. 2001;419(1):47-54.
+ 61. Kobayashi  T, Tamura  M, Hayashi  M, et  al. Elevation of tail 
+skin temperature in ovariectomized rats in relation to meno-
+pausal hot flushes. Am J Physiol Regul Integr Comp Physiol. 
+2000;278(4):R863-R869.
+ 62. Opas EE, Rutledge SJ, Vogel RL, Rodan GA, Schmidt A. Rat 
+tail skin temperature regulation by estrogen, phytoestrogens 
+and tamoxifen. Maturitas. 2004;48(4):463-471.
+ 63. Zhao L, Mao Z, Schneider LS, Brinton RD. Estrogen receptor 
+β-selective phytoestrogenic formulation prevents physical and 
+neurological changes in a preclinical model of human meno-
+pause. Menopause. 2011;18(10):1131-1142.
+ 64. Opas  EE, Gentile  MA, Kimmel  DB, Rodan  GA, Schmidt  A. 
+Estrogenic control of thermoregulation in ERalphaKO and 
+ERbetaKO mice. Maturitas. 2006;53(2):210-216.
+ 65. Hosono  T, Chen  XM, Zhang  YH, Kanosue  K. Effects of es-
+trogen on thermoregulatory responses in freely moving female 
+rats. Ann N Y Acad Sci. 1997;813:207-210.
+ 66. Dacks  PA, Krajewski  SJ, Rance  NE. Ambient temperature 
+and 17β-estradiol modify Fos immunoreactivity in the me-
+dian preoptic nucleus, a putative regulator of skin vasomotion. 
+Endocrinology. 2011;152(7):2750-2759.
+ 67. Simerly RB, Chang C, Muramatsu M, Swanson LW. Distribution 
+of androgen and estrogen receptor mRNA-containing cells in 
+the rat brain: an in situ hybridization study. J Comp Neurol. 
+1990;294(1):76-95.
+ 68. Mufson  EJ, Cai  WJ, Jaffar  S, et  al. Estrogen receptor 
+immunoreactivity within subregions of the rat forebrain: neur -
+onal distribution and association with perikarya containing 
+choline acetyltransferase. Brain Res. 1999;849(1-2):253-274.
+ 69. Krajewski  SJ, Burke  MC, Anderson  MJ, McMullen  NT, 
+Rance  NE. Forebrain projections of arcuate neurokinin B 
+neurons demonstrated by anterograde tract-tracing and 
+monosodium glutamate lesions in the rat. Neuroscience. 
+2010;166(2):680-697.
+ 70. Dungan  HM, Clifton  DK, Steiner  RA. Minireview: 
+kisspeptin neurons as central processors in the regulation of 
+gonadotropin-releasing hormone secretion. Endocrinology. 
+2006;147(3):1154-1158.
+ 71. Mittelman-Smith  MA, Williams  H, Krajewski-Hall  SJ, et  al. 
+Arcuate kisspeptin/neurokinin B/dynorphin (KNDy) neurons 
+mediate the estrogen suppression of gonadotropin secretion and 
+body weight. Endocrinology. 2012;153(6):2800-2812.
+ 72. Padilla SL, Johnson CW, Barker FD, Patterson MA, Palmiter RD. 
+A neural circuit underlying the generation of hot flushes. Cell 
+Rep. 2018;24(2):271-277.
+ 73. Tanaka  M, McKinley  MJ, McAllen  RM. Preoptic-raphé con-
+nections for thermoregulatory vasomotor control. J Neurosci. 
+2011;31(13):5078-5088.
+ 74. Laudenslager  ML, Wilkinson  CW, Carlisle  HJ, Hammel  HT. 
+Energy balance in ovariectomized rats with and without es-
+trogen replacement. Am J Physiol. 1980;238(5):R400-R405.
+ 75. Baker MA, Dawson DD, Peters CE, Walker AM. Effects of es-
+trogen on thermoregulatory evaporation in rats exposed to 
+heat. Am J Physiol. 1994;267(3 Pt 2):R673-R677.
+ 76. Stephenson LA, Kolka MA. Esophageal temperature threshold 
+for sweating decreases before ovulation in premenopausal 
+women. J Appl Physiol (1985). 1999;86(1):22-28.
+ 77. Tankersley  CG, Nicholas  WC, Deaver  DR, Mikita  D, 
+Kenney  WL. Estrogen replacement in middle-aged women: 
+thermoregulatory responses to exercise in the heat. J Appl 
+Physiol (1985). 1992;73(4):1238-1245.
+ 78. Farrell  MJ, Trevaks  D, McAllen  RM. Preoptic activation and 
+connectivity during thermal sweating in humans. Temperature 
+(Austin). 2014;1(2):135-141.
+ 79. Shafton AD, McAllen RM. Location of cat brain stem neurons 
+that drive sweating. Am J Physiol Regul Integr Comp Physiol. 
+2013;304(10):R804-R809.
+ 80. Cannon B, Nedergaard J. Brown adipose tissue: function and 
+physiological significance. Physiol Rev. 2004;84(1):277-359.
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 11 =====
+Endocrinology, 2021, Vol. 162, No. 8 11
+ 81. Ponrartana S, Hu HH, Gilsanz V. On the relevance of brown 
+adipose tissue in children. Ann N Y Acad Sci. 2013;1302:24-29.
+ 82. Carpentier AC, Blondin DP, Virtanen KA, Richard D, Haman F, 
+Turcotte  ÉE. Brown adipose tissue energy metabolism in hu-
+mans. Front Endocrinol (Lausanne). 2018;9:447.
+ 83. Saito M, Okamatsu-Ogura Y, Matsushita M, et al. High inci-
+dence of metabolically active brown adipose tissue in healthy 
+adult humans: effects of cold exposure and adiposity. Diabetes. 
+2009;58(7):1526-1531.
+ 84. Labbé  SM, Caron  A, Lanfray  D, Monge-Rofarello  B, 
+Bartness  TJ, Richard  D. Hypothalamic control of brown adi-
+pose tissue thermogenesis. Front Syst Neurosci. 2015;9:150.
+ 85. Richard MA, Pallubinsky H, Blondin DP. Functional character -
+ization of human brown adipose tissue metabolism. Biochem J. 
+2020;477(7):1261-1286.
+ 86. Frank AP, Palmer BF, Clegg DJ. Do estrogens enhance activa-
+tion of brown and beiging of adipose tissues? Physiol Behav. 
+2018;187:24-31.
+ 87. Rodriguez-Cuenca  S, Pujol  E, Justo  R, et  al. Sex-dependent 
+thermogenesis, differences in mitochondrial morphology and 
+function, and adrenergic response in brown adipose tissue. J 
+Biol Chem. 2002;277(45):42958-42963.
+ 88. Pfannenberg C, Werner MK, Ripkens S, et al. Impact of age on 
+the relationships of brown adipose tissue with sex and adiposity 
+in humans. Diabetes. 2010;59(7):1789-1793.
+ 89. Al-Qahtani  SM, Bryzgalova  G, Valladolid-Acebes  I, et  al. 
+17β-Estradiol suppresses visceral adipogenesis and activates 
+brown adipose tissue-specific gene expression. Horm Mol Biol 
+Clin Investig. 2017;29(1):13-26.
+ 90. Rodriguez-Cuenca  S, Monjo  M, Frontera  M, Gianotti  M, 
+Proenza AM, Roca P. Sex steroid receptor expression profile in 
+brown adipose tissue. Effects of hormonal status. Cell Physiol 
+Biochem. 2007;20(6):877-886.
+ 91. Rodríguez-Cuenca  S, Monjo  M, Gianotti  M, Proenza  AM, 
+Roca  P. Expression of mitochondrial biogenesis-signaling fac-
+tors in brown adipocytes is influenced specifically by 17beta-
+estradiol, testosterone, and progesterone. Am J Physiol 
+Endocrinol Metab. 2007;292(1):E340-E346.
+ 92. Zhou Z, Moore TM, Drew BG, et al. Estrogen receptor alpha 
+controls metabolism in white and brown adipocytes by regu-
+lating Polg1 and mitochondrial remodeling. Sci Transl Med. 
+2020;12(555):eaax8096.
+ 93. Xu  Y, Nedungadi  TP, Zhu  L, et  al. Distinct hypothalamic 
+neurons mediate estrogenic effects on energy homeostasis and 
+reproduction. Cell Metab. 2011;14(4):453-465.
+ 94. Wang B, Li A, Li X, et al. Activation of hypothalamic RIP-Cre 
+neurons promotes beiging of WAT via sympathetic nervous 
+system. EMBO Rep. 2018;19(4):e44977.
+ 95. Jing K, Song KS, Shin S, et al. Docosahexaenoic acid induces 
+autophagy through p53/AMPK/mTOR signaling and promotes 
+apoptosis in human cancer cells harboring wild-type p53. 
+Autophagy. 2011;7(11):1348-1358.
+ 96. van Veen JE, Kammel LG, Bunda PC, et al. Hypothalamic es-
+trogen receptor alpha establishes a sexually dimorphic regula-
+tory node of energy expenditure. Nat Metab. 2020;2(4):351-363.
+ 97. Clegg DJ, Brown LM, Woods SC, Benoit SC. Gonadal hormones 
+determine sensitivity to central leptin and insulin. Diabetes. 
+2006;55(4):978-987.
+ 98. Enriori  PJ, Sinnayah  P, Simonds  SE, Garcia  Rudaz  C, 
+Cowley MA. Leptin action in the dorsomedial hypothalamus in-
+creases sympathetic tone to brown adipose tissue in spite of sys-
+temic leptin resistance. J Neurosci. 2011;31(34):12189-12197.
+ 99. Amateau SK, McCarthy MM. Induction of PGE2 by estradiol 
+mediates developmental masculinization of sex behavior. Nat 
+Neurosci. 2004;7(6):643-650.
+ 100. Ogawa  S, Chan  J, Gustafsson  JA, Korach  KS, Pfaff  DW. 
+Estrogen increases locomotor activity in mice through es-
+trogen receptor alpha: specificity for the type of activity. 
+Endocrinology. 2003;144(1):230-239.
+ 101. Correa  SM, Newstrom  DW, Warne  JP, et  al. An estrogen-
+responsive module in the ventromedial hypothalamus se-
+lectively drives sex-specific activity in females. Cell Rep. 
+2015;10(1):62-74.
+ 102. Gordon  CJ. Temperature Regulation in Laboratory Rodents. 
+Cambridge: Cambridge University Press; 1993.
+ 103. Weinert D, Waterhouse J, Nevill A. Changes of body tempera-
+ture and thermoregulation in the course of the ovarian cycle in 
+laboratory mice. Biol Rhythm Res. 2004;35(3):171-185.
+ 104. Baker FC, Driver HS. Circadian rhythms, sleep, and the men-
+strual cycle. Sleep Med. 2007;8(6):613-622.
+ 105. Sanchez-Alavez  M, Alboni  S, Conti  B. Sex- and age-specific 
+differences in core body temperature of C57Bl/6 mice. Age 
+(Dordr). 2011;33(1):89-99.
+ 106. Brooks EM, Morgan AL, Pierzga JM, et al. Chronic hormone 
+replacement therapy alters thermoregulatory and vasomotor 
+function in postmenopausal women. J Appl Physiol (1985). 
+1997;83(2):477-484.
+ 107. Freedman  RR, Blacker  CM. Estrogen raises the sweating 
+threshold in postmenopausal women with hot flashes. Fertil 
+Steril. 2002;77(3):487-490.
+ 108. Hosono T, Chen XM, Miyatsuji A, et al. Effects of estrogen on 
+thermoregulatory tail vasomotion and heat-escape behavior in 
+freely moving female rats. Am J Physiol Regul Integr Comp 
+Physiol. 2001;280(5):R1341-R1347.
+ 109. Dacks PA, Rance NE. Effects of estradiol on the thermoneutral 
+zone and core temperature in ovariectomized rats. 
+Endocrinology. 2010;151(3):1187-1193.
+ 110. Warner A, Rahman A, Solsjö P, et al. Inappropriate heat dis-
+sipation ignites brown fat thermogenesis in mice with a mu-
+tant thyroid hormone receptor α1. Proc Natl Acad Sci U S A. 
+2013;110(40):16241-16246.
+ 111. Abrahám IM, Todman MG, Korach KS, Herbison AE. Critical 
+in vivo roles for classical estrogen receptors in rapid estrogen ac-
+tions on intracellular signaling in mouse brain. Endocrinology. 
+2004;145(7):3055-3061.
+ 112. Freedman RR, Norton D, Woodward S, Cornélissen G. Core body 
+temperature and circadian rhythm of hot flashes in menopausal 
+women. J Clin Endocrinol Metab. 1995;80(8):2354-2358.
+ 113. Freedman  RR. Biochemical, metabolic, and vascular mechanisms 
+in menopausal hot flashes. Fertil Steril. 1998;70(2):332-337.
+ 114. Kronenberg  F. Hot flashes: phenomenology, quality of 
+life, and search for treatment options. Exp Gerontol. 
+1994;29(3-4):319-336.
+ 115. Dacks PA, Krajewski SJ, Rance NE. Activation of neurokinin 
+3 receptors in the median preoptic nucleus decreases core tem-
+perature in the rat. Endocrinology. 2011;152(12):4894-4905.
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026
+
+===== PAGE 12 =====
+12  Endocrinology, 2021, Vol. 162, No. 8
+ 116. Mittelman-Smith  MA, Krajewski-Hall  SJ, McMullen  NT, 
+Rance  NE. Neurokinin 3 receptor-expressing neurons in the 
+median preoptic nucleus modulate heat-dissipation effectors in 
+the female rat. Endocrinology. 2015;156(7):2552-2562.
+ 117. Jayasena  CN, Comninos  AN, Stefanopoulou  E, et  al. 
+Neurokinin B administration induces hot flushes in women. Sci 
+Rep. 2015;5:8466.
+ 118. Prague JK, Roberts RE, Comninos AN, et al. Neurokinin 3 re-
+ceptor antagonism rapidly improves vasomotor symptoms with 
+sustained duration of action. Menopause. 2018;25(8):862-869.
+ 119. Skorupskaite  K, George  JT, Veldhuis  JD, Millar  RP, 
+Anderson  RA. Neurokinin 3 Receptor Antagonism Reveals 
+Roles for Neurokinin B in the Regulation of Gonadotropin 
+Secretion and Hot Flashes in Postmenopausal Women. 
+Neuroendocrinology. 2018;106(2):148-157.
+ 120. Depypere H, Timmerman D, Donders G, et al. Clinical evalu-
+ation of the NK3 receptor antagonist fezolinetant (a.k.a. 
+ESN364) for the treatment of menopausal hot flashes. 
+Maturitas. 2017;103:89-90.
+ 121. Skorupskaite  K, George  JT, Veldhuis  JD, Anderson  RA. 
+Neurokinin B regulates gonadotropin secretion, ovarian follicle 
+growth, and the timing of ovulation in healthy Women. J Clin 
+Endocrinol Metab. 2018;103(1):95-104.
+ 122. Szeliga  A, Czyzyk  A, Podfigurna  A, Genazzani  AR, 
+Genazzani  AD, Meczekalski  B. The role of kisspeptin/
+neurokinin B/dynorphin neurons in pathomechanism of vaso-
+motor symptoms in postmenopausal women: from physiology 
+to potential therapeutic applications. Gynecol Endocrinol. 
+2018;34(11):913-919.
+ 123. Fredette  NC, Meyer  MR, Prossnitz  ER. Role of GPER in 
+estrogen-dependent nitric oxide formation and vasodilation. J 
+Steroid Biochem Mol Biol. 2018;176:65-72.
+ 124. Abreu-Vieira G, Xiao C, Gavrilova O, Reitman ML. Integration 
+of body temperature into the analysis of energy expenditure in 
+the mouse. Mol Metab. 2015;4(6):461-470.
+ 125. Ruf  T, Geiser  F. Daily torpor and hibernation in birds and 
+mammals. Biol Rev Camb Philos Soc. 2015;90(3):891-926.
+ 126. Roth  BL. DREADDs for neuroscientists. Neuron. 
+2016;89(4):683-694.
+ 127. Yizhar  O, Fenno  LE, Davidson  TJ, Mogri  M, Deisseroth  K. 
+Optogenetics in neural systems. Neuron. 2011;71(1):9-34.
+ 128. Zhang Z, Liu J, Veldhuis-Vlug AG, et al. Effects of chronic es-
+trogen administration in the ventromedial nucleus of the hypo-
+thalamus (VMH) on fat and bone metabolism in ovariectomized 
+rats. Endocrinology. 2016;157(12):4930-4942.
+ 129. Vardy  E, Robinson  JE, Li  C, et  al. A new DREADD facili-
+tates the multiplexed chemogenetic interrogation of behavior. 
+Neuron. 2015;86(4):936-946.
+ 130. Krajewski-Hall  SJ, Miranda  Dos  Santos  F, McMullen  NT, 
+Blackmore  EM, Rance  NE. Glutamatergic neurokinin 3 
+receptor neurons in the median preoptic nucleus modu-
+late heat-defense pathways in Female mice. Endocrinology. 
+2019;160(4):803-816.
+ 131. Prague  JK, Roberts  RE, Comninos  AN, et  al. Neurokinin 
+3 receptor antagonism as a novel treatment for menopausal 
+hot flushes: a phase 2, randomised, double-blind, placebo-
+controlled trial. Lancet. 2017;389(10081):1809-1820.
+ 132. Fahrbach  SE, Morrell  JI, Pfaff  DW. Studies of ventromedial 
+hypothalamic afferents in the rat using three methods of HRP 
+application. Exp Brain Res. 1989;77(2):221-233.
+ 133. Imai-Matsumura K, Matsumura K, Nakayama T. Involvement 
+of ventromedial hypothalamus in brown adipose tissue thermo-
+genesis induced by preoptic cooling in rats. Jpn J Physiol. 
+1984;34(5):939-943.
+Downloaded from https://academic.oup.com/endo/article/162/8/bqab087/6262699 by guest on 04 February 2026

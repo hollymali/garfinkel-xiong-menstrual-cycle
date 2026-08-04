@@ -1,0 +1,14 @@
+
+GATE FREE  (rho fitted):  best objective 1.2488
+   dips  [0.351 0.322 0.033]   target [0.359 0.321 0.088]
+   ratios 1.00/0.34/0.51  target 1.00/0.34/0.55
+   non-preg   2 peak(s)
+   pregnant   2 peak(s)
+   Esr1i      1 peak(s)
+
+GATE OFF   (rho pinned 1.0):  best objective 1.2909
+   dips  [0.359 0.17  0.088]   target [0.359 0.321 0.088]
+   ratios 1.00/0.33/0.55  target 1.00/0.34/0.55
+   non-preg   2 peak(s)
+   pregnant   1 peak(s)
+   Esr1i      1 peak(s)

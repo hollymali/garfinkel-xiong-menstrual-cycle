@@ -1,0 +1,1067 @@
+Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Received 30 December 2025
+Accepted 13 April 2026
+Available online 15 April 2026
+Version of Record published 28 April 2026REVIEW
+Integrating mechanistic models to decode the
+GnRH pulse generator in female mice
+Kateryna Nechyporenko 1,2,*, Deyana Ivanova 3,*, Xiao Feng Li 3, Krasimira Tsaneva-Atanasova 1,2,
+Margaritis Voliotis 1,2 and Kevin T O ’Byrne3
+1Department of Mathematics and Statistics, University of Exeter, Exeter, UK
+2Living Systems Institute, University of Exeter, Exeter, UK
+3Department of Women and Children ’s Health, School of Life Course and Population Sciences, King ’s College London, London, UK
+Correspondence should be addressed to K Nechyporenko: k.nechyporenko@exeter.ac.uk or to K T O ’Byrne: kevin.o’byrne@kcl.ac.uk
+*(K Nechyporenko and D Ivanova contributed equally to this work)
+This paper forms part of the Computational Methods in Endocrinology special collection. The Guest Editors for this collection were Stafford Lightma na n d
+Rohan Lewis.
+Abstract
+The gonadotrophin-releasing hormone (GnRH) pulse generator is a critical neural oscillator that governs reproductive
+function through the pulsatile release of luteinising hormone (LH) and follicle-stimulating hormone. Early
+electrophysiological studies, notably by Ernst Knobil, identi ﬁed multiunit activity (MUA) volleys in the mediobasal
+hypothalamus that aligned with LH pulses, suggesting a neural basis for GnRH pulsatility. Although GnRH neurons
+exhibit some intrinsic secretory rhythmicity in vitro , their isolated electrophysiological signatures have proven
+inconsistent. Recent advances, including GCaMP ﬁbre photometry in freely behaving mice, have revealed a precise
+correlation between episodic GnRH distal process activity and LH pulses. However, it is now well established that a neural
+oscillator comprising hypothalamic kisspeptin neurones co-expressing neurokinin B and dynorphin, collectively
+termed the KNDy network, represents the core construct of the GnRH pulse generator. Understanding the dynamics of
+this network and its modulation by external inputs, such as stress, metabolic cues and circadian rhythms, is essential.
+Computational modelling provides a systematic framework for integrating experimental data with mechanistic and
+predictive analyses to decode the GnRH pulse generator dynamics.
+Keywords: KNDy network; neuromodulation of reproductive function; stress integration; amygdala inputs; PVN signalling
+Introduction
+Successful reproduction depends on the proper
+function of a neural oscillator known as the
+gonadotrophin-releasing hormone (GnRH) pulse
+generator, which drives the pulsatile secretion of the
+pituitary gonadotrophins, luteinising hormone (LH) and
+follicle-stimulating hormone. These hormone pulses
+regulate folliculogenesis and ovulation in females and
+spermatogenesis in males. Initial attempts to elucidate
+the neural components of the GnRH pulse generator
+included the early work by Ernst Knobil and colleagues
+who discovered an electrophysiological correlate, namely
+multiunit activity (MUA) volleys recorded from the
+mediobasal hypothalamus of rhesus monkeys
+that faithfully aligned with LH pulses, in turn elicited
+by the pulsatile release of GnRH ( 1, 2). The
+MUA volley ’s signature was subsequently shown in
+other species ( 3, 4, 5, 6), but the identity of the
+neurones that compose them has remained enigmatic.
+Published by Bioscienti ﬁca Ltd.
+https://jme.bioscientiﬁca.com
+© 2026 the author(s)
+This work is licensed under a Creative Commons
+Attribution 4.0 International License.
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+It only seemed natural to focus on the GnRH neurones per
+se, and in vitro and ex vivo studies using immortalised cell
+lines and primary cultures of GnRH neurones,
+respectively, have indicated an ability of GnRH
+neurones to generate secretory pulses ( 7, 8), implying
+an intrinsic pulsatile property of these neurones.
+However, electrophysiological recordings from single
+identiﬁed GnRH neurones in vitro have proved
+disappointing despite the occasional recording
+revealing a pattern of electrical activity that might
+reﬂect a neurosecretory burst underlying a pulse of
+GnRH secretion ( 9). Consistent with this, the ﬁrst in
+vivo recordings of GnRH neurones reveal substantial
+heterogeneity in ﬁring patterns ( 10), implying that
+coherent pulsatility emerges from network
+coordination rather than uniform single-cell oscillatory
+behaviour. Nevertheless, despite the recent
+demonstration of a perfect correlation between
+episodic increases in the activity of GnRH distal
+dendrons that terminate in the median eminence using
+genetically encoded calcium indicator (GCaMP)-based
+ﬁbre photometry, and LH pulses in freely behaving
+mice ( 11), we now know that the GnRH neurones are
+actually driven by an extrinsic neural oscillator
+comprising hypothalamic kisspeptin (Kiss1) neurones
+co-expressing neurokinin-B (NKB) and dynorphin (Dyn)
+(denoted by the acronym KNDy) (11, 12, 13, 14). The KNDy
+network is now considered the elusive GnRH pulse
+generator neural construct and the focus of this review.
+Through reciprocal excitatory and inhibitory interactions
+mediated by NKB and Dyn, respectively, KNDy neurones
+generate rhythmic bursts of activity that drive the
+episodic release of Kiss1 onto the distal processes of
+GnRH neurones approaching the median eminence
+(15, 16), thereby synchronising pulsatile GnRH release.
+Even subtle disruptions to this ﬁnely tuned system can
+alter pulse frequency or amplitude, leading to
+reproductive disorders, such as infertility. The GnRH
+pulse generator, however, does not function in
+isolation. Its activity is modulated by external inputs
+that convey information about physiological
+context and environmental conditions. Neural and
+hormonal signals from regions such as the
+paraventricular nucleus ( 17, 18), medial amygdala
+(MeA) ( 19, 20, 21, 22, 23) and brainstem nuclei ( 24),
+along with peripheral cues related to stress ( 25),
+metabolic states ( 26, 27) and circadian rhythms ( 28, 29),
+modulate GnRH pulse generator excitability. These
+pathways not only enable reproductive function to
+adapt to changing conditions but also introduce
+additional layers of complexity that challenge
+experimental interpretation.
+Mathematical modelling provides a powerful tool to
+unravel this complexity. Models of the GnRH pulse
+generator integrate experimental ﬁndings with
+theoretical frameworks to provide insight into
+mechanisms underlying rhythmic activity, support
+predictions of responses to perturbations, and link
+cellular interactions with physiological outcomes.
+Although much of the evidence used for
+mechanistic models are derived from studies in
+rodents, particularly female mice, key elements of
+GnRH pulse generator function are conserved across
+species ( 1, 2, 3, 4, 5, 6). These conserved features
+provide a conceptual framework for interpreting
+human reproductive neuroendocrinology. In
+clinical context, mechanistic understanding of pulsatile
+GnRH neuromodulation has direct relevance for
+optimising in vitro fertilisation protocols ( 30, 31)
+and for informing therapeutic strategies for
+menopause-associated symptoms ( 32), hypoactive
+sexual desire disorder ( 33) and functional
+hypothalamic amenorrhoea ( 34).
+In this review, we explore how the synergy between
+modelling and experimentation has transformed our
+understanding of the GnRH pulse generator. We trace
+the evolution of modelling alongside key experimental
+discoveries, highlighting how this integrative approach
+has helped to shed light on both the intrinsic oscillatory
+dynamics of the KNDy network and the modulatory
+inﬂuence of external inputs critical for control of
+reproduction.
+Temporal signatures and operational
+characteristics of KNDy
+neuronal network
+Over the years, modelling of the GnRH pulse generator
+has been carried out across multiple scales and levels of
+biological detail. Early phenomenological models
+linked fast GnRH neuronal activity with slower
+upstream regulation, later attributed to Kiss1 neurones
+(35, 36, 37). With increasing insight into the underlying
+physiology, more mechanistic single-cell models
+emerged. For instance, Lehnert and Khadra ( 38)
+incorporated autocrine GnRH feedback, calcium
+dynamics and Kiss1-induced TRPC5 channel activation
+to investigate pulsatile neuronal activity and GnRH
+secretion. As the role of KNDy neurones became more
+established, population-level models were developed
+incorporating network-level mechanisms and
+predicting system responses to perturbations.
+The ﬁrst population-level model of the KNDy network
+(Fig. 1A ) developed by Voliotis and colleagues in 2019
+showed how reciprocal NKB excitation and Dyn
+inhibition generate rhythmic activity characteristic of
+relaxation oscillations ( 12). In this framework, fast,
+NKB-mediated positive feedback and glutamatergic
+excitation drive collective spiking, while slower Dyn
+accumulation terminates activity to produce
+self-sustained oscillations. Crucially, the study
+demonstrated that altering basal activity causes
+qualitative changes in network dynamics: sustained
+optogenetic stimulation between 1 and 15 Hz induced
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+regular LH pulses in oestrous mice, whereas frequencies
+outside this range failed to evoke pulsatility. Notably, 1 Hz
+photostimulation initiated pulsatile LH secretion and 5 Hz
+increased pulse frequency. Model simulations likewise
+showed that pulsatility emerges only within a de ﬁned
+excitability range and that modifying NKB or Dyn moves
+the system between silent, oscillatory and tonic regimes.
+Subsequent modelling by Voliotis and colleagues in 2021
+(39) incorporated changes in network excitability across
+the ovarian cycle informed by experimental evidence
+that oestradiol (E
+2) reduces NKB and dynorphin
+expression while enhancing glutamatergic signalling
+via increased vesicular glutamate transporter 2
+expression. They showed that these steroid-dependent
+modulations shift the bifurcation boundaries de ﬁning
+the KNDy network ’s pulsatile regime ( 39). These
+predictions align with experimental ﬁndings:
+low-frequency optogenetic stimulation accelerates LH
+pulses in oestrus, when network excitability is high, but
+slows or fails to initiate pulses in dioestrus. Sex steroid
+regulation of pulse generator excitability is further
+supported by evidence that selective oestrogen
+receptor-α (ERα) deletion in KNDy neurones enhances
+glutamatergic transmission and disrupts oestrous
+cycles ( 40).
+While these modelling studies established the
+network-level principles of KNDy-driven pulsatility,
+recent advances in single-cell imaging have
+transformed the ability to examine the cellular
+mechanisms underlying KNDy activity. Building on the
+genetically encoded calcium indicator (GCaMP)-based
+ﬁbre photometry studies in freely behaving mice that
+identiﬁed brief KNDy synchronised events (SEs) as
+reliable precursors of LH pulses ( 41, 42),
+miniendoscopic Gradient Refractive INdex (GRIN) lens
+recordings revealed that individual KNDy neurones are
+recruited into tightly structured SEs that precede every
+pulse (13, 43). While in ﬁbre photometry experiments, an
+implanted optical ﬁbre records bulk ﬂuorescence
+changes from GCaMP-expressing neurones,
+miniendoscopic GRIN lens imaging provides single-cell
+resolution, enabling the activity of individual neurones
+within the population to be visualised. Moore and
+colleagues ( 13) showed in freely moving female
+ovariectomised mice that each event exhibits a
+reproducible temporal pattern in which some neurones
+consistently activate earlier than others, giving rise to a
+proposed ‘leader–follower’ organisation that challenges
+the classical view of KNDy neurones as a homogeneous
+population. By contrast, Han et al. (43) observed variable
+AB
+C
+Figure 1
+Integrating experimental and modelling
+frameworks to understand the GnRH pulse
+generator. (A) Schematic overview of
+mathematical modelling approaches across
+multiple scales, from neuronal population
+models (12, 39) to spiking neuronal networks ( 45)
+to membrane and ion channel dynamics ( 14),
+shown from top to bottom. (B) Multiunit activity
+(MUA) volley frequency recorded in the ARC of
+Kiss1Cre ovariectomised adult female mouse,
+shown alongside corresponding LH pulses.
+(C) Representative in vivo GRIN lens
+miniendoscopic recording of calcium activity in
+KNDy neurones from dioestrus mice. The top
+panel shows population-level KNDy dynamics
+showing synchronisation events (SEs) associated
+with pulsatile GnRH release. The three lower
+panels show representative single neurone
+calcium traces from three (out of thirty) KNDy
+neurones within the miniscope ﬁeld of view,
+illustrating a rich repertoire of mSEs (blue) in
+addition to full scale SEs (purple).
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+activation sequences across events in gonadectomised
+male mice, suggesting that ﬁxed leader –follower
+ordering is not necessary for generating pulsatile
+dynamics. These divergent ﬁndings hinted at sex
+speciﬁc differences, which a recent comparative ﬁbre
+photometry study supported: females exhibit faster and
+more regular SE intervals than males, whereas
+gonadectomy eliminates SE frequency differences but
+preserves subtle differences in SE interval
+distributions, indicating both steroid-dependent and
+steroid-independent sex divergence in pulse generator
+dynamics ( 44).
+The dichotomy between these ﬁndings since then has
+been interrogated in the modelling study of Blanco
+et al. (45), testing whether temporal hierarchy as
+proposed by Moore et al. (13) is an intrinsic property of
+the KNDy neurones or emergent from network
+architecture ( Fig. 1A ). In the modelling framework,
+they assume that the network is arranged into tightly
+connected neuronal clusters that are only weakly linked
+to one another. Within this modular architecture, their
+study shows that stable leader –follower ordering is
+present only when inter-cluster coupling is strong and
+intra-cluster coupling is relatively weak. Under these
+conditions, the most excitable cluster repeatedly
+initiates events, giving the appearance of dedicated
+leader cells, similar to the pattern observed in vivo by
+Moore et al. (13). By contrast, when intra-cluster coupling
+dominates, clusters become more autonomous, and as a
+result, any cluster can initiate a synchronised event,
+making the ﬁring order variable from one event to the
+other, which is consistent with the ﬁndings by
+Han et al. (43).
+These results raise the question of how KNDy neurones
+coordinate their activity at the single-cell level. Recent
+work proposes a glutamate-two-transition model in
+which glutamatergic excitation initiates synchrony
+within the network, Dyn gates event occurrence, and
+NKB ampli ﬁes recruitment to full activation ( 43). At the
+cellular level, KNDy neurones exhibit high input
+resistance and burst-prone dynamics shaped by
+the hyperpolarisation-activated current I
+h, persistent
+Na+ and A type K + (Kv4.2) currents, with variation in
+Kv4 kinetics in ﬂuencing how individual neurones
+integrate into the network ( 46). A recent study showed
+that E 2 reconﬁgures ionic conductances in arcuate
+nucleus (ARC) Kiss1 neurones, shifting activity from
+synchronous high-frequency ﬁring to short burst ﬁring
+(14). E 2 increased the mRNA expression of voltage-gated
+Ca2+ channels, as well as HCN1/2 (which encodes
+hyperpolarisation-activated cyclic nucleotide-gated
+channels underlying the I h current) and KCNQ2
+(which encodes a Kv7 potassium channel subunit
+contributing to the M-current), resulting in a rise in the
+whole-cell Ca 2+ current density without altering
+channel kinetics. At the same time, E 2 decreased TRPC5
+(encodes a non-selective cation channel
+mediating depolarising inward currents) and GIRK2
+(encodes a subunit of an inwardly-rectifying potassium
+channel) expression, reducing the slow excitatory
+postsynaptic potential (EPSP) that sustains synchronous
+ﬁring. Deletion of TRPC5 channels from KNDy neurones
+using CRISPR conﬁrmed that these channels are required
+for generating the slow EPSP ( 14).
+These ﬁndings motivated the construction of a
+detailed Hodgkin –Huxley-type model ( Fig. 1A ) that
+reproduced the dynamical transitions under different
+E
+2 levels ( 14). The model showed that synchrony relies
+on TRPC5-mediated depolarisation balanced by GIRK
+inhibition, and that E 2-driven increases in Ca 2+ and Ih
+shift the system into burst ﬁring optimised for glutamate
+release.
+The above studies illustrate how the synergy
+between theoretical frameworks ( Fig. 1A ) and
+experiments ( Fig. 1B and C ) has enabled examination
+of KNDy neurone function across multiple scales, from
+population dynamics to network organisation and
+single-cell mechanisms ( Fig. 1A ), thereby revealing the
+biological processes that shape their activity. However,
+our understanding remains incomplete, as the speci ﬁc
+neuronal network ‘tipping-point’ mechanisms that
+initiate and coordinate synchronised events (SEs) ( 47)
+of KNDy neuronal activity are not yet fully de ﬁned,
+thus failing to recapitulate the synchronisation
+dynamics of the GnRH pulse generator. Apart from SEs
+that recruit the whole population, smaller
+‘mini-synchronised events ’ (mSEs) occur in which only
+a subset of neurones elevate intracellular calcium (13, 43).
+The mSEs are likely not to be accidental ﬂuctuations but
+key intermediaries in the build-up towards a whole
+population SE ( Fig. 1C ), implying that mSEs may
+capture the earliest stages of network coordination.
+Importantly, whereas previous GRIN lens studies were
+performed exclusively in gonadectomised animals
+(13, 43), Fig. 1C illustrates for the ﬁrst time a
+representative example of GRIN lens recordings
+obtained from intact mice during dioestrus, thereby
+enabling direct visualisation of KNDy network
+dynamics under intact steroid feedback conditions in
+future work. The ﬁbre photometry observations by
+Han et al. (43) suggest that glutamate-dependent
+coupling between small groups of ARC Kiss1 neurones
+gives rise to the mSEs. Complementing these ﬁndings, the
+modular network model by Blanco et al. (45)
+demonstrates the partial ﬁring of the network that
+arises when a part of the said network reaches the
+excitability threshold, while the rest of the network
+remains below the basin of attraction associated with
+the state transition. The recently published single-cell
+KNDy model ( 14) has been parameterised using an
+extensive set of electrophysiology data that makes it a
+powerful tool in investigating the mechanisms that give
+rise to the mSEs. The model enables systematic
+exploration of how cell intrinsic properties, network
+topology and neuronal heterogeneity interact to
+produce partial recruitment events. In doing so, it
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+provides a tool to identify the tipping-point dynamics that
+orchestrate SEs, while teasing apart the contribution of
+the steroidal neuromodulation, e.g. from E 2.
+External neuromodulation of the
+GnRH pulse generator
+KNDy network intrinsic oscillatory behaviour is
+continually shaped by diverse excitatory and inhibitory
+inputs that ﬁne-tune their oscillatory rhythm to internal
+physiology and external in ﬂuences. For instance,
+prenatal androgen exposure remodels upstream
+reproductive neural circuits in ways that elevate
+KNDy-driven LH pulsatility and impair steroid negative
+feedback, a mechanism now also implicated in human
+PCOS ( 48). Tracing studies show that KNDy neurones
+receive dense hypothalamic innervation from the ARC,
+paraventricular nucleus (PVN), dorsomedial
+hypothalamus (DMH) and the anteroventral
+periventricular nucleus (AVPV) populations conveying
+metabolic, circadian, stress and steroid feedback,
+alongside additional afferents from the limbic system,
+including septum, bed nucleus of the stria terminalis
+(BNST) and medial amygdala ( 19, 49, 50).
+Posterodorsal medial amygdala
+Outside of the hypothalamus, the posterodorsal
+subnucleus of the medial amygdala (MePD) is a key
+limbic input to the GnRH pulse generator, relaying
+emotional, social and stress-related information
+directly to KNDy neurones ( 20, 21, 23, 51, 52, 53).
+Monosynaptic mapping indicates the presence of MePD
+to ARC projections ( 50), and a rapidly expanding body of
+experimental evidence and in silico modelling now shows
+that the MePD regulates the ARC KNDy network
+through coordinated Kiss1, glutamatergic, GABAergic,
+urocortin-3-corticotrophin-releasing factor type-2
+receptor (UCN3-CRFR2) and neurokinin 3 receptor
+(NK3R) neuronal pathways.
+Early work revealed that the MePD contains a small
+population of Kiss1 neurones and optogenetic
+stimulation of these neurones accelerates LH pulse
+frequency, establishing an excitatory drive from the
+medial amygdala to the GnRH pulse generator ( 20),
+expanding on earlier neuropharmacological studies
+(54). This contrasts with the amygdala ’s broader
+inhibitory in ﬂuence on reproduction ( 55), suggesting
+involvement of the other MePD circuit components in
+Kiss1’s pathway to KNDy. Glutamate and GABA are major
+excitatory and inhibitory neurotransmitters,
+respectively, and many neural networks rely on their
+balance to regulate their activity. Unsurprisingly, the
+presence of both has been identi ﬁed in the MePD
+(56, 57, 58). To interrogate how GABA and glutamate
+signalling regulate MePD function, Lass et al. have used
+a combined approach of pharmacological antagonism of
+GABA or glutamate receptors with optogenetic
+stimulation of MePD Kiss1 neurones while measuring
+LH release ( 52). Although the inhibition of each of the
+neurotransmitters’ receptors alone produced no
+signiﬁcant changes in the LH pulsatility, blocking MePD
+GABA receptors during Kiss1 photostimulation reversed
+the expected increase in LH pulse frequency. At the same
+time, the combination of glutamate receptor antagonism
+and stimulation of Kiss1 abolished the pulsatile release
+of LH.
+To probe the underlying mechanisms, the established
+KNDy network model ( 12, 39) was extended to
+incorporate model-derived MePD inputs, enabling
+investigation of how LH pulse frequency responds to
+antagonism of GABA and glutamate receptors in the
+MePD ( 52). The model of the MePD circuitry involves
+glutamatergic and GABA –GABA disinhibitory
+projections to the KNDy network, as well as
+glutamatergic activation of the GABAergic MePD
+projections, allowing to reproduce experimental results
+in silico (Fig. 2A). The GABA–GABA disinhibitory pathway
+is consistent with the fact that MePD GABA is of pallidal
+origin ( 57). In addition, Bian ( 59)d e ﬁ
+ned three
+morphologically different subtypes of GABA neurones
+in the MePD. This may imply that these diverse
+populations contribute to distinct functional roles in
+MePD circuitry. The model ( 52), therefore, suggests that
+MePD Kiss1 stimulation, when GABA receptors are
+blocked, lowers LH pulse frequency by driving
+glutamatergic activation of MePD GABAergic
+projections that target KNDy neurones. In other words,
+removing the ability of GABA interneurons to participate
+in disinhibition during optogenetic stimulation changes
+the MePD output from a net excitatory in ﬂuence to a
+predominantly inhibitory one. Together, these
+modelling and experimental data identify MePD Kiss1
+neurones as a modulatory ‘gain’ on the GnRH pulse
+generator, acting through ﬁnely balanced glutamatergic
+and GABAergic neuronal circuits ( Fig. 2A ).
+The coupled MePD –KNDy model was then extended to
+integrate how MePD NK3R activity mediates
+predator-odour stress-induced inhibition of LH
+pulsatility in ovariectomised mice ( 60). The model
+predicted that stress (the predator odour) drives up the
+activity of MePD Kiss1 neurones by activating the NKB
+receptors expressed on these cells ( Fig. 2B ). Modelling in
+this study showed that NK3R activation increases MePD
+inhibitory output suf ﬁciently to push the KNDy network
+above its upper oscillatory regime boundary, collapsing
+rhythmic activity. The MePD is shown to respond to
+physiological stressors ( 61), which makes it a good
+candidate to investigate the incorporation of stressors
+via the coupled model and study the effects of stress on
+the GnRH pulse generator dynamics. In the model, stress
+is incorporated as an MePD NK3R-dependent input to the
+MePD GABA-glutamate circuit. Although NK3Rs are
+proposed to be expressed on MePD Kiss1 neurones and
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+mediate stress effects through this neuronal population,
+they could also be present on other MePD neurones. The
+modelling framework, therefore, examines the functional
+consequences of NK3R-mediated modulation at the
+neuronal circuit level, without determining a speci ﬁc
+cellular substrate through which stress ultimately
+shapes MePD output and, consequently, KNDy network
+dynamics.
+The early coupled MePD-KNDy model treated MePD
+activity as a constant (averaged) input to the ARC,
+allowing the effects of GABA –GABA disinhibition and
+glutamatergic drive on KNDy network excitability to be
+examined ( 52, 60). While these studies clari ﬁed how
+MePD Kiss1, GABA and tachykinin pathways drive the
+KNDy oscillator between active and silent regimes, in
+reality MePD circuit ’sa c t i v i t yi sl i k e l ym o r e
+complex. Nechyporenko et al. (23) modelled MePD GABA
+and glutamate neuronal activity as oscillatory. The
+model analysis demonstrates that speci ﬁc
+glutamate–GABA–GABA connectivity patterns determine
+MePD output polarity and, when coupled to the KNDy
+oscillator ( Fig. 2A ), reproduce the pharmacological
+effects previously reported by Lass et al. (52).
+Importantly, the model predicted that stimulating MePD
+GABA projections suppresses LH pulses, consistent with
+in vivo optogenetic activation of MePD GABA terminals in
+the ARC ( 22). In addition, the role of the glutamatergic
+projection was investigated, and the ﬁndings suggest that
+stimulation of the MePD glutamatergic projections has a
+non-monotonic effect on the GnRH pulse generator. This
+was con ﬁrmed experimentally, revealing a previously
+unrecognised excitatory MePD projection capable of
+modulating the KNDy network. Stimulation at 5 Hz
+increases LH pulse frequency, whereas higher
+frequencies (10 and 20 Hz) produce no signi ﬁcant
+change compared to basal ( 23). In the model, low levels
+of excitatory input enhance the activity of projection
+neurones, consistent with the 5 Hz experimental
+observation. With stronger excitation, mirroring higher
+stimulation frequencies, the system enters a regime where
+additional drive no longer yields proportional increases in
+activity. This behaviour suggests distinct modes of signal
+integration for GABA and glutamate in the MePD.
+GABAergic projections appear to convey unique,
+behaviourally relevant information from MePD to ARC,
+while glutamatergic projections contribute to homeostasis
+but do not encode speci ﬁc instructive signals. This is
+consistent with the evidence showing that the majority
+of MePD projections are inhibitory ( 57, 58, 59). Therefore,
+increased glutamatergic drive is counterbalanced by local
+circuit mechanisms ( 23), an observation re ﬂecting the
+largely inhibitory nature of MePD outputs.
+The phenomenological nature of the MePD model
+(23, 52, 60) offers a ﬂ
+exible framework for testing the
+effects of other neuropeptides on circuit behaviour.
+Building on this, Yu and colleagues have used
+experimental and theoretical approaches to uncover
+how MePD GABAergic neurones relay stress signals to
+the reproductive axis ( 62). Using GRIN lens
+mini-endoscopy, Yu et al. have recorded single-cell
+calcium activity, a proxy for neuronal activity, from
+MePD GABA neurones during both optogenetic
+stimulation of MePD UCN3 neurones and exposure to
+acute psychological stress ( 62). Clustering analysis has
+revealed two functionally distinct GABAergic
+subpopulations with anti-correlated activity patterns.
+Adapting the model of the MePD circuit ( 23) to describe
+input from UCN3 neuronal activity ( Fig. 2C ), it has been
+shown that anti-correlated activity is likely to arise from
+mutual inhibition between GABAergic populations. While
+it is possible that alternative connectivity patterns give
+rise to the anti-correlated activity in GABA populations,
+mutual inhibition naturally arises from the biophysical
+characteristics of GABAergic transmission, where the
+AB C
+Figure 2
+Schematic representation of the MePD circuit
+model used to study the effect of the interactions
+between the populations. (A) The modelling
+framework was ﬁrst introduced by Lass et al. (52),
+where the ARC received a constant input.
+Nechyporenko et al. (23) subsequently examined
+the same framework to explore the emergence
+of oscillatory dynamics. (B) Ivanova et al. (60)
+extended this framework to incorporate the
+MePD NK3R pathway, demonstrating how
+kisspeptin-mediated signalling underlies
+predator odour-induced stress inhibition of LH
+pulsatility. (C) Yu et al. (62) further used the MePD
+GABA–glutamate circuit to investigate the effects
+of UCN3 stimulation, treating this pathway as a
+mechanistic route through which stress
+modulates reproductive output.
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+release of GABA inhibits target neurones, thereby
+producing inhibitory interactions between the
+subpopulations.
+Reproducing anti-correlated activity between the two
+GABAergic subpopulations in the MePD, the coupled
+MePD–KNDy framework ( 62) successfully accounts for
+key experimental ﬁndings, including the effects of
+pharmacological blockade of MePD GABA and
+glutamate receptors with or without UCN3 stimulation
+(63), as well as the stress-induced loss of LH pulsatility
+(21). The model has then been used to predict how
+manipulating GABAergic signalling shapes the response
+to UCN3 input. It has been indicated that activating MePD
+GABA neurones suppresses LH pulse frequency, whereas
+blocking GABA receptors prevents UCN3 stimulation
+from altering pulsatility. These predictions have been
+validated using an intersectional experimental strategy
+(62), supporting the modelling conclusions that MePD
+UCN3 in ﬂuences the GnRH pulse generator primarily
+via a GABAergic pathway.
+Hypothalamic–pituitary–adrenal (HPA) axis
+There is growing evidence suggesting that the HPA axis,
+the core neuroendocrine system governing stress
+responses, has a dynamic interaction with the
+hypothalamic–pituitary–gonadal (HPG) axis,
+underpinning reproductive function ( 64, 65).
+Stress-induced suppression of pulsatile LH secretion
+(18, 65, 66) highlights its role in modulating the GnRH
+pulse generator. Usually, the dynamic pro ﬁles of the HPG
+(12, 39) and HPA ( 67) axes are considered as separate
+systems, which leads to a limited understanding of how
+the HPA and HPG axes coordinate their hormone rhythms
+and how perturbations to one will affect the other. To
+tackle this gap, a coupled-oscillator framework was
+introduced in which each oscillator represents a
+distinct aspect of neuroendocrine rhythmicity de ﬁned
+by its phase, frequency and amplitude, enabling
+investigation of system-level outputs and
+cross-regulation between the stress and reproductive
+axes ( 29). The framework incorporates circadian
+rhythms, the glucocorticoid (CORT) oscillator, the GnRH
+pulse generator and the oestrous cycle, making it possible
+to probe how stress input or E
+2 treatment at different
+cycle stages shapes pulse generator dynamics. In
+particular, the model shows that high CORT levels
+increase the length of the oestrous cycle and modulate
+response to acute stressors that have phase-dependent
+effects across the cycle. These ﬁndings can be
+interrogated through in vivo experimentation ( 29).
+Within this context, the PVN is the primary hypothalamic
+driver of the HPA axis and a major locus for
+stress-induced modulation. Both optogenetic ( 18) and
+chemogenetic ( 68) activation of CRF neurones in the
+PVN have shown robust suppression of LH pulsatility.
+ARC Kiss1 neurones express CRF receptors and receive
+CRF neuronal projections ( 69), and activation of PVN CRF
+neurones exerts an inhibitory in ﬂuence on the GnRH
+pulse generator, resulting in decreased LH pulse
+frequency. Interestingly, PVN CRF neurones act
+indirectly through local GABA neurones within the PVN
+to suppress GnRH pulse generator frequency, as
+inhibiting PVN GABA neurones abolishes the inhibitory
+effect of CRF activation on LH pulsatility ( 18).
+As was shown by Zavala and colleagues (29), the response
+to acute stress is cycle phase dependent. That prompts a
+question of whether activation of PVN CRF neurones has
+differential effects on LH pulsatility at different stages of
+the oestrous cycle. Chemogenetic activation of PVN CRF
+neurones in vivo was shown to increase the length of the
+oestrous cycle; speci ﬁcally, the time spent in pro-oestrus
+and dioestrus was decreased, while the proportion of
+time spent in oestrus and metoestrus was signi ﬁcantly
+increased ( 70). Moreover, the LH frequency has
+decreased in metoestrus, but is unchanged in dioestrus,
+conﬁrming model predictions ( 70). The model ( 29) was
+adapted to include direct PVN output to the GnRH pulse
+generator and to CORT rhythms ( Fig. 3), and re-calibrated
+to reproduce cycle periodicity in control female mice.
+Under simulated CRF neuronal activation, the model
+captured the overall cycle lengthening and showed that
+although the absolute duration of dioestrus is unchanged,
+it occupies a smaller fraction of the extended cycle ( 70).
+However, the predicted GnRH pulse generator frequency
+in metoestrus was substantially lower than the
+experimental value, re ﬂecting limitations of a
+phenomenological model where state variables
+represent oscillator properties rather than physiological
+quantities. The model also predicted an increase in CORT
+oscillation amplitude that would translate to a higher
+baseline. In contrast, the in vivo data have shown that
+morning CORT concentrations did not differ between the
+Figure 3
+Network model of system-level cross-regulation between CORT rhythms,
+the hypothalamic GnRH pulse generator and the oestrous cycle,
+incorporating input from the PVN.
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+control and CRF-activated groups. If CORT was responsible
+for LH pulse suppression, elevated CORT would
+accompany reduced LH pulse frequency, yet this was
+not observed. This supports the interpretation that PVN
+CRF neurones suppress LH pulsatility independently of
+CORT, consistent with an indirect inhibitory pathway in
+which PVN CRF neurones signal through local PVN GABA
+neurones to inhibit ARC KNDy network activity ( 18).
+Future directions
+Recent advances in high-resolution calcium imaging
+provide a timely opportunity to further develop
+mechanistic models and improve our understanding of
+reproductive neuroendocrine control. At the level of the
+GnRH pulse generator, combining calcium imaging with
+detailed biophysical modelling offers a powerful route to
+understanding how SEs and mSEs arise. The recently
+developed single-cell KNDy model ( 14) provides a
+foundation for constructing network models composed
+of heterogeneous neurones with realistic ionic
+conductances. Coupling multiple virtual cells into a
+network model will enable systematic exploration of
+how intrinsic variability, population size and
+network architecture shape the emergence of mSEs,
+tipping-point dynamics and full population
+synchronisation, thereby linking single-cell properties
+to population-level activity.
+Furthermore, systematic calibration of model
+dynamics to emerging MePD calcium recordings using
+likelihood-based or Bayesian inference will provide
+quantitative constraints on model parameters
+governing upstream modulatory processes. This
+integration will re ﬁne assumptions about underlying
+functional circuitry and synaptic interactions mediated
+by glutamatergic, GABAergic and neuropeptidergic
+signalling, shedding light on the mechanisms essential
+for pulse generation and enabling a new round of
+experimentally testable model predictions.
+Finally, future modelling efforts should incorporate the
+PVN–HPA axis into a uni ﬁed, quantitative framework of
+stress–reproduction interactions. In such a model, the
+MePD would integrate fast, acute stress signals; the
+KNDy network would generate GnRH/LH pulses on
+intermediate timescales; and the PVN –HPA axis would
+provide slower hormonal feedback. This multiscale
+architecture would allow systematic testing of how
+stressors acting over different timescales gate
+reproductive output, and how acute neural inhibition
+and slower endocrine feedback interact to reshape the
+temporal organisation of GnRH and LH pulsatility.
+Declaration of interest
+The authors declare that there is no conﬂict of interest that could be perceived
+as prejudicing the impartiality of the work reported.
+Funding
+This work was funded by grants BB/W005913/1, BB/W005883/1,
+BB/S019979/1 and EP/T017856.
+Author contribution statement
+All authors contributed equally to writing the manuscript.
+Open access
+For the purpose of open access, the authors have applied a Creative Commons
+Attribution (CC BY) licence to any Author Accepted Manuscript version arising
+from this submission.
+Acknowledgements
+DI, MV, KTA, KTO and XFL gratefully acknowledge the ﬁnancial support of
+BBSRC via grants BB/W005913/1 (KCL), BB/W005883/1 (Exeter) and
+BB/S019979/1. KTA gratefully acknowledges the ﬁnancial support of the
+EPSRC via grant EP/T017856.
+References
+1 Dufy B, Dufy-Barbe L, Vincent JD, et al. Electrophysiological study of
+hypothalamic neurons and gonadotropin regulation in rhesus
+monkey. Journal De Physiologie 1979 75 105–108.
+2 Wilson RC, Kesner JS, Kaufman JM, et al. Central electrophysiologic
+correlates of pulsatile luteinizing hormone secretion in the rhesus
+monkey. Neuroendocrinology 2008 39 256–260.
+(https://doi.org/10.1159/000123988)
+3 Clarke IJ & Cummins JT. The temporal relationship between
+gonadotropin releasing hormone (GnRH) and luteinizing hormone
+(LH) secretion in ovariectomized ewes. Endocrinology 1982 111
+1737–1739. ( https://doi.org/10.1210/endo-111-5-1737)
+4 Kawakami M, Uemura T & Hayashi R. Electrophysiological correlates
+of pulsatile gonadotropin release in rats. Neuroendocrinology 1982 35
+63–67. ( https://doi.org/10.1159/000123356)
+5 Mori Y, Nishihara M, Tanaka T, et al. Chronic recording of
+electrophysiological manifestation of the hypothalamic
+gonadotropin-releasing hormone pulse generator activity in the goat.
+Neuroendocrinology 1991 53 392–395.
+(https://doi.org/10.1159/000125746)
+6 Wakabayashi Y, Nakada T, Murata K, et al. Neurokinin B and
+dynorphin A in kisspeptin neurons of the arcuate nucleus participate
+in generation of periodic oscillation of neural activity driving pulsatile
+gonadotropin-releasing hormone secretion in the goat. J Neurosci
+2010 30 3124–3132.
+(https://doi.org/10.1523/JNEUROSCI.5848-09.2010)
+7 Krsmanovi ´c LZ, Stojilkovi ´c SS, Merelli F, et al. Calcium signaling and
+episodic secretion of gonadotropin-releasing hormone in
+hypothalamic neurons. Proc Natl Acad Sci U S A 1992 89 8462–8466.
+(https://doi.org/10.1073/pnas.89.18.8462)
+8 Wetsel WC, Valença MM, Merchenthaler I, et al. Intrinsic pulsatile
+secretory activity of immortalized luteinizing hormone-releasing
+hormone-secreting neurons. Proc Natl Acad Sci U S A 1992 89
+4149–4153. ( https://doi.org/10.1073/pnas.89.9.4149
+)
+9 Suter KJ, Song WJ, Sampson TL, et al. Genetic targeting of green
+ﬂuorescent protein to gonadotropin-releasing hormone
+neurons:characterization of whole-cell electrophysiological
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+properties and morphology. Endocrinology 2000 141 412–419.
+(https://doi.org/10.1210/endo.141.1.7279)
+10 Constantin S, Iremonger KJ & Herbison AE. In vivo recordings of GnRH
+neuron ﬁring reveal heterogeneity and dependence upon GABAA
+receptor signaling. J Neurosci 2013 33 9394–9401.
+(https://doi.org/10.1523/JNEUROSCI.0533-13.2013)
+11 Han SY, Yeo SH, Kim JC, et al. Multi-dimensional oscillatory activity of
+mouse GnRH neurons in vivo. Elife 2025 13 RP100856.
+(https://doi.org/10.7554/eLife.100856)
+12 Voliotis M, Li XF, Burgh RD, et al. The origin of GnRH pulse
+generation: an integrative mathematical-experimental
+approach. J Neurosci 2019 39 9738–9747.
+(https://doi.org/10.1523/JNEUROSCI.0828-19.2019)
+13 Moore AM, Coolen LM & Lehman MN. In vivo imaging of the
+GnRH pulse generator reveals a temporal order of neuronal
+activation and synchronization during each pulse.
+Proc Natl Acad Sci U S A 2022 119 e2117767119.
+(https://doi.org/10.1073/pnas.2117767119)
+14 Qiu J, Voliotis M, Bosch MA, et al. Estradiol elicits distinct ﬁring
+patterns in arcuate nucleus kisspeptin neurons of females through
+altering ion channel conductances. Elife 2024 13 RP96691.
+(https://doi.org/10.7554/eLife.96691)
+15 Moore AM, Novak AG & Lehman MN. KNDy neurons of the
+hypothalamus and their role in GnRH pulse generation: an update.
+Endocrinology 2023 165 bqad194.
+(https://doi.org/10.1210/endocr/bqad194)
+16 Ivanova D & O ’Byrne KT. New methods to investigate the GnRH pulse
+generator. J Mol Endocrinol 2024 72 e230079.
+(https://doi.org/10.1530/jme-23-0079)
+17 Yip SH, Boehm U, Herbison AE, et al. Conditional viral tract tracing
+delineates the projections of the distinct kisspeptin neuron
+populations to gonadotropin-releasing hormone (GnRH) neurons in
+the mouse. Endocrinology 2015 156 2582–2594.
+(https://doi.org/10.1210/en.2015-1131
+)
+18 McIntyre C, Li XF, Ivanova D, et al. Hypothalamic PVN CRH neurons
+signal through PVN GABA neurons to suppress GnRH pulse generator
+frequency in female mice. Endocrinology 2023 164 bqad075.
+(https://doi.org/10.1210/endocr/bqad075)
+19 Moore AM, Coolen LM & Lehman MN. Kisspeptin/neurokinin
+B/Dynorphin (KNDy) cells as integrators of diverse internal and
+external cues: evidence from viral-based monosynaptic tract-tracing
+in mice. Sci Rep 2019 9 14768.
+(https://doi.org/10.1038/s41598-019-51201-0)
+20 Lass G, Li XF, de Burgh RA, et al. Optogenetic stimulation of kisspeptin
+neurones within the posterodorsal medial amygdala increases
+luteinising hormone pulse frequency in female mice.
+J Neuroendocrinol 2020 32 e12823. (https://doi.org/10.1111/jne.12823)
+21 Ivanova D, Li XF, McIntyre C, et al. Urocortin3 in the posterodorsal
+medial amygdala mediates stress-induced suppression of LH
+pulsatility in female mice. Endocrinology 2021 162 1–14.
+(https://doi.org/10.1210/endocr/bqab206)
+22 McIntyre C, Li XF, de Burgh R, et al. GABA signaling in the
+posterodorsal medial amygdala mediates stress-induced
+suppression of LH pulsatility in female mice. Endocrinology 2023 164
+1–11. ( https://doi.org/10.1210/endocr/bqac197)
+23 Nechyporenko K, Voliotis M, Li XF, et al. Neuronal network dynamics in
+the posterodorsal amygdala: shaping reproductive hormone
+pulsatility. J R Soc Interface 2024 21 20240143.
+(https://doi.org/10.1098/rsif.2024.0143)
+24 Vas S, Morris PG, Gul Z, et al. Brainstem noradrenergic
+modulation of the kisspeptin neuron GnRH pulse generator
+in mice. Nat Commun 2025 16 5772.
+(https://doi.org/10.1038/s41467-025-60837-8)
+25 Li XF & O ’Byrne KT. Stress and the reproductive system. In Knobil and
+Neill’s Physiology of Reproduction: Two-Volume Set , pp 1637 –1660.
+London, UK: Elsevier Science Inc, 2015.
+(https://doi.org/10.1016/B978-0-12-397175-3.00036-3)
+26 Padilla SL, Qiu J, Nestor CC, et al. AgRP to Kiss1 neuron signaling links
+nutritional state and fertility. Proc Natl Acad Sci U S A 2017 114
+2413–2418. ( https://doi.org/10.1073/pnas.1621065114)
+27 Talbi R, Stincic TL, Ferrari K, et al. POMC neurons control fertility
+through differential signaling of MC4R in kisspeptin neurons. Elife
+2025 13 RP100722. ( https://doi.org/10.7554/eLife.100722)
+28 Miller BH & Takahashi JS. Central circadian control of female
+reproductive function. Front Endocrinol 2014 4 195.
+(https://doi.org/10.3389/fendo.2013.00195)
+29 Zavala E, Voliotis M, Zerenner T, et al. Dynamic hormone control of
+stress and fertility. Front Physiol 2020 11 598845.
+(https://doi.org/10.3389/fphys.2020.598845)
+30 Abbara A, Jayasena CN, Christopoulos G, et al. Efﬁcacy of kisspeptin-54
+to trigger oocyte maturation in women at high risk of ovarian
+hyperstimulation syndrome (OHSS) during in vitro fertilization (IVF)
+therapy. J Clin Endocrinol Metab 2015 100 3322–3331.
+(https://doi.org/10.1210/jc.2015-2332)
+31 Jayasena CN, Abbara A, Comninos AN, et al. Kisspeptin-54 triggers egg
+maturation in women undergoing in vitro fertilization. J Clin Investig
+2014 124 3667–3677. ( https://doi.org/10.1172/JCI75730)
+32 Prague JK, Roberts RE, Comninos AN, et al. Neurokinin 3 receptor
+antagonism as a novel treatment for menopausal hot ﬂushes: a phase
+2, randomised, double-blind, placebo-controlled trial. Lancet 2017 389
+1809–1820. ( https://doi.org/10.1016/S0140-6736(17)30823-1)
+33 Thurston L, Hunjan T, Ertl N, et al. Effects of kisspeptin administration
+in women with hypoactive sexual desire disorder: a randomized
+clinical trial. JAMA Netw Open 2022 5 e2236131.
+(https://doi.org/10.1001/jamanetworkopen.2022.36131)
+34 Patel AH, Koysombat K, Pierret A, et al. Kisspeptin in functional
+hypothalamic amenorrhea: pathophysiology and therapeutic
+potential. Ann N Y Acad Sci 2024 1540 21–46.
+(https://doi.org/10.1111/nyas.15220)
+35 Cl ´ement F & Françoise JP. Mathematical modeling of the GnRH pulse
+and surge generator. SIAM J Appl Dyn Syst 2007 6 441–456.
+(https://doi.org/10.1137/060673825)
+36 Cl ´ement F & Vidal A. Foliation-based parameter tuning in a model of
+the GnRH pulse and surge generator. SIAM J Appl Dyn Syst 2009 8
+1591–1631. ( https://doi.org/10.1137/080732237)
+37 Vidal A & Cl ´ement F. A dynamical model for the control of the
+gonadotrophin-releasing hormone neurosecretory system.
+J Neuroendocrinol 2010 22 1251–1266.
+(https://doi.org/10.1111/j.1365-2826.2010.02055.x)
+38 Lehnert J & Khadra A. How pulsatile kisspeptin stimulation and GnRH
+autocrine feedback can drive GnRH secretion: a modeling
+investigation. Endocrinology 2019 160 1289–1306.
+(https://doi.org/10.1210/en.2018-00947)
+39 Voliotis M, Li XF, De Burgh RA, et al. Modulation of pulsatile GnRH
+dynamics across the ovarian cycle via changes in the network
+excitability and basal activity of the arcuate kisspeptin network. Elife
+2021 10 e71252. ( https://doi.org/10.7554/eLife.71252)
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/
+
+40 Wang L, Vanacker C, Burger LL, et al. Genetic dissection of the
+different roles of hypothalamic kisspeptin neurons in regulating
+female reproduction. Elife 2019 8 e43999.
+(https://doi.org/10.7554/eLife.43999)
+41 Clarkson J, Han SY, Piet R, et al. Deﬁnition of the hypothalamic GnRH
+pulse generator in mice. Proc Natl Acad Sci U S A 2017 114
+E10216–E10223. ( https://doi.org/10.1073/pnas.1713897114)
+42 Han SY, Kane G, Cheong I, et al. Characterization of GnRH pulse
+generator activity in Male mice using GCaMP ﬁber photometry.
+Endocrinology 2019 160 557–567.
+(https://doi.org/10.1210/en.2018-01047)
+43 Han SY, Morris PG, Kim JC, et al. Mechanism of kisspeptin neuron
+synchronization for pulsatile hormone secretion in male mice. Cell Rep
+2023 42 111914. ( https://doi.org/10.1016/j.celrep.2022.111914)
+44 Chang B, Wall EG, Herbison AE, et al. Comparative analysis of GnRH
+pulse generator activity in intact and gonadectomized Male and
+female mice. Endocrinology 2025 166 bqaf099.
+(https://doi.org/10.1210/endocr/bqaf099)
+45 Blanco W, Tabak J & Bertram R. Population bursts in a modular neural
+network as a mechanism for synchronized activity in KNDy neurons.
+PLoS Comput Biol 2024 20 e1011820.
+(https://doi.org/10.1371/journal.pcbi.1011820)
+46 Mendonca PRF, Kyle V, Yeo SH, et al. Kv4.2 channel activity controls
+intrinsic ﬁring dynamics of arcuate kisspeptin neurons. J Physiol 2018
+596 885–899. ( https://doi.org/10.1113/JP274474)
+47 Morris PG & Herbison AE. Mechanism of arcuate kisspeptin neuron
+synchronization in acute brain slices from female mice. Endocrinology
+2023 164 bqad167. ( https://doi.org/10.1210/endocr/bqad167)
+48 Moore AM. Neuroendocrine mechanisms responsible for elevated
+gonadotrophin-releasing hormone and luteinising hormone pulses
+in polycystic ovary syndrome. J Neuroendocrinol 2025 37 e70028.
+(https://doi.org/10.1111/jne.70028
+)
+49 Jimenez-Puyer M, Sobrino V, Colledge WH, et al. Hypothalamic control
+of puberty: from neuronal circuits to mechanisms for its metabolic
+regulation. Rev Endocr Metab Disord 2025.
+(https://doi.org/10.1007/s11154-025-10001-w)
+50 Yeo SH, Kyle V, Blouet C, et al. Mapping neuronal inputs to Kiss1
+neurons in the arcuate nucleus of the mouse. PLoS One 2019 14
+e0213927. ( https://doi.org/10.1371/journal.pone.0213927)
+51 Ivanova D, Li X, Liu Y, et al. Role of posterodorsal medial amygdala
+Urocortin-3 in pubertal timing in female mice. Front Endocrinol 2022
+13 893029. ( https://doi.org/10.3389/fendo.2022.893029)
+52 Lass G, Li XF, Voliotis M, et al. GnRH pulse generator frequency is
+modulated by kisspeptin and GABA-glutamate interactions in the
+posterodorsal medial amygdala in female mice. J Neuroendocrinol
+2022 34 e13207. ( https://doi.org/10.1111/jne.13207)
+53 Adekunbi DA, Li XF, Lass G, et al. Kisspeptin neurones in the
+posterodorsal medial amygdala modulate sexual partner preference
+and anxiety in male mice. J Neuroendocrinol 2018 30 e12572.
+(https://doi.org/10.1111/jne.12572)
+54 Comninos AN, Anastasovska J, Sahuri-Arisoylu M, et al. Kisspeptin
+signaling in the amygdala modulates reproductive hormone
+secretion. Brain Struct Funct 2016 221 2035–2047.
+(https://doi.org/10.1007/s00429-015-1024-9)
+55 Stephens SBZ, Raper J, Bachevalier J, et al. Neonatal amygdala lesions
+advance pubertal timing in female rhesus macaques.
+Psychoneuroendocrinology 2015 51 307–317.
+(https://doi.org/10.1016/j.psyneuen.2014.09.028)
+56 Westberry JM & Meredith M. GABAergic mechanisms contributing to
+categorical amygdala responses to chemosensory signals.
+Neuroscience 2016 331 186–196.
+(https://doi.org/10.1016/j.neuroscience.2016.06.020)
+57 Choi GB, Dong HW, Murphy AJ, et al. Lhx6 delineates a pathway
+mediating innate reproductive behaviors from the amygdala to the
+hypothalamus. Neuron 2005 46 647–660.
+(
+https://doi.org/10.1016/j.neuron.2005.04.011)
+58 Keshavarzi S, Sullivan RKP, Ianno DJ, et al. Functional properties and
+projections of neurons in the medial amygdala. J Neurosci 2014 34
+8699–8715. ( https://doi.org/10.1523/JNEUROSCI.1176-14.2014)
+59 Bian X. Physiological and morphological characterization of
+GABAergic neurons in the medial amygdala. Brain Res 2013 1509
+8–19. ( https://doi.org/10.1016/j.brainres.2013.03.012)
+60 Ivanova D, Voliotis M, Tsaneva-Atanasova K, et al. NK3R signalling in
+the posterodorsal medial amygdala is involved in stress-induced
+suppression of pulsatile LH secretion in female mice.
+J Neuroendocrinol 2024 36 e13384. (https://doi.org/10.1111/jne.13384)
+61 Govic A & Paolini AG. In vivo electrophysiological recordings in
+amygdala subnuclei reveal selective and distinct responses to a
+behaviorally identi ﬁed predator odor. J Neurophysiol 2015 113
+1423–1436. ( https://doi.org/10.1152/jn.00373.2014)
+62 Yu J, Farjami S, Nechyporenko K, et al. The role of amygdala GABA
+neurons in controlling stress and reproduction in female mice. Nat
+Commun 2026. ( https://doi.org/10.1038/s41467-026-70364-9)
+63 Ivanova D, Li XF, McIntyre C, et al. Posterodorsal medial amygdala
+urocortin-3, GABA, and glutamate mediate suppression of LH
+pulsatility in female mice. Endocrinology 2023 164 1–13.
+(https://doi.org/10.1210/endocr/bqac196)
+64 Acevedo-Rodriguez A, Kauffman AS, Cherrington BD, et al. Emerging
+insights into hypothalamic –pituitary–gonadal axis regulation and
+interaction with stress signalling. J Neuroendocrinol 2018 30 e12590.
+(https://doi.org/10.1111/jne.12590)
+65 McCosh RB, Breen KM & Kauffman AS. Neural and endocrine
+mechanisms underlying stress-induced suppression of pulsatile LH
+secretion. Mol Cell Endocrinol 2019 498 110579.
+(https://doi.org/10.1016/j.mce.2019.110579)
+66 McCosh RB, O ’Bryne KT, Karsch FJ, et al. Regulation of the GnRH
+neuron during stress.
+J Neuroendocrinol 2022 34 e13098.
+(https://doi.org/10.1111/jne.13098)
+67 Walker JJ, Terry JR & Lightman SL. Origin of ultradian pulsatility in the
+hypothalamic–pituitary–adrenal axis. Proc Biol Sci 2010 277
+1627–1633. ( https://doi.org/10.1098/rspb.2009.2148)
+68 Yip SH, Liu X, Hessler S, et al. Indirect suppression of pulsatile LH
+secretion by CRH neurons in the female mouse. Endocrinology 2021
+162 bqaa237. ( https://doi.org/10.1210/endocr/bqaa237)
+69 Takumi K, Iijima N, Higo S, et al. Immunohistochemical analysis of the
+colocalization of corticotropin-releasing hormone receptor and
+glucocorticoid receptor in kisspeptin neurons in the hypothalamus of
+female rats. Neurosci Lett 2012 531 40–45.
+(https://doi.org/10.1016/j.neulet.2012.10.010)
+70 Yu J, Li XF, Tsaneva-Atanasova K, et al. Chemogenetic activation of PVN
+CRH neurons disrupts the estrous cycle and LH dynamics in female
+mice. Front Endocrinol 2024 14 1322662.
+(https://doi.org/10.3389/fendo.2023.1322662)
+K Nechyporenko et al. Journal of Molecular Endocrinology (2026) 76 e250224
+https://doi.org/10.1530/JME-25-0224
+Downloaded from Bioscientifica.com at 06/18/2026 12:31:40AM
+via Open Access. This work is licensed under a Creative Commons Attribution
+4.0 International License.
+https://creativecommons.org/licenses/by/4.0/

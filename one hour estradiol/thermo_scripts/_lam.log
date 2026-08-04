@@ -1,0 +1,20 @@
+random draws 400,000, finite 400,000, best seed 0.3843
+   [1/220] new best 0.2859
+   [3/220] new best 0.2701
+   [26/220] new best 0.2581
+   [39/220] new best 0.2466
+   [132/220] new best 0.2421
+
+================ lambda-notch model   objective 0.2421 ================
+  KEEP  b=-4.25 g=7.54  w(E2)=1.80 p(P4)=15.39
+  LOSS  b=-6.57 g=3.03  w(E2)=0.87 p(P4)=12.80
+  *** lambda (dump-arm max effect) = 0.7827   rho (ERa gate) = 1.0000 ***
+  phase=7.28 h   A_T=2.22 C
+
+  animal        amp    obs     dip  obsdip    corr     RMS   peaks / observed
+  non-preg     2.09   2.10   0.000   0.359  +0.734   0.593   [7.2] / 8.2/15.2
+  pregnant     0.72   0.72   0.749   0.321  +0.830   0.112   [15.8, 22.8] / 15.8/21.8
+  Esr1i        1.16   1.16   0.507   0.088  +0.508   0.333   [14.8, 23.8] / 13.2 only
+
+  waveform correlation >= 0.5 in all three: True
+wrote fig_lambda_notch.png, best_lambda_notch.npy

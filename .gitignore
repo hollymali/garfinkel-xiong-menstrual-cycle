@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# local agent/editor state
+.claude/settings.local.json
+.claude/worktrees/

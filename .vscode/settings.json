@@ -1,0 +1,46 @@
+{
+  // Don't spend file-watcher handles on things that never need watching.
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/__pycache__/**": true,
+    "**/*.npy": true,
+    "**/*.png": true,
+    "**/*.pdf": true
+  },
+  // Keep binaries and caches out of search + quick-open indexing.
+  "search.exclude": {
+    "**/__pycache__": true,
+    "**/*.npy": true,
+    "**/*.pkl": true,
+    "**/*.png": true,
+    "**/*.pdf": true
+  },
+  "search.followSymlinks": false,
+  "files.exclude": {
+    "**/__pycache__": true
+  },
+
+  // Autofetch polls the network on a timer; autorefresh is left ON so the SCM
+  // panel still updates live now that .git is packed and caches are ignored.
+  "git.autofetch": false,
+  "scm.diffDecorations": "gutter",
+
+  // Editor features that cost the most on large files.
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": false,
+  "editor.largeFileOptimizations": true,
+  "workbench.editor.enablePreview": true,
+
+  // Pylance re-analyses the workspace on edits; keep it off caches and archives.
+  "python.analysis.exclude": ["**/__pycache__", "**/_archive"],
+  "python.analysis.indexing": true,
+  "python.analysis.userFileIndexingLimit": 2000,
+  "python.terminal.activateEnvironment": false,
+
+  // Telemetry/extension chatter.
+  "telemetry.telemetryLevel": "off",
+  "extensions.autoCheckUpdates": false,
+  "npm.autoDetect": "off",
+  "typescript.surveys.enabled": false
+}

@@ -1,0 +1,53 @@
+import numpy as np, pickle
+from PIL import Image
+from scipy.optimize import minimize
+fold=np.load('fold.npy',allow_pickle=True).item()
+L=['non-preg','pregnant','Esr1i']
+hrs=fold[L[0]][0]; OBS=np.vstack([fold[l][1] for l in L]); AMP=OBS.max(1)-OBS.min(1)
+def sig(z): return 1/(1+np.exp(-np.clip(z,-60,60)))
+c=np.cos(2*np.pi*(hrs-12.)/24.)
+PREG=np.array([0.,1.,1.]); DAYS=[13,14,15,16,17]; mid=np.array(DAYS,float)+0.5
+P4M=np.outer(PREG,np.maximum(0.,1.-(mid-13.)/6.5))
+omean=np.load('_omean.npy'); raw=pickle.load(open('_raw.pkl','rb'))
+NB=len(hrs)
+def waves(z):
+    bL,gL,wL,bK,gK,wK,rho,A_T,T0,pL,pK,dr=z
+    E2=np.array([0.,1.,rho])[:,None,None]
+    p4=P4M[:,:,None]; cb=c[None,None,:]; dd=(mid-15.5)[None,:,None]
+    return T0+A_T*(sig(bK+gK*cb+wK*E2+pK*p4)-sig(bL+gL*cb+wL*E2+pL*p4))+dr*dd
+def obj(z):
+    W=waves(z); Wm=W.mean(axis=1)
+    # 1) POINTWISE waveform match -- cannot be gamed by flattening
+    r=Wm-OBS
+    e=float(np.mean(np.sqrt(np.mean(r**2,1))/AMP))
+    # 2) anti-flatten: model must have real within-day variation, measured as SD not max-min
+    sd_mod=Wm.std(1); sd_obs=OBS.std(1)
+    fl=float(np.mean(((sd_mod-sd_obs)/sd_obs)**2))
+    # 3) reject peaks parked at the window edge (the boundary-cliff trick)
+    edge=0.
+    for i in range(3):
+        k=int(np.argmax(Wm[i]))
+        if k<2 or k>NB-3: edge+=1.0
+        k2=int(np.argmin(Wm[i]))
+        if k2<2 or k2>NB-3: edge+=1.0
+    # 4) day-to-day mean trend
+    dm=W.mean(axis=2)
+    de=float(np.sqrt(np.mean(((dm-dm.mean(1,keepdims=True))-(omean-omean.mean(1,keepdims=True)))**2)))
+    return e+2.0*fl+1.0*edge+1.5*de
+B=[(-30,10),(0,60),(0,60),(-30,10),(0,60),(0,60),(0.,1.),(0.3,8),(30,42),(0,25),(0,25),(-0.4,0.1)]
+rng=np.random.default_rng(101); lo=np.array([q[0] for q in B]); hi=np.array([q[1] for q in B]); best=None
+for _ in range(300):
+    z0=lo+rng.random(len(B))*(hi-lo)
+    r=minimize(obj,z0,bounds=B,method='L-BFGS-B',options=dict(maxiter=400,ftol=1e-13))
+    if best is None or r.fun<best[0]: best=(float(r.fun),r.x)
+e,z=best; np.save('best_p4_arms_v2.npy',z); W=waves(z); Wm=W.mean(axis=1); np.save('_W2.npy',W)
+bL,gL,wL,bK,gK,wK,rho,A_T,T0,pL,pK,dr=z
+print(f'pL={pL:.2f} pK={pK:.2f}  drift={dr:+.3f} C/day  rho={rho:.3f}  A_T={A_T:.2f} T0={T0:.2f}')
+print(f'gains gL={gL:.1f} gK={gK:.1f} | wL={wL:.1f} wK={wK:.1f}')
+print(f'\n{"animal":10s}{"amp mod":>9}{"amp obs":>9}{"SD mod":>8}{"SD obs":>8}{"peak h":>8}{"obs peak":>9}')
+for i,l in enumerate(L):
+    print(f'{l:10s}{np.ptp(Wm[i]):9.2f}{AMP[i]:9.2f}{Wm[i].std():8.3f}{OBS[i].std():8.3f}{hrs[np.argmax(Wm[i])]:8.1f}{hrs[np.argmax(OBS[i])]:9.1f}')
+dm=W.mean(axis=2)
+print()
+for i,l in enumerate(L):
+    print(f'  {l:10s} mean drift model {dm[i][-1]-dm[i][0]:+.2f}  observed {omean[i][-1]-omean[i][0]:+.2f}')

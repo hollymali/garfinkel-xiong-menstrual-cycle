@@ -1,0 +1,20 @@
+  ... 50,000/4,000,000  seeds 477
+  ... 1,550,000/4,000,000  seeds 14,190
+  ... 3,050,000/4,000,000  seeds 27,863
+draws 4,000,000  seeds (non-preg 2 peaks, dip>=0.20, near 8.2/15.2): 36,509
+  scored 6,000 seeds, finite 4,648, best 9.9029
+    [1/100] new best 7.8090
+    [2/100] new best 5.9987
+    [33/100] new best 5.8489
+    [59/100] new best 5.1479
+
+=== two-phase FINAL   objective 5.1479   peak-penalty 0.3667 ===
+  LOSS  b=-6.49 g=23.73 phi=7.63 h  w(E2)=24.42 p(P4)=0.01
+  KEEP  b=-10.19 g=16.79 phi=7.90 h  w(E2)=19.57 p(P4)=7.04
+  ARM PHASE GAP 0.28 h    A_T=0.12 C   T0=36.85 C
+
+  animal        amp    obs   ratio   obsR   model peaks (prominence%)   observed
+  non-preg     0.12   2.10    1.00   1.00   8.0(724%), 15.2(809%)       8.2, 15.2
+  pregnant     0.07   0.72    0.56   0.34   17.2(805%), 22.0(161%)      15.8, 21.8
+  Esr1i        0.07   1.16    0.57   0.55   13.0(1003%)                 13.2
+wrote fig_twophase_final.png, best_twophase_final.npy

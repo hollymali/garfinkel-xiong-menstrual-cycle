@@ -1,0 +1,22 @@
+draws 3,000,000  seeds with a real non-preg notch and H-range >= 0.21: 100,022
+  scored 8,000, finite 8,000, best seed 3.8341
+    [1/150] new best 1.2488
+    [12/150] new best 0.8087
+    [72/150] new best 0.4786
+
+================ ERalpha-GATE RESULT   objective 0.4786 ================
+  LOSS  b=-3.47 g=17.58 phi=21.83 h  w(E2)=15.01 p(P4)=9.85
+  KEEP  b=-0.18 g=8.52 phi=22.26 h  w(E2)=4.37 p(P4)=6.90
+  *** rho (ERalpha gate on loss-arm clock drive) = 0.3866 ***
+  arm phase gap 0.43 h    A_T=2.72 C (fixed by construction)
+
+  animal      amp mod  amp obs   ratio   obsR  dip mod  dip obs
+  non-preg       2.10     2.10    1.00   1.00    0.359    0.359
+  pregnant       0.72     0.72    0.34   0.34    0.321    0.321
+  Esr1i          1.12     1.16    0.53   0.55    0.088    0.088
+
+  non-preg   peaks@thr0.20: [3.6, 16.2]   observed 8.2/15.2
+  pregnant   peaks@thr0.20: [9.4, 22.2]   observed 15.8/21.8
+  Esr1i      peaks@thr0.20: [5.6]   observed 13.2 only
+
+wrote fig_era_gate.png, best_era_gate.npy

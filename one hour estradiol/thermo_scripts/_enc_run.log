@@ -1,0 +1,22 @@
+draws 3,000,000   SAME draws for both encodings (controlled: only E2_non-preg differs)
+  peak threshold 0.2 (validated: the mouse data shows 2/2/1 here)
+  H-range_np >= 0.210 required so A_T <= 10 C  -- a flat solution CANNOT pass
+
+--- OLD encoding (E2 non-preg = 0) ---
+  1. non-preg BIMODAL (2 peaks, near 8.2/15.2 pre-screen)   4,277
+  2. + pregnant BIMODAL (2 peaks)                           522
+  3. + Esr1i UNIMODAL (exactly 1 peak)                      99
+  4. + amplitude ratios 1.00/0.34/0.55 (+-0.1)            0
+  5. + REAL amplitude (A_T <= 10 C)                         0
+
+--- NEW encoding (E2 non-preg = m, free) ---
+  1. non-preg BIMODAL (2 peaks, near 8.2/15.2 pre-screen)   4,671
+  2. + pregnant BIMODAL (2 peaks)                           580
+  3. + Esr1i UNIMODAL (exactly 1 peak)                      242
+  4. + amplitude ratios 1.00/0.34/0.55 (+-0.1)            0
+  5. + REAL amplitude (A_T <= 10 C)                         0
+
+================ VERDICT ================
+  topology 2/2/1 at correct positions    old       99   new      242
+  + amplitude ratios                     old        0   new        0
+  + REAL amplitude                       old        0   new        0
