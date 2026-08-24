@@ -1,69 +1,76 @@
-"""
-Licinio image is in mid-late follicular phase, so GnRH->LH->E2 is used.
+"""KNDy -> GnRH -> LH -> E2 pulses with optional circadian amplitude."""
 
-    dGnRH/dt = -kG*GnRH   (+ a_n at each pulse)
-    dLH/dt   =  cL*GnRH - kL*LH
-    dE2/dt   =  cE*LH   - kE*E2
-    a_n      = A*[circ] / (1 + (E2d/K_amp)^n_amp)                # NEGATIVE amplitude fb
-    period   = Pmin + (Pmax-Pmin)/(1 + (E2d/K_freq)^n_freq)      # POSITIVE frequency fb
-
-"""
-# Import numpy
 import numpy as np
 
-# First, we define the half-livs
-kG = np.log(2) / 4.0     # GnRH t1/2 = 4 min
-kL = np.log(2) / 20.0    # LH t1/2 = 20 min
-kE = np.log(2) / 30.0    # E2 t/2 = 30 min
 
-# Next, we define the constants
-# Solved for so that E2 lands in realistic range
-cL = 0.5 
-cE = .1145
-# Half-saturation densities grounded in E2 mean over mid-late follicular
-K = 22.0
-A=8.0
+# Hormone decay and cascade constants
+kG = np.log(2) / 4
+kL = np.log(2) / 20
+E2_HALF_LIFE_MINUTES = 30.0  # Rounded from 27.45 +/- 5.65 min (PMID 9855336)
+kE = np.log(2) / E2_HALF_LIFE_MINUTES
+cL = 0.5
+cE = 0.1145
+
+# Feedback and pulse constants
+K = 20.1
+A = 6.8
+N_HALF = 0.28
+DAY_MINUTES = 1440.0
+CIRCADIAN_PEAK_MINUTES = 14.0 * 60.0
+CIRCADIAN_MODULATION = 0.7
 
 
-# Default run-length is 3 days (for transient to settle) plus 6 days (length of mid-late follicular phase)
-def run(n_amp, n_freq, tau=0.0, t_end=12960, dt=0.25, e0=15, period_range=(40,110), circ=False):
-    
-    steps = int(t_end/dt) # How many steps we will take
-    ndelay = int(tau/dt) # How many steps ago time delay is
-    time = np.arange(steps+1)*dt # Convert steps back to min
+def circadian(time_minutes):
+    """Return a simple 24-hour cosine (-1..1), peaking at 14:00."""
+    time_of_day = np.mod(time_minutes, DAY_MINUTES)
+    return np.cos(
+        2.0
+        * np.pi
+        * (time_of_day - CIRCADIAN_PEAK_MINUTES)
+        / DAY_MINUTES
+    )
 
-    # Steps + 1 because first spot will be the initial value
-    GnRH_array = np.empty(steps + 1) # Create empty array that will store GnRH vals
-    LH_array = np.empty(steps + 1) # Same thing for LH
-    E2_array = np.empty(steps + 1) # Same thing for E2
-    GnRH_array[0] = 0.0 # Initial value of GnRH will be 0 (not on pulse)
-    LH_array[0] = 5.0 # Initial value of LH upon entering mid-late follicular phase
-    E2_array[0] = e0 # Initial value is specified to test
-    phi = 0.0 # Clock that when crossing integers fires a GnRH pulse
-    period_min, period_max = period_range
 
-    # Euler's method!
+def run(n_amp=4, n_freq=2, tau=0, t_end=9 * 1440, dt=0.1, e0=15,
+        LH0=5, period_range=(63, 114), circ=True, return_n=False):
+    """Simulate the model and return time, GnRH, LH, and E2 (plus N if asked)."""
+    if tau != 0:
+        raise ValueError("N dynamics replace the explicit time delay, so tau must be 0")
+
+    steps = int(t_end / dt)
+    time = np.arange(steps + 1) * dt
+    N = np.empty(steps + 1)
+    GnRH = np.empty(steps + 1)
+    LH = np.empty(steps + 1)
+    E2 = np.empty(steps + 1)
+
+    N[0] = 1 / (1 + (e0 / K) ** 5)
+    GnRH[0], LH[0], E2[0] = 0, LH0, e0
+    phase = 0
+    pmin, pmax = period_range
+
     for i in range(steps):
-        delay_index = i - ndelay # Index of tau time ago
-        tau_e2 = E2_array[delay_index] if delay_index>=0 else e0 # Grab e2 tau time ago
-        period = period_min + (period_max-period_min)/(1 + (tau_e2/K)**n_freq) # NEGATIVE FEEDBACK PERIOD SIGMOID USING TAU E2
-        new_phi = phi + dt/period # Approaches integer faster when period is smaller
-        fire = np.floor(new_phi) > np.floor(phi) # Evaluates to true when phi crosses whole number
-        phi = new_phi # update phi for next step
-        if fire:
-            amp = A/(1 + (tau_e2/K)**n_amp) # POSITIVE FEEDBACK ON AMPLITUDE
-        else:
-            amp = 0.0 # If pulse has not fired, no amplitude added
-        
-        # Get current hormone values
-        GnRH = GnRH_array[i]
-        LH = LH_array[i]
-        E2 = E2_array[i]
-        # Now we calculate new value of hormones
-        GnRH_array[i+1] = GnRH + dt*(-kG*GnRH) + amp # Add amplitude of pulse and decay to current GnRH
-        LH_array[i+1] = LH + dt*(cL*GnRH - kL*LH) # Add inflow and decay to LH
-        E2_array[i+1] = E2 + dt*(cE*LH - kE*E2) # Add inflow and decay to E2
+        amp_drive = N[i] ** n_amp / (N_HALF ** n_amp + N[i] ** n_amp)
+        freq_drive = N[i] ** n_freq / (N_HALF ** n_freq + N[i] ** n_freq)
+        period = pmin + (pmax - pmin) * freq_drive
 
-    # Return all values (time, hormones)
-    return time, GnRH_array, LH_array, E2_array
+        new_phase = phase + dt / period
+        # N is continuous; GnRH secretion is still represented as discrete pulses.
+        fire = np.floor(new_phase) > np.floor(phase)
+        amplitude_multiplier = 1.0
+        if circ:
+            amplitude_multiplier += (
+                CIRCADIAN_MODULATION * (1.0 + circadian(time[i])) / 2.0
+            )
+        pulse = A * amp_drive * amplitude_multiplier if fire else 0
+        phase = new_phase
 
+        # dN/dt = E2-suppressed production - N decay
+        N[i + 1] = N[i] + dt * (0.25 / (1 + (E2[i] / K) ** 5) - 0.25 * N[i])
+        GnRH[i + 1] = GnRH[i] + dt * (-kG * GnRH[i]) + pulse
+        LH[i + 1] = LH[i] + dt * (cL * GnRH[i] - kL * LH[i])
+        E2[i + 1] = E2[i] + dt * (cE * LH[i] - kE * E2[i])
+
+    if return_n:
+        return time, N, GnRH, LH, E2
+    return time, GnRH, LH, E2
