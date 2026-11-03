@@ -1,0 +1,30 @@
+no-lag sweep:
+  [no lag] n_amp=0.00 row done (checkpointed)
+  [no lag] n_amp=0.50 row done (checkpointed)
+  [no lag] n_amp=1.00 row done (checkpointed)
+  [no lag] n_amp=1.50 row done (checkpointed)
+  [no lag] n_amp=2.00 row done (checkpointed)
+  [no lag] n_amp=2.50 row done (checkpointed)
+  [no lag] n_amp=3.00 row done (checkpointed)
+  [no lag] n_amp=3.50 row done (checkpointed)
+  [no lag] n_amp=4.00 row done (checkpointed)
+  [no lag] n_amp=4.50 row done (checkpointed)
+  [no lag] n_amp=5.00 row done (checkpointed)
+realistic-lag sweep:
+  [lag 60] n_amp=0.00 row done (checkpointed)
+  [lag 60] n_amp=0.50 row done (checkpointed)
+  [lag 60] n_amp=1.00 row done (checkpointed)
+  [lag 60] n_amp=1.50 row done (checkpointed)
+  [lag 60] n_amp=2.00 row done (checkpointed)
+  [lag 60] n_amp=2.50 row done (checkpointed)
+  [lag 60] n_amp=3.00 row done (checkpointed)
+  [lag 60] n_amp=3.50 row done (checkpointed)
+  [lag 60] n_amp=4.00 row done (checkpointed)
+  [lag 60] n_amp=4.50 row done (checkpointed)
+  [lag 60] n_amp=5.00 row done (checkpointed)
+no lag        : {1: 109, 2: 12}
+   ragged (period>2 incl. high): 0/121   period-1: 109   period-2: 12
+realistic lag : {1: 66, 6: 1, 12: 1, 29: 2, 40: 51}
+   ragged (period>2 incl. high): 55/121   period-1: 66   period-2: 0
+
+wrote fig_heatmap_realdelays.png, heatmap_realdelays.npy

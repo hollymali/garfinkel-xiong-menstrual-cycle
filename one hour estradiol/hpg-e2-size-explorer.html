@@ -1,0 +1,548 @@
+<div id="hpg-e2-size-explorer">
+  <style>
+    #hpg-e2-size-explorer { color:var(--foreground); position:relative; }
+    #hpg-e2-size-explorer .explorer-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    #hpg-e2-size-explorer .explorer-head h1 { margin:0; }
+    #hpg-e2-size-explorer .anchor-line { margin:4px 0 0; color:var(--muted-foreground); }
+    #hpg-e2-size-explorer .metric-grid { margin:14px 0; }
+    #hpg-e2-size-explorer .metric-context { margin-top:4px; }
+    #hpg-e2-size-explorer .control-area { margin:12px 0 14px; }
+    #hpg-e2-size-explorer .tab-panel { padding-top:12px; }
+    #hpg-e2-size-explorer .control-note { margin:0 0 10px; color:var(--muted-foreground); }
+    #hpg-e2-size-explorer .slider-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px 22px; }
+    #hpg-e2-size-explorer .slider-wrap { min-width:0; }
+    #hpg-e2-size-explorer .slider-label { display:flex; justify-content:space-between; gap:8px; align-items:baseline; margin-bottom:3px; }
+    #hpg-e2-size-explorer .slider-value { color:var(--foreground); white-space:nowrap; }
+    #hpg-e2-size-explorer .slider-tools { display:flex; align-items:center; gap:10px; }
+    #hpg-e2-size-explorer .slider-track { position:relative; flex:1; min-width:40px; }
+    #hpg-e2-size-explorer .slider-number { flex:0 0 104px; min-width:0; }
+    #hpg-e2-size-explorer .range-indicator { position:absolute; inset:0 8px; pointer-events:none; }
+    #hpg-e2-size-explorer .range-band { position:absolute; top:calc(50% - 4px); height:8px; min-width:1px; background:var(--green); opacity:.4; }
+    #hpg-e2-size-explorer .range-tick { position:absolute; top:calc(50% - 9px); height:18px; width:2px; background:var(--green); }
+    #hpg-e2-size-explorer .reference-tick { background:var(--foreground); height:12px; top:calc(50% - 6px); width:1px; }
+    #hpg-e2-size-explorer .range-caption { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-top:4px; }
+    #hpg-e2-size-explorer .range-buttons { display:flex; align-items:center; gap:4px; flex-wrap:wrap; margin-top:4px; }
+    #hpg-e2-size-explorer .boundary-label { color:var(--muted-foreground); }
+    #hpg-e2-size-explorer .control-bar { display:flex; align-items:center; gap:12px 20px; flex-wrap:wrap; margin:14px 0; }
+    #hpg-e2-size-explorer .control-bar .form-label { min-width:150px; }
+    #hpg-e2-size-explorer .chart-stack { display:grid; gap:16px; }
+    #hpg-e2-size-explorer .chart-title-row { display:flex; align-items:baseline; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:5px; }
+    #hpg-e2-size-explorer .chart-title-row h2 { margin:0; }
+    #hpg-e2-size-explorer .plot-host { width:100%; min-width:0; }
+    #hpg-e2-size-explorer .plot-host svg { display:block; width:100%; height:auto; }
+    #hpg-e2-size-explorer .plot-host text { fill:var(--foreground); font-size:12px; }
+    #hpg-e2-size-explorer .chart-frame { fill:none; stroke:var(--border); stroke-width:1; }
+    #hpg-e2-size-explorer .grid-line { stroke:var(--border); stroke-width:1; opacity:.55; }
+    #hpg-e2-size-explorer .sleep-band { fill:var(--foreground); opacity:.055; }
+    #hpg-e2-size-explorer .line { fill:none; stroke-width:2; vector-effect:non-scaling-stroke; }
+    #hpg-e2-size-explorer .e2 { stroke:var(--viz-series-1); }
+    #hpg-e2-size-explorer .lh { stroke:var(--viz-series-3); }
+    #hpg-e2-size-explorer .r { stroke:var(--viz-series-5); }
+    #hpg-e2-size-explorer .e2-interval { stroke:var(--viz-series-2); }
+    #hpg-e2-size-explorer .baseline { stroke:var(--foreground); opacity:.32; stroke-dasharray:4 4; stroke-width:1.2; }
+    #hpg-e2-size-explorer .peak-mark { fill:var(--viz-series-2); }
+    #hpg-e2-size-explorer .lh-mark { fill:var(--viz-series-3); }
+    #hpg-e2-size-explorer .excursion-mark { stroke:var(--viz-series-2); stroke-width:1.4; }
+    #hpg-e2-size-explorer .target-band { fill:var(--green); opacity:.10; }
+    #hpg-e2-size-explorer .target-line { stroke:var(--green); stroke-width:1; stroke-dasharray:4 4; opacity:.75; }
+    #hpg-e2-size-explorer .hover-guide { stroke:var(--foreground); stroke-width:1; opacity:.45; pointer-events:none; }
+    #hpg-e2-size-explorer .hover-marker { fill:var(--viz-series-1); }
+    #hpg-e2-size-explorer .chart-hit { fill:transparent; touch-action:pan-y; }
+    #hpg-e2-size-explorer .tooltip { position:absolute; pointer-events:none; z-index:5; display:none; background:var(--popover); color:var(--popover-foreground); }
+    #hpg-e2-size-explorer .action-row { margin-top:14px; justify-content:flex-end; }
+    #hpg-e2-size-explorer .verdict { margin:8px 0; }
+    #hpg-e2-size-explorer .error { color:var(--destructive); }
+    #hpg-e2-size-explorer [aria-busy="true"] { opacity:.65; }
+    @media (max-width:620px) {
+      #hpg-e2-size-explorer .slider-grid { grid-template-columns:1fr; }
+    }
+  </style>
+  <div class="explorer-head">
+    <div>
+      <h1>HPG parameter explorer</h1>
+      <div class="anchor-line text-small">One-hour R · liked parameter regime · gray shading: sleep 23:00–07:00</div>
+    </div>
+  </div>
+  <div class="viz-grid metric-grid" aria-live="polite" id="e2x-metrics">
+    <div class="card viz-stat">
+      <div>E2 local excursions, pg/mL</div>
+      <div class="viz-stat-value tabular-nums" id="e2x-e2-metric">—</div>
+      <div class="metric-context text-small" id="e2x-e2-context">Day / sleep daily medians</div>
+    </div>
+    <div class="card viz-stat">
+      <div>LH local excursions, IU/L</div>
+      <div class="viz-stat-value tabular-nums" id="e2x-lh-metric">—</div>
+      <div class="metric-context text-small" id="e2x-lh-context">Day / sleep daily medians</div>
+    </div>
+    <div class="card viz-stat">
+      <div>LH peaks per sleep</div>
+      <div class="viz-stat-value tabular-nums" id="e2x-count-metric">—</div>
+      <div class="metric-context text-small" id="e2x-count-context">Target: 3–5 raw peaks</div>
+    </div>
+  </div>
+  <div class="verdict" id="e2x-verdict" aria-live="polite">Calculating…</div>
+  <div class="text-small text-muted">E2 size target: daytime event and LH-cycle medians 15–25 pg/mL; each sleep local excursion ≤10 pg/mL; day–sleep ordering and 3–5 LH peaks preserved.</div>
+  <div class="control-bar">
+    <label class="form-check"><input class="form-check-input" type="checkbox" id="e2x-oat" checked><span class="form-check-label">One parameter at a time</span></label>
+    <label class="form-label">Slider scale
+      <select class="form-select" id="e2x-scale"><option value="fine">Around E2 target interval</option><option value="wide">Full exploration range</option></select>
+    </label>
+    <button class="btn" type="button" id="e2x-reset">Restore reference settings</button>
+  </div>
+  <div class="control-note text-small" id="e2x-marker-legend">Green band and end ticks: sampled E2-target interval. Thin neutral tick: reference. Endpoint buttons use the unrounded tested values.</div>
+  <div class="control-area">
+    <div class="nav nav-pills" role="tablist" aria-label="Parameter groups">
+      <button class="nav-link active" id="e2x-gain-tab" role="tab" aria-controls="e2x-gain-panel" aria-selected="true" type="button">Gains</button>
+      <button class="nav-link" id="e2x-feedback-tab" role="tab" aria-controls="e2x-feedback-panel" aria-selected="false" type="button">Feedback &amp; ovary</button>
+      <button class="nav-link" id="e2x-pulse-tab" role="tab" aria-controls="e2x-pulse-panel" aria-selected="false" type="button">Pulse &amp; clock</button>
+      <button class="nav-link" id="e2x-clearance-tab" role="tab" aria-controls="e2x-clearance-panel" aria-selected="false" type="button">Clearance</button>
+    </div>
+    <div class="tab-panel" id="e2x-gain-panel" role="tabpanel" aria-labelledby="e2x-gain-tab"><div class="slider-grid" id="e2x-gain-controls"></div></div>
+    <div class="tab-panel" id="e2x-feedback-panel" role="tabpanel" aria-labelledby="e2x-feedback-tab" hidden><div class="slider-grid" id="e2x-feedback-controls"></div></div>
+    <div class="tab-panel" id="e2x-pulse-panel" role="tabpanel" aria-labelledby="e2x-pulse-tab" hidden><div class="slider-grid" id="e2x-pulse-controls"></div></div>
+    <div class="tab-panel" id="e2x-clearance-panel" role="tabpanel" aria-labelledby="e2x-clearance-tab" hidden><div class="slider-grid" id="e2x-clearance-controls"></div></div>
+  </div>
+  <div class="control-bar">
+    <label class="form-label">Displayed days
+      <select class="form-select" id="e2x-view"></select>
+    </label>
+    <label class="form-label">Displayed integration step
+      <select class="form-select" id="e2x-step"><option value="1.5">1.5 seconds</option><option value="3">3 seconds</option></select>
+    </label>
+    <label class="form-check"><input class="form-check-input" type="checkbox" id="e2x-baseline"><span class="form-check-label">Reference overlay</span></label>
+  </div>
+  <div class="chart-stack">
+    <section aria-labelledby="e2x-e2-title">
+      <div class="chart-title-row"><h2 id="e2x-e2-title">Estradiol trajectory</h2><span class="text-small text-muted">Dots: all raw maxima · vertical marks: local excursions</span></div>
+      <div class="plot-host" id="e2x-e2-plot"></div>
+    </section>
+    <section aria-labelledby="e2x-lh-title">
+      <div class="chart-title-row"><h2 id="e2x-lh-title">LH trajectory</h2><span class="text-small text-muted tabular-nums" id="e2x-sleep-label">—</span></div>
+      <div class="plot-host" id="e2x-lh-plot"></div>
+    </section>
+    <section aria-labelledby="e2x-excursion-title">
+      <div class="chart-title-row"><h2 id="e2x-excursion-title">E2 local pulse excursions</h2><span class="text-small text-muted">Day median band 15–25 · sleep ceiling 10 pg/mL</span></div>
+      <div class="plot-host" id="e2x-excursion-plot"></div>
+    </section>
+    <section aria-labelledby="e2x-r-title">
+      <div class="chart-title-row"><h2 id="e2x-r-title">Ovarian responsiveness R</h2><span class="text-small text-muted">Response time fixed at 1 hour</span></div>
+      <div class="plot-host" id="e2x-r-plot"></div>
+    </section>
+    <section aria-labelledby="e2x-interval-title">
+      <div class="chart-title-row"><h2 id="e2x-interval-title">E2 peak-to-peak intervals</h2><span class="text-small text-muted">All raw maxima retained</span></div>
+      <div class="plot-host" id="e2x-interval-plot"></div>
+    </section>
+    <section aria-labelledby="e2x-lh-interval-title">
+      <div class="chart-title-row"><h2 id="e2x-lh-interval-title">LH peak-to-peak intervals</h2><span class="text-small text-muted">All raw maxima retained</span></div>
+      <div class="plot-host" id="e2x-lh-interval-plot"></div>
+    </section>
+  </div>
+  <details>
+    <summary>Daily checks and individual pulse measurements</summary>
+    <div class="text-small">Both 14-day windows after 96 h and 192 h, at 3 s and 1.5 s. Overlapping windows cover 18 distinct days. Values below use the displayed step.</div>
+    <div class="table-responsive"><table class="table table-sm"><thead><tr><th>Warmup / day</th><th>Day E2 median</th><th>LH-cycle E2 median</th><th>Sleep E2 median</th><th>Sleep E2 max</th><th>Sleep LH peaks</th><th>E2 target</th></tr></thead><tbody id="e2x-daily"></tbody></table></div>
+    <div class="text-small">Visible-day E2 maxima, with both adjacent troughs. Excursion = smaller rise/fall; it does not cap both sides of a burst.</div>
+    <div class="table-responsive"><table class="table table-sm"><thead><tr><th>Clock</th><th>Period</th><th>Peak, pg/mL</th><th>Rise</th><th>Fall</th><th>Local excursion</th></tr></thead><tbody id="e2x-events"></tbody></table></div>
+  </details>
+  <div class="action-row viz-row"><button class="btn" type="button" id="e2x-export">Download current settings</button></div>
+  <div class="text-small text-muted">Markers apply when all other parameters equal the reference. Sampled bands are not certified continuous intervals or a joint parameter box. † marks an imposed domain limit. Day: 08:00–20:00; sleep: 23:00–07:00.</div>
+  <div class="tooltip" id="e2x-tooltip" role="tooltip"></div>
+  <div class="sr-only" id="e2x-live" aria-live="polite"></div>
+  <script type="application/json" id="e2x-data">{"reference":{"constant_inflow":19.0,"production_scale":200.0,"activation_midpoint":1.0,"activation_exponent":3.9,"inhibition_midpoint":1.2,"inhibition_exponent":3.9,"n_gain":1.4,"n_e2_midpoint":36.0,"central_hill_exponent":3.0,"n_relaxation":4.0,"gnrh_pulse_jump":7.0,"lh_gnrh_gain":1.0,"period_min":65.0,"period_max":95.0,"scn_min":2.0,"scn_max":40.0,"sleep_multiplier":1.57,"scn_phase":16.5,"gnrh_half_life_min":4.0,"lh_half_life_min":29.0,"e2_half_life_min":22.5},"specs":[{"key":"constant_inflow","label":"E2 constant inflow","group":"gain","unit":"","domain":[4.75,38.0],"band":{"nominal_pass":true,"low":18.818164062499996,"high":19.26125,"low_fail":18.792187499999997,"high_fail":19.279062500000002,"low_reached":false,"high_reached":false,"all_tested_pass_count":11,"total_tested":45,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"production_scale","label":"LH-driven E2 production scale","group":"gain","unit":"","domain":[50.0,400.0],"band":{"nominal_pass":true,"low":199.15234375,"high":201.375,"low_fail":199.03125,"high_fail":201.4375,"low_reached":false,"high_reached":false,"all_tested_pass_count":13,"total_tested":46,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"gnrh_pulse_jump","label":"GnRH pulse jump","group":"gain","unit":"","domain":[1.75,14.0],"band":{"nominal_pass":true,"low":6.897187499999999,"high":7.078476562500001,"low_fail":6.890625,"high_fail":7.0896875,"low_reached":false,"high_reached":false,"all_tested_pass_count":13,"total_tested":47,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"lh_gnrh_gain","label":"GnRH-to-LH gain","group":"gain","unit":"","domain":[0.25,2.0],"band":{"nominal_pass":true,"low":0.9853125,"high":1.0112109375,"low_fail":0.984375,"high_fail":1.0128125,"low_reached":false,"high_reached":false,"all_tested_pass_count":13,"total_tested":47,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"activation_midpoint","label":"LH activation midpoint","group":"feedback","unit":"","domain":[0.25,2.0],"band":{"nominal_pass":true,"low":0.99125,"high":1.0051953125,"low_fail":0.9909375,"high_fail":1.0059375,"low_reached":false,"high_reached":false,"all_tested_pass_count":12,"total_tested":48,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"activation_exponent","label":"LH activation exponent","group":"feedback","unit":"","domain":[1.0,4.0],"band":{"nominal_pass":true,"low":3.4246874999999997,"high":4.0,"low_fail":3.4124999999999996,"high_fail":null,"low_reached":false,"high_reached":true,"all_tested_pass_count":17,"total_tested":27},"low_domain":false,"high_domain":true},{"key":"inhibition_midpoint","label":"LH inhibition midpoint","group":"feedback","unit":"","domain":[0.3,2.4],"band":{"nominal_pass":true,"low":1.195734375,"high":1.2067499999999998,"low_fail":1.195125,"high_fail":1.2071249999999998,"low_reached":false,"high_reached":false,"all_tested_pass_count":10,"total_tested":50,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"inhibition_exponent","label":"LH inhibition exponent","group":"feedback","unit":"","domain":[1.0,4.0],"band":{"nominal_pass":true,"low":3.6928124999999996,"high":4.0,"low_fail":3.680625,"high_fail":null,"low_reached":false,"high_reached":true,"all_tested_pass_count":14,"total_tested":31},"low_domain":false,"high_domain":true},{"key":"n_gain","label":"N maximum target","group":"feedback","unit":"","domain":[0.35,2.8],"band":{"nominal_pass":true,"low":1.393,"high":1.4049765625,"low_fail":1.3925625,"high_fail":1.4056874999999998,"low_reached":false,"high_reached":false,"all_tested_pass_count":9,"total_tested":48,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"n_e2_midpoint","label":"E2-to-N feedback midpoint","group":"feedback","unit":"","domain":[9.0,72.0],"band":{"nominal_pass":true,"low":35.83125,"high":36.103359375,"low_fail":35.825625,"high_fail":36.11812499999999,"low_reached":false,"high_reached":false,"all_tested_pass_count":10,"total_tested":47,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"central_hill_exponent","label":"Central Hill exponent","group":"feedback","unit":"","domain":[0.75,6.0],"band":{"nominal_pass":true,"low":2.9220703125000003,"high":3.1453124999999993,"low_fail":2.9109375,"high_fail":3.1499999999999995,"low_reached":false,"high_reached":false,"all_tested_pass_count":18,"total_tested":46,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"period_min","label":"Minimum intrinsic period","group":"pulse","unit":"min","domain":[16.25,95.0],"band":{"nominal_pass":true,"low":64.69785156249999,"high":65.5890625,"low_fail":64.6546875,"high_fail":65.609375,"low_reached":false,"high_reached":false,"all_tested_pass_count":11,"total_tested":47,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"period_max","label":"Maximum intrinsic period","group":"pulse","unit":"min","domain":[65.0,190.0],"band":{"nominal_pass":true,"low":94.80703125,"high":95.3265625,"low_fail":94.798125,"high_fail":95.34140624999999,"low_reached":false,"high_reached":false,"all_tested_pass_count":9,"total_tested":40},"low_domain":false,"high_domain":false},{"key":"scn_min","label":"SCN minimum drive","group":"pulse","unit":"min","domain":[0.5,4.0],"band":{"nominal_pass":true,"low":1.6062499999999997,"high":2.3562499999999997,"low_fail":1.5499999999999998,"high_fail":2.3625,"low_reached":false,"high_reached":false,"all_tested_pass_count":21,"total_tested":52,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"scn_max","label":"SCN maximum drive","group":"pulse","unit":"","domain":[10.0,80.0],"band":{"nominal_pass":true,"low":39.45,"high":40.41562499999999,"low_fail":39.4125,"high_fail":40.474999999999994,"low_reached":false,"high_reached":false,"all_tested_pass_count":12,"total_tested":48,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"sleep_multiplier","label":"Sleep period multiplier","group":"pulse","unit":"","domain":[1.0,3.14],"band":{"nominal_pass":true,"low":1.5621500000000001,"high":1.58275625,"low_fail":1.561659375,"high_fail":1.583246875,"low_reached":false,"high_reached":false,"all_tested_pass_count":9,"total_tested":45},"low_domain":false,"high_domain":false},{"key":"scn_phase","label":"SCN phase","group":"pulse","unit":"model h","domain":[12.5,20.5],"band":{"nominal_pass":true,"low":16.25390625,"high":16.6171875,"low_fail":16.21875,"high_fail":16.625,"low_reached":false,"high_reached":false,"all_tested_pass_count":9,"total_tested":36,"low_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"n_relaxation","label":"N adjustment rate","group":"clearance","unit":"h^-1","domain":[1.0,8.0],"band":{"nominal_pass":true,"low":3.675,"high":4.1640625,"low_fail":3.6624999999999996,"high_fail":4.187499999999999,"low_reached":false,"high_reached":false,"all_tested_pass_count":19,"total_tested":49,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"gnrh_half_life_min","label":"GnRH half-life","group":"clearance","unit":"min","domain":[1.0,8.0],"band":{"nominal_pass":true,"low":3.945,"high":4.0415624999999995,"low_fail":3.94125,"high_fail":4.047499999999999,"low_reached":false,"high_reached":false,"all_tested_pass_count":12,"total_tested":48,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"lh_half_life_min","label":"LH half-life","group":"clearance","unit":"min","domain":[7.25,58.0],"band":{"nominal_pass":true,"low":28.7190625,"high":29.229960937499996,"low_fail":28.71,"high_fail":29.262812499999995,"low_reached":false,"high_reached":false,"all_tested_pass_count":16,"total_tested":53,"high_numerically_guarded":true},"low_domain":false,"high_domain":false},{"key":"e2_half_life_min","label":"E2 half-life","group":"clearance","unit":"min","domain":[5.625,45.0],"band":{"nominal_pass":true,"low":22.441552734374998,"high":22.594921874999997,"low_fail":22.433203125,"high_fail":22.598437499999996,"low_reached":false,"high_reached":false,"all_tested_pass_count":11,"total_tested":46,"low_numerically_guarded":true},"low_domain":false,"high_domain":false}],"source":"oat_ranges_20261020/reported_intervals.json","fixed_R_tau_h":1,"style_reference":"meeting9/parameter_explorer.html","missing_reference":"meeting10 interactive source unavailable"}</script>
+  <script>/* Literal Euler port of balanced_candidate/MODEL_candidate.py.
+   All derivatives use the previous state; ovarian R has a fixed one-hour tau.
+   No prominence filtering, cycle removal, fitted waveform, or interpolation
+   is used for the scientific acceptance checks. */
+(function (target) {
+  'use strict';
+  const median = a => {
+    if (!a.length) return 0;
+    const b = a.slice().sort((x, y) => x - y), m = b.length >> 1;
+    return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2;
+  };
+  function stats(a) {
+    return a.length ? [Math.min(...a), median(a), Math.max(...a)] : [0, 0, 0];
+  }
+  function simulate(p, seconds = 3) {
+    const dt = seconds / 3600, warm = 96, end = 529;
+    if (!(seconds > 0 && seconds <= 3)) throw Error('Choose a 3 s or 1.5 s step.');
+    if (p.period_min > p.period_max) throw Error('Minimum period exceeds maximum period.');
+    if (p.scn_min > p.scn_max) throw Error('Minimum SCN drive exceeds maximum SCN drive.');
+    for (const k of ['activation_exponent', 'inhibition_exponent'])
+      if (p[k] < 1 || p[k] > 4) throw Error('LH Hill exponents must stay between 1 and 4.');
+    const total = Math.round(end / dt), start = Math.round(warm / dt), count = total - start + 1;
+    const E2 = new Float64Array(count), LH = new Float64Array(count), R = new Float64Array(count);
+    const kh = Math.pow(p.n_e2_midpoint, p.central_hill_exponent);
+    const ka = Math.pow(p.activation_midpoint, p.activation_exponent);
+    const ki = Math.pow(p.inhibition_midpoint, p.inhibition_exponent);
+    const kg = 60 * Math.log(2) / p.gnrh_half_life_min;
+    const kl = 60 * Math.log(2) / p.lh_half_life_min;
+    const ke = 60 * Math.log(2) / p.e2_half_life_min;
+    let n = p.n_gain * kh / (kh + Math.pow(15, p.central_hill_exponent));
+    let g = 0, l = 3, e = 15, phi = 0;
+    let r = ki / (ki + Math.pow(3, p.inhibition_exponent));
+    for (let i = 0; i <= total; i++) {
+      if (i >= start) { const j = i - start; E2[j] = e; LH[j] = l; R[j] = r; }
+      if (i === total) break;
+      const t = i * dt, clock = (t + 7) % 24, sleep = clock >= 23 || clock < 7 ? 1 : 0;
+      const nh = Math.pow(n, p.central_hill_exponent), eh = Math.pow(e, p.central_hill_exponent);
+      const la = Math.pow(l, p.activation_exponent), li = Math.pow(l, p.inhibition_exponent);
+      const pn = phi + 60 * dt / ((p.period_max - (p.period_max - p.period_min) * nh / (1 + nh)) * (1 + (p.sleep_multiplier - 1) * sleep));
+      const nn = n + dt * p.n_relaxation * (p.n_gain * kh / (kh + eh) - n);
+      const gn = g - dt * kg * g + p.gnrh_pulse_jump * nh / (1 + nh) * ((p.scn_max + p.scn_min) / 2 + (p.scn_max - p.scn_min) / 2 * Math.cos(2 * Math.PI * (t % 24 - p.scn_phase) / 24)) * (Math.floor(pn) - Math.floor(phi));
+      const ln = l + dt * (p.lh_gnrh_gain * g - kl * l);
+      const rn = r + dt * (ki / (ki + li) - r);
+      const en = e + dt * (p.constant_inflow + p.production_scale * la / (ka + la) * r - ke * e);
+      n = nn; g = gn; l = ln; e = en; r = rn; phi = pn;
+      if (!Number.isFinite(e) || !Number.isFinite(l) || e < 0 || l < 0 || n < 0 || r < 0 || r > 1)
+        throw Error('The selected parameters produced invalid state values.');
+    }
+    return {E2, LH, R, dt, warm, end, seconds};
+  }
+  function localEvents(trace, values, warm = trace.warm, end = trace.end) {
+    const lo = Math.round((warm - trace.warm) / trace.dt), hi = Math.round((end - trace.warm) / trace.dt);
+    const peaks = [], troughs = [], events = [];
+    const time = i => (i + Math.round(trace.warm / trace.dt)) * trace.seconds / 3600;
+    for (let i = lo + 1; i < hi; i++) {
+      if (values[i] > values[i - 1] && values[i] >= values[i + 1]) peaks.push(i);
+      if (values[i] < values[i - 1] && values[i] <= values[i + 1]) troughs.push(i);
+    }
+    let pos = 0;
+    for (const i of peaks) {
+      while (pos < troughs.length && troughs[pos] < i) pos++;
+      if (!pos || pos === troughs.length) continue;
+      const left = troughs[pos - 1], right = troughs[pos];
+      const rise = values[i] - values[left], fall = values[i] - values[right];
+      events.push({i, t: time(i), left: time(left), right: time(right), peak: values[i],
+        before: values[left], after: values[right], rise, fall, excursion: Math.min(rise, fall)});
+    }
+    return {events, peaks: peaks.map(i => ({i, t: time(i), peak: values[i]}))};
+  }
+  function assessWindow(trace, warm, days = 14) {
+    const ee = localEvents(trace, trace.E2, warm, warm + 337);
+    const le = localEvents(trace, trace.LH, warm, warm + 337);
+    const daily = [];
+    for (let j = 0; j < days; j++) {
+      const s = warm + 1 + j * 24;
+      const d = ee.events.filter(e => s <= e.t && e.t < s + 12 && s <= e.left && e.right < s + 12);
+      const n = ee.events.filter(e => s + 15 <= e.t && e.t < s + 23);
+      const ld = le.events.filter(e => s <= e.t && e.t < s + 12);
+      const ln = le.events.filter(e => s + 15 <= e.t && e.t < s + 23);
+      const lp = le.peaks.filter(e => s <= e.t && e.t < s + 24);
+      const ns = lp.filter(e => s + 15 <= e.t && e.t < s + 23);
+      const cycles = [];
+      for (let k = 0; k + 1 < lp.length; k++) {
+        const a = lp[k].t, b = lp[k + 1].t;
+        if (!(s <= a && a < b && b < s + 12)) continue;
+        const paired = d.filter(e => a <= e.t && e.t < b);
+        const raw = ee.events.filter(e => a <= e.t && e.t < b);
+        if (raw.length && !paired.length) continue;
+        cycles.push(Math.max(0, ...paired.map(e => e.excursion)));
+      }
+      const row = {warm, j, s, E_day: stats(d.map(e => e.excursion)), E_sleep: stats(n.map(e => e.excursion)),
+        E_cycle_day: stats(cycles), L_day: stats(ld.map(e => e.excursion)), L_sleep: stats(ln.map(e => e.excursion)),
+        sleep_count: ns.length, sleep_rise_fall_max: Math.max(0, ...n.map(e => Math.max(e.rise, e.fall)))};
+      row.count_ok = 3 <= ns.length && ns.length <= 5;
+      row.E_order = row.E_day[1] > row.E_sleep[1] && row.E_sleep[1] > 0 && row.E_cycle_day[1] > row.E_sleep[1];
+      row.L_order = row.L_sleep[1] > row.L_day[1] && row.L_day[1] > 0;
+      row.core = row.count_ok && row.E_order && row.L_order;
+      row.target = row.core && 15 <= row.E_day[1] && row.E_day[1] <= 25 && 15 <= row.E_cycle_day[1] && row.E_cycle_day[1] <= 25 && row.E_sleep[2] <= 10;
+      daily.push(row);
+    }
+    return {warm, daily, checks: Object.fromEntries(['core', 'target', 'count_ok', 'E_order', 'L_order'].map(k => [k, daily.every(d => d[k])]))};
+  }
+  function run(p, seconds = 3) {
+    const trace = simulate(p, seconds), windows = [assessWindow(trace, 96), assessWindow(trace, 192)];
+    return {trace, windows, e2: localEvents(trace, trace.E2), lh: localEvents(trace, trace.LH)};
+  }
+  target.HPGExplorer = {simulate, localEvents, assessWindow, run, median};
+  if (typeof module !== 'undefined' && module.exports) module.exports = target.HPGExplorer;
+})(typeof globalThis !== 'undefined' ? globalThis : this);
+</script>
+  <script>(function () {
+  'use strict';
+  const root = document.getElementById('hpg-e2-size-explorer');
+  if (!root) return;
+  const data = JSON.parse(root.querySelector('#e2x-data').textContent);
+  const specs = data.specs, base = data.reference, E = globalThis.HPGExplorer;
+  const el = id => root.querySelector('#e2x-' + id);
+  const fmt = (v, digits = 5) => Number(v).toLocaleString('en-US', {maximumSignificantDigits: digits, useGrouping: false});
+  const pct = v => (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+  const escape = v => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let p = {...base}, results = null, referenceResults = null, timer = null, generation = 0;
+  let visible = [192, 264], calculating = false;
+
+  function limits(s) {
+    if (el('scale').value === 'wide') return s.domain;
+    const span = s.band.high - s.band.low;
+    return [Math.max(s.domain[0], s.band.low - .4 * span), Math.min(s.domain[1], s.band.high + .4 * span)];
+  }
+  function markerText(s, side) {
+    const b = s.band, value = b[side];
+    return (b[side + '_reached'] ? (s[side + '_domain'] ? '' : side === 'low' ? '≤' : '≥') : '') + fmt(value, 7) + (s[side + '_domain'] ? '†' : '');
+  }
+  function refreshControls() {
+    for (const s of specs) {
+      const input = el(s.key), n = el(s.key + '-number'), [lo, hi] = limits(s);
+      const effectiveLo = Math.min(lo, p[s.key]), effectiveHi = Math.max(hi, p[s.key]);
+      input.min = effectiveLo; input.max = effectiveHi; input.value = p[s.key];
+      n.value = fmt(p[s.key], 13);
+      const percent = (p[s.key] / base[s.key] - 1) * 100;
+      el(s.key + '-value').textContent = pct(percent) + (s.unit ? ' · ' + s.unit : '');
+      input.setAttribute('aria-valuetext', fmt(p[s.key], 8) + ' ' + s.unit + ', ' + pct(percent) + ' from reference');
+      const position = v => Math.max(0, Math.min(100, (v - effectiveLo) / (effectiveHi - effectiveLo) * 100));
+      const a = position(s.band.low), b = position(s.band.high);
+      const band = el(s.key + '-band'); band.style.left = a + '%'; band.style.width = (b - a) + '%';
+      el(s.key + '-low-tick').style.left = a + '%'; el(s.key + '-high-tick').style.left = b + '%';
+      el(s.key + '-reference-tick').style.left = position(base[s.key]) + '%';
+    }
+    const changed = specs.filter(s => p[s.key] !== base[s.key]);
+    el('marker-legend').textContent = 'Green band and end ticks: sampled E2-target interval. Thin neutral tick: reference. ' +
+      (changed.length <= 1 ? 'Endpoint buttons use the unrounded tested values.' : 'Multiple parameters changed: these individual intervals do not predict the combined outcome.');
+  }
+  function setValue(s, value) {
+    if (!Number.isFinite(value) || value < s.domain[0] || value > s.domain[1]) {
+      el('verdict').textContent = s.label + ': enter a value between ' + fmt(s.domain[0]) + ' and ' + fmt(s.domain[1]) + '.';
+      el('verdict').classList.add('error'); return;
+    }
+    if (el('oat').checked) p = {...base};
+    p[s.key] = value;
+    refreshControls(); schedule();
+  }
+  function addSlider(s) {
+    const wrap = document.createElement('div'); wrap.className = 'slider-wrap'; wrap.dataset.parameter = s.key;
+    const b = s.band;
+    wrap.innerHTML = `<label class="form-label" for="e2x-${s.key}"><span class="slider-label"><span>${escape(s.label)}</span><span class="slider-value tabular-nums" id="e2x-${s.key}-value"></span></span></label>
+      <div class="slider-tools"><div class="slider-track"><input class="form-range" type="range" id="e2x-${s.key}" step="any" aria-describedby="e2x-${s.key}-caption">
+      <div class="range-indicator" aria-hidden="true"><span class="range-band" id="e2x-${s.key}-band"></span><span class="range-tick" id="e2x-${s.key}-low-tick"></span><span class="range-tick" id="e2x-${s.key}-high-tick"></span><span class="range-tick reference-tick" id="e2x-${s.key}-reference-tick"></span></div></div>
+      <div class="slider-number"><input class="form-control tabular-nums" type="number" step="any" id="e2x-${s.key}-number" min="${s.domain[0]}" max="${s.domain[1]}" aria-label="${escape(s.label)} precise value"></div></div>
+      <div class="range-caption text-small tabular-nums" id="e2x-${s.key}-caption"><span>E2 target ${markerText(s,'low')}–${markerText(s,'high')}</span><span>${pct((b.low/base[s.key]-1)*100)} to ${pct((b.high/base[s.key]-1)*100)}</span></div>
+      <div class="range-buttons"><span class="boundary-label text-small">Test</span><button class="btn btn-ghost" type="button" data-bound="low" aria-label="Test lower E2 target endpoint for ${escape(s.label)}">Lower ${markerText(s,'low')}</button><button class="btn btn-ghost" type="button" data-bound="high" aria-label="Test upper E2 target endpoint for ${escape(s.label)}">Upper ${markerText(s,'high')}</button><button class="btn btn-ghost" type="button" data-bound="reference" aria-label="Restore reference ${escape(s.label)}">Ref ${fmt(base[s.key])}</button></div>`;
+    el(s.group + '-controls').append(wrap);
+    el(s.key).addEventListener('input', ev => setValue(s, Number(ev.target.value)));
+    el(s.key + '-number').addEventListener('change', ev => setValue(s, Number(ev.target.value)));
+    wrap.querySelectorAll('[data-bound]').forEach(btn => btn.addEventListener('click', () => setValue(s, btn.dataset.bound === 'reference' ? base[s.key] : b[btn.dataset.bound])));
+  }
+  specs.forEach(addSlider);
+  el('scale').addEventListener('change', refreshControls);
+  el('oat').addEventListener('change', () => {
+    if (el('oat').checked) { p = {...base}; refreshControls(); schedule(); }
+  });
+  el('reset').addEventListener('click', () => { p = {...base}; refreshControls(); schedule(); });
+  const groups = ['gain', 'feedback', 'pulse', 'clearance'];
+  groups.forEach(g => el(g + '-tab').addEventListener('click', () => {
+    groups.forEach(h => {
+      el(h + '-tab').classList.toggle('active', g === h);
+      el(h + '-tab').setAttribute('aria-selected', String(g === h));
+      el(h + '-panel').hidden = g !== h;
+    });
+  }));
+  const options = [[192,264,'After 192 h · 3 days']];
+  for (let j = 0; j < 18; j += 3) options.push([96 + j * 24, 96 + (j + 3) * 24, `After ${96+j*24} h · 3 days`]);
+  for (let j = 0; j < 18; j++) options.push([96 + j * 24, 96 + (j + 1) * 24, `Day ${j+1} after 96 h · 07:00–07:00`]);
+  options.forEach(([a,b,label]) => { const o = document.createElement('option'); o.value = a + ',' + b; o.textContent = label; o.selected = a === 192 && b === 264; el('view').append(o); });
+  el('view').addEventListener('change', () => { visible = el('view').value.split(',').map(Number); render(); });
+  el('step').addEventListener('change', render);
+  el('baseline').addEventListener('change', () => { if (!referenceResults) referenceResults = [E.run(base, 3), E.run(base, 1.5)]; render(); });
+  el('export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify({parameters:p, fixed_R_tau_h:1, marker_reference:base, checks:results ? results.map(r => ({step_s:r.trace.seconds, windows:r.windows})) : null}, null, 2)], {type:'application/json'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'hpg-current-settings.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  function schedule() {
+    clearTimeout(timer); generation++; const current = generation;
+    calculating = true; el('verdict').textContent = 'Checking both integration steps…'; el('verdict').classList.remove('error');
+    el('metrics').setAttribute('aria-busy', 'true');
+    timer = setTimeout(() => {
+      try {
+        const three = E.run(p, 3), fine = E.run(p, 1.5);
+        if (current !== generation) return;
+        results = [three, fine]; calculating = false;
+        if (specs.every(s => p[s.key] === base[s.key])) referenceResults = results;
+        render();
+      } catch (err) {
+        calculating = false; results = null;
+        el('verdict').textContent = err.message; el('verdict').classList.add('error');
+        for (const id of ['e2','lh','excursion','r','interval','lh-interval']) el(id + '-plot').replaceChildren();
+        for (const id of ['e2','lh','count']) el(id + '-metric').textContent = '—';
+      } finally { el('metrics').setAttribute('aria-busy', 'false'); }
+    }, 140);
+  }
+  function selectedResult() { return results.find(r => r.trace.seconds === Number(el('step').value)); }
+  const rangeText = a => { const lo = Math.min(...a), hi = Math.max(...a); return Math.abs(hi-lo) < .01 ? fmt(lo,3) : fmt(lo,3) + '–' + fmt(hi,3); };
+  const clock = t => { const m = Math.round(((t + 7) % 24) * 60) % 1440; return String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0'); };
+  function renderMetrics(result) {
+    const daily = result.windows.flatMap(w => w.daily);
+    el('e2-metric').textContent = rangeText(daily.map(d=>d.E_day[1])) + ' / ' + rangeText(daily.map(d=>d.E_sleep[1]));
+    el('e2-context').textContent = 'Day / sleep medians · max sleep excursion ' + fmt(Math.max(...daily.map(d=>d.E_sleep[2])),4);
+    el('lh-metric').textContent = rangeText(daily.map(d=>d.L_day[1])) + ' / ' + rangeText(daily.map(d=>d.L_sleep[1]));
+    el('lh-context').textContent = 'Day / sleep daily medians';
+    el('count-metric').textContent = rangeText(daily.map(d=>d.sleep_count));
+    el('count-context').textContent = 'Raw peaks per sleep · target 3–5';
+    const checks = results.flatMap(r=>r.windows), passed = checks.every(w=>w.checks.target), core = checks.every(w=>w.checks.core);
+    const fail = results.flatMap(r=>r.windows.flatMap(w=>w.daily.filter(d=>!d.target).map(d=>({...d,seconds:r.trace.seconds}))));
+    el('verdict').textContent = (passed ? 'E2 size target: passes all checks.' : 'E2 size target: fails ' + fail.length + ' of 56 daily checks.') + ' Pattern: ' + (core ? 'passes.' : 'fails.') + ' Both steps: 3 s and 1.5 s; both 14-day windows.';
+    el('verdict').classList.toggle('error', !passed);
+    if (fail.length) {
+      const f = fail[0]; el('verdict').textContent += ` First failure: ${f.seconds} s, ${f.warm} h warmup, day ${f.j+1}.`;
+    }
+    el('daily').innerHTML = daily.map(d=>`<tr><td>${d.warm} h / ${d.j+1}</td><td>${fmt(d.E_day[1],5)}</td><td>${fmt(d.E_cycle_day[1],5)}</td><td>${fmt(d.E_sleep[1],5)}</td><td>${fmt(d.E_sleep[2],5)}</td><td>${d.sleep_count}</td><td>${d.target?'Pass':'Fail'}</td></tr>`).join('');
+    const events = result.e2.events.filter(e => visible[0] <= e.t && e.t < visible[1]);
+    el('events').innerHTML = events.map(e => `<tr><td>${clock(e.t)}</td><td>${(e.t+7)%24>=23||(e.t+7)%24<7?'Sleep':'Awake'}</td><td>${fmt(e.peak,5)}</td><td>${fmt(e.rise,5)}</td><td>${fmt(e.fall,5)}</td><td>${fmt(e.excursion,5)}</td></tr>`).join('');
+    const nights = [];
+    for (let a=visible[0]+16;a<visible[1];a+=24) nights.push(result.lh.peaks.filter(e=>a<=e.t&&e.t<a+8).length);
+    el('sleep-label').textContent = nights.length ? 'Sleep LH peaks: ' + nights.join(' / ') : '';
+    el('live').textContent = el('verdict').textContent;
+  }
+  function node(name, attrs={}, label) {
+    const n = document.createElementNS('http://www.w3.org/2000/svg', name);
+    for (const [k,v] of Object.entries(attrs)) n.setAttribute(k, v);
+    if (label !== undefined) n.textContent = label; return n;
+  }
+  const d3lib = () => globalThis.d3;
+  function extent(a) { return d3lib() ? d3lib().extent(a) : [Math.min(...a),Math.max(...a)]; }
+  function scale(lo,hi,a,b) { return d3lib() ? d3lib().scaleLinear().domain([lo,hi]).range([a,b]) : v=>a+(v-lo)/(hi-lo||1)*(b-a); }
+  function line(points,sx,sy) { return d3lib() ? d3lib().line().x(d=>sx(d.t)).y(d=>sy(d.v))(points) : points.map((d,i)=>(i?'L':'M')+sx(d.t).toFixed(2)+','+sy(d.v).toFixed(2)).join(' '); }
+  function tracePoints(trace,key) {
+    const a = Math.max(0,Math.round((visible[0]-trace.warm)/trace.dt));
+    const b = Math.min(trace[key].length-1,Math.round((visible[1]-trace.warm)/trace.dt));
+    const stride = Math.max(1,Math.round(60/trace.seconds)), keep = new Set([a,b]);
+    for(let i=a;i<=b;i+=stride) keep.add(i);
+    for(let i=a+1;i<b;i++) if ((trace[key][i]>trace[key][i-1]&&trace[key][i]>=trace[key][i+1])||(trace[key][i]<trace[key][i-1]&&trace[key][i]<=trace[key][i+1])) keep.add(i);
+    return [...keep].sort((a,b)=>a-b).map(i=>({t:trace.warm+i*trace.dt,v:trace[key][i]}));
+  }
+  function intervals(peaks) {
+    return peaks.slice(1).map((p,i)=>({t:p.t,v:(p.t-peaks[i].t)*60})).filter(p=>visible[0]<=p.t&&p.t<=visible[1]);
+  }
+  function plot(id, points, opts) {
+    const host = el(id+'-plot');
+    const oldLine = host.querySelector('path[data-main-line]'); const previous = oldLine ? oldLine.getAttribute('d') : null;
+    host.replaceChildren();
+    const width = host.clientWidth || 736, height = opts.compact ? 215 : 280;
+    if (width<160) return;
+    const x0=68,x1=width-16,y0=16,y1=height-52;
+    const svg=node('svg',{viewBox:`0 0 ${width} ${height}`,role:'img','aria-label':opts.label+' over the selected days'});
+    svg.append(node('title',{},opts.label));
+    const allValues=points.map(p=>p.v).concat((opts.baseline||[]).map(p=>p.v));
+    if(opts.refs) allValues.push(...opts.refs);
+    if (!allValues.length) { svg.append(node('text',{x:width/2,y:height/2,'text-anchor':'middle'},'No complete peak intervals in this view')); host.append(svg); return; }
+    const [min,max]=extent(allValues), pad=Math.max((max-min)*.07,Math.abs(max)*.02,.01);
+    const lower=Math.max(0,min-pad), upper=max+pad;
+    const sx=scale(visible[0],visible[1],x0+3,x1-3), sy=scale(lower,upper,y1-3,y0+3);
+    const clipId='e2x-'+id+'-clip',defs=node('defs'),clip=node('clipPath',{id:clipId});
+    clip.append(node('rect',{x:x0,y:y0,width:x1-x0,height:y1-y0}));defs.append(clip);svg.append(defs);
+    const area=node('g',{'clip-path':'url(#'+clipId+')'});
+    const day0=Math.floor(visible[0]/24)*24;
+    for(let d=day0-24;d<visible[1];d+=24) {
+      const a=Math.max(visible[0],d+16),b=Math.min(visible[1],d+24);
+      if(b>a) area.append(node('rect',{x:sx(a),y:y0,width:sx(b)-sx(a),height:y1-y0,class:'sleep-band'}));
+      if(opts.excursion) {
+        const da=Math.max(visible[0],d+1),db=Math.min(visible[1],d+13);
+        if(db>da) area.append(node('rect',{x:sx(da),y:sy(25),width:sx(db)-sx(da),height:sy(15)-sy(25),class:'target-band'}));
+        if(b>a) area.append(node('line',{x1:sx(a),x2:sx(b),y1:sy(10),y2:sy(10),class:'target-line'}));
+      }
+    }
+    const yticks=d3lib()?d3lib().scaleLinear().domain([lower,upper]).ticks(4):Array.from({length:4},(_,i)=>lower+(upper-lower)*i/3);
+    for (const v of yticks) {
+      if(v<lower||v>upper) continue;
+      svg.append(node('line',{x1:x0,y1:sy(v),x2:x1,y2:sy(v),class:'grid-line'}));
+      svg.append(node('text',{x:x0-8,y:sy(v)+4,'text-anchor':'end'},fmt(v,3)));
+    }
+    const count=width<440?4:7,xt=Array.from({length:count},(_,i)=>visible[0]+(visible[1]-visible[0])*i/(count-1));
+    for(let i=0;i<xt.length;i++) {
+      const v=xt[i]; svg.append(node('line',{x1:sx(v),x2:sx(v),y1:y0,y2:y1,class:'grid-line'}));
+      svg.append(node('text',{x:sx(v),y:y1+20,'text-anchor':i===0?'start':i===xt.length-1?'end':'middle'},clock(v)));
+    }
+    if(opts.baseline && opts.baseline.length) area.append(node('path',{d:line(opts.baseline,sx,sy),class:'line baseline'}));
+    if(!opts.scatter) {
+      const path=node('path',{d:line(points,sx,sy),class:'line '+opts.class,'data-main-line':'true'});
+      area.append(path);
+      if(previous&&globalThis.d3&&!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const current=path.getAttribute('d');globalThis.d3.select(path).attr('d',previous).transition().duration(140).attr('d',current);
+      }
+    }
+    for (const mark of opts.marks||[]) {
+      if(opts.excursions&&Number.isFinite(mark.before)&&Number.isFinite(mark.after)) area.append(node('line',{x1:sx(mark.t),x2:sx(mark.t),y1:sy(mark.peak),y2:sy(Math.max(mark.before,mark.after)),class:'excursion-mark'}));
+      area.append(node('circle',{cx:sx(mark.t),cy:sy(mark.v===undefined?mark.peak:mark.v),r:2.5,class:opts.markClass||'peak-mark'}));
+    }
+    if(opts.scatter) for(const mark of points) area.append(node('circle',{cx:sx(mark.t),cy:sy(mark.v),r:2.8,class:opts.markClass||'peak-mark'}));
+    svg.append(area,node('rect',{x:x0,y:y0,width:x1-x0,height:y1-y0,class:'chart-frame','data-chart-frame':'true'}));
+    svg.append(node('text',{x:(x0+x1)/2,y:height-10,'text-anchor':'middle',class:'axis-title','data-axis':'x'},'Civil time · start 07:00'));
+    svg.append(node('text',{x:16,y:(y0+y1)/2,transform:`rotate(-90 16 ${(y0+y1)/2})`,'text-anchor':'middle',class:'axis-title','data-axis':'y'},opts.label));
+    const guide=node('line',{y1:y0,y2:y1,class:'hover-guide',visibility:'hidden','data-chart-hover-guide':'true'});
+    const marker=node('circle',{r:4,class:'hover-marker',visibility:'hidden','data-chart-hover-marker':'true'});
+    const referenceMarker=opts.baseline&&opts.baseline.length?node('circle',{r:3.5,fill:'var(--foreground)',opacity:'.5',visibility:'hidden','data-chart-hover-marker':'reference'}):null;
+    const hit=node('rect',{x:x0,y:y0,width:x1-x0,height:y1-y0,class:'chart-hit','data-chart-hit':'true','data-chart-hover-overlay':'cross-series'});
+    let pinned=false;
+    const hover=ev=>{
+      const box=svg.getBoundingClientRect(),px=(ev.clientX-box.left)*width/box.width;
+      const time=Math.max(visible[0],Math.min(visible[1],visible[0]+(px-(x0+3))/(x1-x0-6)*(visible[1]-visible[0])));
+      let i;
+      if(d3lib()) i=d3lib().bisector(d=>d.t).center(points,time);
+      else {let lo=0,hi=points.length-1;while(lo<hi){const m=(lo+hi)>>1;if(points[m].t<time)lo=m+1;else hi=m;}i=lo;}
+      const near=points[i]; if(!near)return;
+      let v=near.v,at=opts.scatter?near.t:time;
+      if(!opts.scatter&&points.length>1) {
+        let a=i,b=i;
+        if(near.t>time)a=Math.max(0,i-1);else b=Math.min(points.length-1,i+1);
+        if(a!==b)v=points[a].v+(points[b].v-points[a].v)*(time-points[a].t)/(points[b].t-points[a].t);
+      }
+      guide.setAttribute('x1',sx(time));guide.setAttribute('x2',sx(time));guide.setAttribute('visibility','visible');
+      marker.setAttribute('cx',sx(at));marker.setAttribute('cy',sy(v));marker.setAttribute('visibility','visible');
+      let detail=`${clock(at)} · ${fmt(v,5)} ${opts.unit}`;
+      if(opts.excursions||opts.excursion) {
+        const events=opts.events||opts.marks||[];
+        const closest=events.reduce((a,b)=>!a||Math.abs(b.t-time)<Math.abs(a.t-time)?b:a,null);
+        if(closest)detail+=` · nearest pulse ${clock(closest.t)}: rise ${fmt(closest.rise,4)}, fall ${fmt(closest.fall,4)}, excursion ${fmt(closest.excursion,4)}`;
+      }
+      if(opts.baseline&&opts.baseline.length) {
+        const arr=opts.baseline;let j=0;while(j+1<arr.length&&arr[j+1].t<time)j++;
+        const next=arr[Math.min(j+1,arr.length-1)],ratio=next.t===arr[j].t?0:(time-arr[j].t)/(next.t-arr[j].t);
+        const ref=arr[j].v+(next.v-arr[j].v)*ratio;detail+=` · reference ${fmt(ref,5)}`;
+        referenceMarker.setAttribute('cx',sx(time));referenceMarker.setAttribute('cy',sy(ref));referenceMarker.setAttribute('visibility','visible');
+      }
+      const tip=el('tooltip'),rbox=root.getBoundingClientRect();tip.textContent=detail;tip.style.display='block';
+      tip.style.maxWidth=Math.max(160,Math.min(420,root.clientWidth-16))+'px';
+      const tw=tip.getBoundingClientRect().width;
+      tip.style.left=Math.max(4,Math.min(root.clientWidth-tw-4,ev.clientX-rbox.left+10))+'px';
+      tip.style.top=Math.max(0,ev.clientY-rbox.top-tip.getBoundingClientRect().height-14)+'px';
+    };
+    hit.addEventListener('pointermove',ev=>{if(!pinned)hover(ev);});
+    hit.addEventListener('pointerdown',ev=>{pinned=!pinned;hover(ev);});
+    hit.addEventListener('pointerleave',()=>{if(!pinned){guide.setAttribute('visibility','hidden');marker.setAttribute('visibility','hidden');if(referenceMarker)referenceMarker.setAttribute('visibility','hidden');el('tooltip').style.display='none';}});
+    svg.append(guide,marker);if(referenceMarker)svg.append(referenceMarker);svg.append(hit);host.append(svg);
+    // Remove optional axis tick labels only when their measured boxes collide.
+    const labels=[...svg.querySelectorAll('text:not(.axis-title)')];
+    for(let i=0;i<labels.length;i++)for(let j=i+1;j<labels.length;j++){
+      if(!labels[i].isConnected||!labels[j].isConnected)continue;
+      const a=labels[i].getBoundingClientRect(),b=labels[j].getBoundingClientRect();
+      if(a.left<b.right+4&&a.right+4>b.left&&a.top<b.bottom+4&&a.bottom+4>b.top)labels[j].remove();
+    }
+  }
+  function render() {
+    if(!results||calculating)return;
+    const result=selectedResult(),tr=result.trace;
+    renderMetrics(result);
+    const ev=result.e2.events.filter(p=>visible[0]<=p.t&&p.t<=visible[1]);
+    const e2=result.e2.peaks.filter(p=>visible[0]<=p.t&&p.t<=visible[1]).map(p=>({...ev.find(e=>e.i===p.i),...p}));
+    const lh=result.lh.peaks.filter(p=>visible[0]<=p.t&&p.t<=visible[1]);
+    const ref=el('baseline').checked&&referenceResults?referenceResults.find(r=>r.trace.seconds===tr.seconds):null;
+    plot('e2',tracePoints(tr,'E2'),{label:'E2 (pg/mL)',unit:'pg/mL',class:'e2',marks:e2,events:ev,excursions:true,baseline:ref?tracePoints(ref.trace,'E2'):null});
+    plot('lh',tracePoints(tr,'LH'),{label:'LH (IU/L)',unit:'IU/L',class:'lh',marks:lh,markClass:'lh-mark',baseline:ref?tracePoints(ref.trace,'LH'):null});
+    plot('excursion',ev.map(p=>({t:p.t,v:p.excursion})),{label:'E2 excursion (pg/mL)',unit:'pg/mL',scatter:true,excursion:true,events:ev,refs:[0,10,15,25]});
+    plot('r',tracePoints(tr,'R'),{label:'R (fraction)',unit:'fraction',class:'r',compact:true,refs:[0,1],baseline:ref?tracePoints(ref.trace,'R'):null});
+    plot('interval',intervals(result.e2.peaks),{label:'E2 interval (min)',unit:'min',class:'e2-interval',scatter:true,compact:true});
+    plot('lh-interval',intervals(result.lh.peaks),{label:'LH interval (min)',unit:'min',class:'lh',scatter:true,markClass:'lh-mark',compact:true});
+    root.dataset.ready='true';
+    root.dataset.targetPass=String(results.every(r=>r.windows.every(w=>w.checks.target)));
+    root.dispatchEvent(new CustomEvent('hpg-rendered'));
+  }
+  let resize;
+  new ResizeObserver(()=>{clearTimeout(resize);resize=setTimeout(render,100);}).observe(root);
+  root.hpgExplorer={get parameters(){return {...p};},get results(){return results;},setValue:(key,value)=>setValue(specs.find(s=>s.key===key),value),render};
+  // D3 enhances scales and transitions when available. Native SVG remains fully
+  // functional offline, including scientific calculations and all controls.
+  const lib=document.createElement('script');lib.src='https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js';lib.async=true;lib.onload=render;document.head.append(lib);
+  refreshControls();schedule();
+})();
+</script>
+</div>

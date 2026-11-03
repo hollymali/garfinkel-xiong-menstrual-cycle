@@ -1,0 +1,5 @@
+# Keep the published project focused on meeting folders and top-level files.
+tmp/
+_archive/
+_audit_hpg/
+thermo_scripts/
