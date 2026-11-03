@@ -1,12 +1,12 @@
 # Current HPG model: start here
 
-[Exact plotted equations, all21 constants and corresponding raw LH/E2 traces](meeting11/DENSER_REGIME_EQUATIONS_AND_TRACES.md).
+[Exact plotted equations, all21 constants and corresponding raw LH/E2 traces](../meeting11/DENSER_REGIME_EQUATIONS_AND_TRACES.md).
 The24h/72h/14day figures use the unchanged tested nominal center at1.5s,
 with806,400 full-resolution CSV samples and matching source/audit metadata.
 Presentation does not select a new fully qualified regime or retune constants.
 
 **Latest verification: constants-only and active E2→N confirmed; robustness is partial.**
-[Fresh uncertainty/source/feedback assessment](meeting11/DENSER_REGIME_ROBUSTNESS_AND_FEEDBACK.md).
+[Fresh uncertainty/source/feedback assessment](../meeting11/DENSER_REGIME_ROBUSTNESS_AND_FEEDBACK.md).
 The physical function body is identical to the frozen reference; only18
 existing defaults differ. Fixed N reverses day/night raw medians12.39/3.63
 to5.17/9.00 at3s/14days. Fresh128 simultaneous±2.5% draws give121/128
@@ -19,7 +19,7 @@ but fail1.5s,4 reverse. Finer day pooled medians5.724–15.593 show amplitude
 sensitivity. All detailed limitations are recorded in the verification report.
 
 **Latest: more actual daytime E2 pulses, with the approved amplitude scale.**
-[Denser raw E2/LH comparison and full audit](meeting11/MORE_DAYTIME_E2_PULSES.md).
+[Denser raw E2/LH comparison and full audit](../meeting11/MORE_DAYTIME_E2_PULSES.md).
 The3s diagnostic has8 eligible daytime peaks/day versus5 previously,
 local medians12.891/3.628. The14-day diagnostic has113 versus73 day peaks,
 but still fails daytime/control preservation and nighttime concentration
@@ -38,14 +38,14 @@ remain diagnostics; their full raw/cycle records and differing feedback
 evidence are explicit in the report.
 
 **Latest: Licinio individual-pulse contrast remains primary; no qualified replacement.**
-[Latest continuation, raw E2/LH plots and full failures](meeting11/LICINIO_PRIORITY_CONTINUATION.md).
+[Latest continuation, raw E2/LH plots and full failures](../meeting11/LICINIO_PRIORITY_CONTINUATION.md).
 The new14-day diagnostic has pooled raw medians13.412/2.022, but day9 falls
 to1.963/1.613 and worst daytime/control retention.18062. Do not promote the
 pooled medians or first-day plot. No new±2.5% qualification is claimed.
 Original physical equations remain unchanged; older entries below are provenance.
 
 **Latest tolerance: ±2.5% is sufficient; no regime is selected.**
-[Current search and rejected nominal waveform](meeting11/SMALL_RADIUS_ACTIVE_FEEDBACK_SEARCH.md).
+[Current search and rejected nominal waveform](../meeting11/SMALL_RADIUS_ACTIVE_FEEDBACK_SEARCH.md).
 The strongest-looking new trial fails longer-window control retention/local
 ordering, has a nighttime escape, and gives0/64 fresh joint±2.5% draws
 across both warmups. This applies to that candidate, not the model class.
@@ -57,7 +57,7 @@ The user requires nighttime-high LH peaks with SCN contribution and is seeking
 feedback-mediated irregularity. E2→N inhibition alone is insufficient when
 LH suppression makes the full amplitude return reinforcing. No regime is
 currently qualified for all corrected behavior/feedback/robustness conditions.
-[Correction, measured feedback signs and timing ablation](meeting11/NIGHT_HIGH_LH_CORRECTION.md).
+[Correction, measured feedback signs and timing ablation](../meeting11/NIGHT_HIGH_LH_CORRECTION.md).
 The active-negative diagnostic has a restoring midpoint response and greater
 phase-timing variability with N feedback, but fails nighttime E2 bounds and
 the accepted daytime/control loss limit. It is not a replacement calibration.
@@ -66,10 +66,10 @@ the accepted daytime/control loss limit. It is not a replacement calibration.
 LH peaks highest at night, with SCN contribution. That regime instead shifts
 SCN/LH peaks into daytime, so its99.2% statistic omits a required behavior.
 It is not a qualified preferred regime. See
-[the nighttime-LH correction](meeting11/NIGHT_HIGH_LH_CORRECTION.md).
+[the nighttime-LH correction](../meeting11/NIGHT_HIGH_LH_CORRECTION.md).
 
 **Current choice: remove the decreasing LH suppression Hill; retain E2→N.**
-[New assessment, exact inline equations and raw E2/LH/N traces](meeting11/WITHOUT_LH_SUPPRESSION_ASSESSMENT.md).
+[New assessment, exact inline equations and raw E2/LH/N traces](../meeting11/WITHOUT_LH_SUPPRESSION_ASSESSMENT.md).
 The user prioritizes robust day/night differences over a particular mechanism.
 The rounded center in `meeting11/without_LH_suppression_trials/MODEL_selected.py`
 has local day/night medians13.712/.362pg/mL and actual awake/sleep LH
@@ -87,7 +87,7 @@ is inapplicable; no substitute control is invented. Historical results below
 keep their original status and must not override this latest user direction.
 
 **Latest: retain an effective E2→N return path.**
-[Active-feedback search and measured limits](meeting11/MEANINGFUL_FEEDBACK_SEARCH.md).
+[Active-feedback search and measured limits](../meeting11/MEANINGFUL_FEEDBACK_SEARCH.md).
 A constant-only trial gives 128/128 fresh joint ±5% sampled passes at both
 warmups (all 21 constants, three-second steps), including E2 comparisons,
 reference spans and longer sleep LH. N varies29%; fixing it at its mean
@@ -99,7 +99,7 @@ negative. Thus no fully qualified ±10% or conventional stabilizing negative-
 feedback replacement is established. Feedback-free trials below are not adopted.
 
 **Latest simplification test:**
-[E2→N removal and linear LH activation](meeting11/MODEL_SIMPLIFICATION_ASSESSMENT.md).
+[E2→N removal and linear LH activation](../meeting11/MODEL_SIMPLIFICATION_ASSESSMENT.md).
 Removing E2 feedback leaves nominal local medians effectively unchanged
 (9.74/.55), with fresh 19-constant ±10% pass rates 94.1%/96.1% at 15%/20%
 allowed day loss. Later-window failures remain. The direct linear-LH trial
@@ -108,20 +108,20 @@ amplitude, so it fails the preservation goal. The original reference source
 and its previously reported percentages are preserved; the new sources are
 explicit trials, not a fully qualified replacement.
 
-[Exact equations and structural/assumption audit of the robustness trial](meeting11/RANGE_TRIAL_EQUATIONS_AND_AUDIT.md).
+[Exact equations and structural/assumption audit of the robustness trial](../meeting11/RANGE_TRIAL_EQUATIONS_AND_AUDIT.md).
 No constants changed. Source/center identity and saved traces check exactly;
 the audit flags phase-driven GnRH, weak N feedback, low-LH operating-point
 sensitivity, the constant-inflow concentration scale and fitted half-lives.
 
 **User-approved daytime loss is now 15–20% versus matched control.**
-[Saved ±10% reassessment](meeting11/DAYTIME_LOSS_TOLERANCE_ASSESSMENT.md):
+[Saved ±10% reassessment](../meeting11/DAYTIME_LOSS_TOLERANCE_ASSESSMENT.md):
 trial every-day joint pass rates are 245/256 (95.7%) allowing 15% loss and
 252/256 (98.4%) allowing 20%. Both concentration spans and nighttime conditions
 remain required. Later-window ordering failures and weak absolute day pulses
 remain; this is not a full-box or full-horizon guarantee.
 
 **Latest robustness search: no full ±10% regime established.**
-[`meeting11/RANGE_ROBUSTNESS_SEARCH.md`](meeting11/RANGE_ROBUSTNESS_SEARCH.md)
+[`meeting11/RANGE_ROBUSTNESS_SEARCH.md`](../meeting11/RANGE_ROBUSTNESS_SEARCH.md)
 records 7,317 paired search evaluations. A new range-focused trial improves
 fresh every-day relative comparisons from 147/256 to 215/256 on identical
 seed-1510 directions; all 256 initial trial draws retain nighttime attenuation
@@ -131,8 +131,8 @@ including at 3/1.5-second steps. The trial is not a qualified replacement.
 The nominal range correction below keeps its limited status.
 
 **Latest nominal candidate: corrected Subject 2 concentration scale.**
-[`meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md`](meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md)
-and [`meeting11/MODEL_subject2_range_candidate.py`](meeting11/MODEL_subject2_range_candidate.py)
+[`meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md`](../meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md)
+and [`meeting11/MODEL_subject2_range_candidate.py`](../meeting11/MODEL_subject2_range_candidate.py)
 supersede the oversized E2 profiles below for the user's calibration request.
 Nominal E2 ranges are 14.69–48.24 day and 14.50–22.67 night pg/mL, versus the
 approximate raster reference 9.26–48.16 / 9.16–28.23. Local every-peak medians
@@ -151,7 +151,7 @@ source verification and numerical checks. Lowest reference values near 9, exact
 timing/frequency and the unobserved high control levels remain unfitted.
 
 **±10% assessment:**
-[`meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md`](meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md).
+[`meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md`](../meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md).
 The current 100/135-minute nominal waveform is not robust to simultaneous
 ±10% changes across all 21 constants: fresh pooled/every-day comparisons hold
 210/256 and 189/256; daytime local medians span 4.38–76.16 pg/mL. Selected
@@ -164,8 +164,8 @@ Hill/kinetic/N-feedback selection found no qualified full-waveform ±10% regime;
 this is not an impossibility claim. The nominal candidate below remains intact.
 
 **Preceding comparative candidate, oversized E2 scale:**
-[`meeting11/ROBUST_SLEEP_REGIME.md`](meeting11/ROBUST_SLEEP_REGIME.md) and
-[`meeting11/MODEL_robust_sleep_candidate.py`](meeting11/MODEL_robust_sleep_candidate.py).
+[`meeting11/ROBUST_SLEEP_REGIME.md`](../meeting11/ROBUST_SLEEP_REGIME.md) and
+[`meeting11/MODEL_robust_sleep_candidate.py`](../meeting11/MODEL_robust_sleep_candidate.py).
 Nominal local E2 median day/night excursions are 24.31/5.15 pg/mL, with actual
 LH intervals about 100 min awake / 135 during sleep. Only existing constants
 change; rates stay fully inline and half-lives remain 4/35/22.5 min.
@@ -186,8 +186,8 @@ unfitted control E2 remain material limits. Full raw plots, individual values,
 paired comparisons, numerical checks and source verification are in the report.
 
 **Previous longer-sleep-interval option:**
-[`meeting11/LONGER_SLEEP_INTERVALS.md`](meeting11/LONGER_SLEEP_INTERVALS.md) and
-[`meeting11/MODEL_longer_sleep_intervals_candidate.py`](meeting11/MODEL_longer_sleep_intervals_candidate.py).
+[`meeting11/LONGER_SLEEP_INTERVALS.md`](../meeting11/LONGER_SLEEP_INTERVALS.md) and
+[`meeting11/MODEL_longer_sleep_intervals_candidate.py`](../meeting11/MODEL_longer_sleep_intervals_candidate.py).
 Actual LH intervals are about 100 min awake / 135 during sleep (previous 100/118).
 Nominal every-peak E2 medians 25.02/5.20 day/night retain the preceding scale and
 the matched-control comparison. Only four existing sleep/SCN/N constants change;
@@ -198,8 +198,8 @@ with one cycle night/control median failure; ±5% holds 55/64. No fully qualifie
 radius is claimed for this option. The preceding fit remains intact below.
 
 **Preceding larger-span candidate:**
-[`meeting11/LARGER_SPAN_LOWER_TROUGHS.md`](meeting11/LARGER_SPAN_LOWER_TROUGHS.md)
-and [`meeting11/MODEL_larger_span_feedback_candidate.py`](meeting11/MODEL_larger_span_feedback_candidate.py).
+[`meeting11/LARGER_SPAN_LOWER_TROUGHS.md`](../meeting11/LARGER_SPAN_LOWER_TROUGHS.md)
+and [`meeting11/MODEL_larger_span_feedback_candidate.py`](../meeting11/MODEL_larger_span_feedback_candidate.py).
 The user requested larger excursions and daytime troughs closer to nighttime.
 Every-peak median day/night excursions are 25.62/5.21 pg/mL (cycle medians
 31.52/5.07), versus matched-control 16.19/9.36. Distinct trough medians are
@@ -219,8 +219,8 @@ small-pulse counts, frequency, source verification and limitations are recorded.
 The preceding `larger_span` shape trial is not qualified: its longer-warmup
 daytime preservation failed. Historical range-based claims remain withdrawn.
 
-**Previous Subject 2-scale candidate:** [`meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md`](meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md)
-and [`meeting11/MODEL_balanced_hills_pulse_candidate.py`](meeting11/MODEL_balanced_hills_pulse_candidate.py).
+**Previous Subject 2-scale candidate:** [`meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md`](../meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md)
+and [`meeting11/MODEL_balanced_hills_pulse_candidate.py`](../meeting11/MODEL_balanced_hills_pulse_candidate.py).
 Corrected per-cycle median day/night excursions are 13.39/3.97 pg/mL versus
 7.49/8.98 in its fully coupled control. This preserves nominal daytime pulse size
 on roughly the Subject 2 scale. All 64 sampled ±2.5% combinations preserve the
@@ -234,7 +234,7 @@ remain historical; their withdrawn range-based claims are not reinstated.
 For a new chat, read [`NEW_CHAT_HANDOFF.md`](NEW_CHAT_HANDOFF.md) first.
 
 **Updated pulse criterion (October 14): the presentation recommendation is withdrawn.**
-Read [`meeting11/TRUE_E2_PULSE_AMPLITUDE_ASSESSMENT.md`](meeting11/TRUE_E2_PULSE_AMPLITUDE_ASSESSMENT.md)
+Read [`meeting11/TRUE_E2_PULSE_AMPLITUDE_ASSESSMENT.md`](../meeting11/TRUE_E2_PULSE_AMPLITUDE_ASSESSMENT.md)
 before using the historical results below. Amplitude is assessed from each E2
 peak and its immediately adjacent troughs, with the smaller rise/fall excursion
 reported per LH cycle and missing E2 peaks counted as zero. Median day/night
@@ -247,7 +247,7 @@ Model constants and equations have not been retuned in this correction.
 ## Historical results using LH-cycle ranges
 
 Broader robustness (October 14):
-[`meeting11/BROADER_ROBUSTNESS_RESULTS.md`](meeting11/BROADER_ROBUSTNESS_RESULTS.md).
+[`meeting11/BROADER_ROBUSTNESS_RESULTS.md`](../meeting11/BROADER_ROBUSTNESS_RESULTS.md).
 The recommended model retains every original amplitude goal in all 64 tested
 joint ±6% combinations, with all six vulnerable-case numerical checks passing.
 The weakest day range is 9.08 pg/mL, close to its 9.04 retention bound. Each-day

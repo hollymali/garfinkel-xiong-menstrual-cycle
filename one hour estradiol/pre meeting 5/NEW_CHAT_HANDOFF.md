@@ -540,7 +540,7 @@ E2→N feedback is retained. The decreasing LH Hill is now explicitly optional,
 superseding the original activation-times-suppression structural requirement.
 All other physical structure constraints remain in force.
 
-Read [the new assessment](meeting11/WITHOUT_LH_SUPPRESSION_ASSESSMENT.md).
+Read [the new assessment](../meeting11/WITHOUT_LH_SUPPRESSION_ASSESSMENT.md).
 Selected source: `meeting11/without_LH_suppression_trials/MODEL_selected.py`.
 Exact tested center: `selected_parameters.json` in that folder. Original
 reference source is unchanged (SHA starts3419004e, full hash below).
@@ -603,7 +603,7 @@ provenance. Do not reinstate their pending question or control gate silently.
 The user rejected interpreting the feedback-free version as a closed HPG loop
 and requested a robust regime with meaningful feedback. Feedback-free models
 below are diagnostic trials, not adopted replacements. Read
-[`meeting11/MEANINGFUL_FEEDBACK_SEARCH.md`](meeting11/MEANINGFUL_FEEDBACK_SEARCH.md).
+[`meeting11/MEANINGFUL_FEEDBACK_SEARCH.md`](../meeting11/MEANINGFUL_FEEDBACK_SEARCH.md).
 
 No full-goal ±10% regime is qualified. A new constant-only active-feedback
 trial has fresh **128/128 joint ±5% sampled passes** at both 15% and 20%
@@ -673,7 +673,7 @@ The user explicitly proposed these structural simplifications, specifying that
 the decreasing LH sensitivity term should stay. Offline trial models relax
 the earlier constant-only/activation-Hill constraint only for these requested
 changes. The original reference source is unchanged. Read
-[`meeting11/MODEL_SIMPLIFICATION_ASSESSMENT.md`](meeting11/MODEL_SIMPLIFICATION_ASSESSMENT.md).
+[`meeting11/MODEL_SIMPLIFICATION_ASSESSMENT.md`](../meeting11/MODEL_SIMPLIFICATION_ASSESSMENT.md).
 
 Removing E2 feedback gives dN/dt=2(5−N), N(0)=5, hence N(t)=5 exactly. The N
 state can be eliminated algebraically; the trial keeps the existing N equation
@@ -731,7 +731,7 @@ these results. Do not assume permission to abandon the control requirement.
 ## Equation/structure audit of the reported robustness center
 
 User asked for the equations and a check for weirdness. See
-[`meeting11/RANGE_TRIAL_EQUATIONS_AND_AUDIT.md`](meeting11/RANGE_TRIAL_EQUATIONS_AND_AUDIT.md)
+[`meeting11/RANGE_TRIAL_EQUATIONS_AND_AUDIT.md`](../meeting11/RANGE_TRIAL_EQUATIONS_AND_AUDIT.md)
 and `local_pulse_trials/range_trial_equation_audit.json`. No constants changed.
 Exact source defaults, saved parameter JSON and seed-1510 center agree;
 scalar arrays exactly reproduce the saved nominal simulation; physical body
@@ -756,7 +756,7 @@ mechanistic/calibration caveats and the longer-warmup failure remain.
 
 The user explicitly accepts 15–20% daytime local-excursion loss versus the
 matched uninhibited control. This supersedes the strict zero-loss acceptance
-gate below. Read [the reassessment](meeting11/DAYTIME_LOSS_TOLERANCE_ASSESSMENT.md).
+gate below. Read [the reassessment](../meeting11/DAYTIME_LOSS_TOLERANCE_ASSESSMENT.md).
 No physical model, local metric, nighttime condition or concentration span changed.
 Reassessing the saved seed-1510 ±10% trial sample gives every-day joint passes:
 15% loss allowance 245/256 = 95.7%; 20% allowance 252/256 = 98.4%, versus
@@ -775,7 +775,7 @@ JSON/CSV outputs have prefix `daytime_loss_tolerance`.
 ## Latest search: ±10% at the Subject 2 range, no full qualification
 
 The user asked for robust day/night differences while retaining the corrected
-range. Read [`meeting11/RANGE_ROBUSTNESS_SEARCH.md`](meeting11/RANGE_ROBUSTNESS_SEARCH.md).
+range. Read [`meeting11/RANGE_ROBUSTNESS_SEARCH.md`](../meeting11/RANGE_ROBUSTNESS_SEARCH.md).
 There are 7,317 paired search evaluations, including repeats, source calibration
 and training perturbations, followed by fresh paired confirmation. No full
 concentration-plus-substantial-day-pulse ±10% regime was established. This is
@@ -828,7 +828,7 @@ constants and source hash. Keep earlier withdrawn claims withdrawn.
 The user objected that the E2 concentration range had drifted outside Licinio
 Subject 2, and requested a correction preserving behavior. This takes precedence
 over the prior oversized-waveform recommendation. Read
-[`meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md`](meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md)
+[`meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md`](../meeting11/SUBJECT2_RANGE_PRESERVED_BEHAVIOR.md)
 and `meeting11/MODEL_subject2_range_candidate.py` first. This is the latest
 nominal candidate, with limited sampled robustness; no ±10% qualification.
 
@@ -891,7 +891,7 @@ is introduced. Historical rejected fits and withdrawn range-based claims stay so
 
 The user liked the raw 100/135-minute LH/E2 trace, then asked whether this
 behavior could be robust to ±10%. Read
-[`meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md`](meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md)
+[`meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md`](../meeting11/TEN_PERCENT_ROBUSTNESS_ASSESSMENT.md)
 first. **The current nominal regime is not robust to simultaneous ±10% changes
 across all 21 constants. No qualified full-waveform replacement was established.**
 This is a finite search result, not proof that constant-only rescue is impossible.
@@ -946,7 +946,7 @@ under meeting11/local_pulse_trials. Raw current/adverse phone figure:
 
 The user asked for a more robust regime retaining the longer sleep LH intervals
 and large daytime E2 excursions. Read
-[`meeting11/ROBUST_SLEEP_REGIME.md`](meeting11/ROBUST_SLEEP_REGIME.md) and
+[`meeting11/ROBUST_SLEEP_REGIME.md`](../meeting11/ROBUST_SLEEP_REGIME.md) and
 `meeting11/MODEL_robust_sleep_candidate.py` first. This improves the tested
 relative preservation/attenuation margins; it does **not** establish a robust
 fixed large daytime span or a full ±5% regime.
@@ -1003,7 +1003,7 @@ preserved with their own results.
 ## Previous continuation: longer sleep LH interval option
 
 The user asked whether LH intervals can be longer during sleep while preserving
-the E2 behavior. Read [`meeting11/LONGER_SLEEP_INTERVALS.md`](meeting11/LONGER_SLEEP_INTERVALS.md)
+the E2 behavior. Read [`meeting11/LONGER_SLEEP_INTERVALS.md`](../meeting11/LONGER_SLEEP_INTERVALS.md)
 and `meeting11/MODEL_longer_sleep_intervals_candidate.py` first. The preceding
 larger-span fit below is preserved as the baseline, with its own validation.
 
@@ -1052,7 +1052,7 @@ The latest user request is **larger individual E2 peak-to-trough spans, with
 daytime troughs closer to nighttime troughs so the principal difference is in
 the peaks**. The earlier roughly Subject 2-sized candidate below no longer
 satisfies that requested shape as well as the new trial. Read
-[`meeting11/LARGER_SPAN_LOWER_TROUGHS.md`](meeting11/LARGER_SPAN_LOWER_TROUGHS.md)
+[`meeting11/LARGER_SPAN_LOWER_TROUGHS.md`](../meeting11/LARGER_SPAN_LOWER_TROUGHS.md)
 and `meeting11/MODEL_larger_span_feedback_candidate.py` first.
 
 New every-eligible-E2-peak median/mean excursions are day 25.62/26.70 and night
@@ -1108,7 +1108,7 @@ sampled preservation, not full empirical validation or an agreed final regime.
 
 ## Previous continuation: Subject 2-scale local-pulse candidate
 
-Read [`meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md`](meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md)
+Read [`meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md`](../meeting11/TRUE_LOCAL_PULSE_CANDIDATE.md)
 and `meeting11/MODEL_balanced_hills_pulse_candidate.py` before the historical
 status below. The user clarified that daytime excursion size should be roughly
 Licinio Subject 2. Applying the corrected local convention to the existing raster
