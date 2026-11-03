@@ -1,10 +1,12 @@
 # Meeting 11 — final endocrine model
 
-The rounded reference model has a **fixed one-hour ovarian response time**. `MODEL.py` defines the model and reference constants; `parameter_sweep.py` imports that same model.
+**Historical Meeting 11 baseline.** The current parameter sweep has moved to [`../meeting12/parameter_sweep.py`](../meeting12/parameter_sweep.py), with updated defaults and all plots in one window. See [`../meeting12/README.md`](../meeting12/README.md). The equations, constants, passing ranges, and saved figures below describe the earlier Meeting 11 model.
+
+The rounded reference model has a **fixed one-hour ovarian response time**. `MODEL.py` preserves this earlier model and its reference constants.
 
 `MODEL.py` keeps the Python equations and a small Windows speed helper for responsive slider updates. The helper runs only this model and returns LH/E2; the Python solver returns all states and also provides the fallback when the helper is unavailable.
 
-Run `python parameter_sweep.py` to open the parameter controls and a companion E2 FFT power window. The E2 time series and FFT plots show the digitized Licinio Figure 2 day from `../meeting12/licinio.csv` in gray behind the live model. The reference day starts at 08:00 and repeats over the three-day comparison; the time-series view retains its 07:00 start. The spectrum updates after each parameter change and includes a full view plus zooms near 1, 2, 4–6, and 8–12 hours.
+The interactive explorer now lives in `meeting12/parameter_sweep.py` and uses the newer baseline documented there. It includes the digitized Licinio reference and the FFT in the same window. The saved Meeting 11 previews show the earlier baseline.
 
 FFT processing matches `meeting12/compare.py`: both traces are sampled every seven minutes for 72 hours starting at 08:00 after the model warmup, linearly detrended, and transformed using `rfft`. Power is `abs(coefficients)**2 / N`, with the zero-frequency and final bins omitted. The gray reference is a repeated digitized day, not three independently recorded days; the plots show raw FFT power without normalization to each trace's maximum.
 
@@ -268,7 +270,7 @@ From the project directory:
 
 ~~~powershell
 python meeting11/MODEL.py
-python meeting11/parameter_sweep.py
+python meeting12/parameter_sweep.py
 ~~~
 
 Running `parameter_sweep.py` opens the window directly, with no command-line options. The model needs NumPy; the explorer also needs Matplotlib. Open this README in a Markdown preview (Ctrl+Shift+V in VS Code) to render the equations.

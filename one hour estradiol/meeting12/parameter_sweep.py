@@ -2,16 +2,16 @@
 
 Run this file to open the window. The view is always the same three days,
 after the normal 96-hour warmup, at 1.5-second resolution. Failure checks cover only
-those days. Green bands retain the previously tested eight-day ranges.
+those days. The Robustness tab preserves historical eight-day ranges.
 Gray curves show the digitized Licinio day repeated, aligned to 08:00.
-The companion FFT window updates with the sliders, using seven-minute samples.
+FFT panels in the same window update with the sliders, using seven-minute samples.
 """
 
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
-import MODEL
+import sweep_model as MODEL
 
 HERE = Path(__file__).resolve().parent
 REFERENCE = MODEL.REFERENCE
@@ -27,7 +27,7 @@ FFT_WINDOWS = {
 
 def load_licinio():
     """Load the digitized Figure 2 day; its time origin is 08:00."""
-    return np.loadtxt(HERE.parent / "meeting12/licinio.csv", delimiter=",",
+    return np.loadtxt(HERE / "licinio.csv", delimiter=",",
                       skiprows=1, unpack=True)
 
 
@@ -49,7 +49,12 @@ def fft_spectrum(values):
     frequency = np.fft.rfftfreq(len(values), d=FFT_STEP_H)[1:-1]
     return 1 / frequency, fft_power(values)
 
-# Saved eight-day, one-parameter-at-a-time bands; not joint bounds.
+# Historical bands belong to the previous baseline, not the current defaults.
+LEGACY_REFERENCE = dict(REFERENCE, constant_inflow=20, production_scale=250,
+    activation_exponent=4, inhibition_exponent=4, n_e2_midpoint=50,
+    central_hill_exponent=3, period_min=65, period_max=75, scn_min=50,
+    scn_max=250, sleep_multiplier=1.57, scn_phase=16.5,
+    gnrh_half_life_min=4, lh_half_life_min=29, e2_half_life_min=22.5)
 RANGES = {
     "constant_inflow": {'low': 19.106250000000003, 'high': 20.80625},
     "production_scale": {'low': 245.78125, 'high': 253.515625},
@@ -329,15 +334,6 @@ def change_text(key, value, reference):
         return f"{60 * (value - reference):+.2f} min"
     return f"{percentage(value, reference):+.2f}%"
 
-def band_text(key):
-    band = RANGES[key]
-    low, high = band["low"], band["high"]
-    span = (f"{clock_time_label(low)}-{clock_time_label(high)}" if key == "scn_phase"
-            else f"{low:.7g}-{high:.7g}")
-    return (f"OAT pass: {span} "
-            f"[{change_text(key, low, REFERENCE[key])}, {change_text(key, high, REFERENCE[key])}]")
-
-
 def clock_time_label(hours, _position=None):
     """Format the displayed time axis as a 24-hour clock, starting at 07:00."""
     minutes = int(round((hours + 7) * 60)) % (24 * 60)
@@ -361,9 +357,13 @@ class ParameterExplorer:
         self.failure_page = 0
         self.failure_table = None
         self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="hpg_model")
-        self.figure, self.axes = plt.subplots(2, 1, figsize=(14, 10), sharex=True)
-        self.figure.canvas.manager.set_window_title("Simplified HPG parameter sweep - six unit coefficients fixed")
-        self.figure.subplots_adjust(left=.08, right=.97, top=.845, bottom=.535, hspace=.48)
+        self.figure = plt.figure(figsize=(18, 11))
+        self.figure.canvas.manager.set_window_title("HPG parameter sweep and E2 FFT power")
+        time_grid = self.figure.add_gridspec(
+            2, 1, left=.05, right=.55, top=.85, bottom=.535, hspace=.6)
+        e2_axis = self.figure.add_subplot(time_grid[0])
+        self.axes = [e2_axis, self.figure.add_subplot(time_grid[1], sharex=e2_axis)]
+        e2_axis.tick_params(labelbottom=False)
         self.plot_lines, self.plot_peaks = [], []
         for axis, label, color in zip(self.axes, ("E2 (pg/mL)", "LH (IU/L)"), ("tab:red", "tab:blue")):
             axis.grid(alpha=.2)
@@ -384,18 +384,18 @@ class ParameterExplorer:
             color="0.65", linewidth=2, zorder=2,
             label="Licinio (digitized day repeated)")[0]
         self.axes[0].legend(loc="upper right", fontsize=7, ncol=2)
-        self.build_fft(plt, np.interp(FFT_HOURS, day_hours, day_e2, period=24))
+        self.build_fft(np.interp(FFT_HOURS, day_hours, day_e2, period=24))
         self.axes[1].set_xlabel("Clock time (gray = sleep 23:00-07:00)", fontsize=9)
         self.axes[1].set_xlim(0, 72)
-        self.axes[1].xaxis.set_major_locator(MultipleLocator(4))
+        self.axes[1].xaxis.set_major_locator(MultipleLocator(8))
         self.axes[1].xaxis.set_major_formatter(FuncFormatter(clock_time_label))
         self.axes[0].set_ylim(0, 60)
         self.axes[0].set_yticks(np.arange(0, 61, 10))
-        self.figure.suptitle("Follicular timing: integer reference; six coefficients fixed at 1", y=.966)
+        self.figure.suptitle("Ultradian rhythm parameters: current baseline and Licinio comparison", y=.966)
         self.status = self.figure.text(.5, .918, "", ha="center", fontsize=9)
         self.summary = self.figure.text(.5, .890, "", ha="center", fontsize=9, color="0.3")
         self.figure.text(.5, .477,
-            "Fixed R = 1 h. Green = saved 8-day OAT bands; dotted = reference. Lo/Hi select endpoints. Live checks cover only the displayed 3 days.",
+            "Fixed R = 1 h. Dotted = current baseline. Lo/Hi select slider limits. Live checks cover 3 days; historical ranges are in Robustness.",
             ha="center", fontsize=8.2)
         self.group_buttons = {}
         tab_step = .62 / len(GROUPS)
@@ -420,16 +420,15 @@ class ParameterExplorer:
         self.queue()
         self.timer.start()
 
-    def build_fft(self, plt, licinio):
-        """Keep the full spectrum and four zooms readable beside the controls."""
-        self.fft_figure, self.fft_axes = plt.subplot_mosaic(
-            [["full", "full"], ["1 h", "2 h"], ["4-6 h", "8-12 h"]],
-            figsize=(11, 8), constrained_layout=True)
-        self.fft_figure.canvas.manager.set_window_title("Live E2 FFT power vs Licinio")
-        self.fft_figure.suptitle(
-            "E2 FFT power: live model vs Licinio\n"
-            "3 days from 08:00; 7-minute samples; linear detrend; power = |FFT|² / N",
-            fontsize=11)
+    def build_fft(self, licinio):
+        """Place the spectrum and its zooms in the explorer's single window."""
+        grid = self.figure.add_gridspec(
+            3, 2, left=.63, right=.98, top=.85, bottom=.53, hspace=1., wspace=.38)
+        self.fft_axes = {"full": self.figure.add_subplot(grid[0, :])}
+        for name, cell in zip(tuple(FFT_WINDOWS)[1:], (grid[1, 0], grid[1, 1], grid[2, 0], grid[2, 1])):
+            self.fft_axes[name] = self.figure.add_subplot(cell)
+        self.figure.text(.805, .875, "E2 FFT: 7-min samples; linear detrend; |FFT|² / N",
+                         ha="center", fontsize=9)
         period, power = fft_spectrum(licinio)
         self.fft_lines = {}
         for name, (low, high) in FFT_WINDOWS.items():
@@ -444,11 +443,15 @@ class ParameterExplorer:
                      ylabel="FFT power", title="Full spectrum" if name == "full"
                      else f"Zoom: {name}")
             axis.grid(alpha=.2)
+            axis.tick_params(labelsize=7)
+            axis.xaxis.label.set_fontsize(7)
+            axis.yaxis.label.set_fontsize(7)
+            axis.title.set_fontsize(8)
         axis = self.fft_axes["full"]
         axis.set_xscale("log")
         ticks = [0.5, 1, 2, 4, 8, 12, 24, 36]
         axis.set_xticks(ticks, labels=[str(tick) for tick in ticks])
-        axis.legend(fontsize=8)
+        axis.legend(fontsize=6.5, ncol=2, loc="upper left")
 
     def update_fft(self, trace):
         # The retained 73rd hour supplies 07:00-08:00 on the final morning.
@@ -461,15 +464,14 @@ class ParameterExplorer:
             axis.relim()
             axis.autoscale(enable=True, axis="y")
             axis.set_ylim(bottom=0, top=None, auto=True)
-        self.fft_figure.canvas.draw_idle()
+        self.figure.canvas.draw_idle()
 
     def slider_limits(self, key):
         low, high = DOMAIN[key]
         if self.fine_scale:
-            band = RANGES[key]
-            padding = .4 * (band["high"] - band["low"])
-            low = max(low, band["low"] - padding)
-            high = min(high, band["high"] + padding)
+            padding = 1. if key == "scn_phase" else .25 * REFERENCE[key]
+            low = max(low, REFERENCE[key] - padding)
+            high = min(high, REFERENCE[key] + padding)
         return min(low, self.parameters[key]), max(high, self.parameters[key])
 
     def build_controls(self):
@@ -499,7 +501,7 @@ class ParameterExplorer:
             return
         if self.group == "Literature grounded":
             self.row_artists.append(self.figure.text(.025, .405,
-                "Literature-informed timing; coefficients and the exact 23:30 SCN peak remain model choices.",
+                "Literature-informed timing; coefficients and the exact 23:48 SCN peak remain model choices.",
                 fontsize=8, color="0.3"))
         rows = GROUPS[self.group]
         row_step = min(.056, .28 / max(1, len(rows) - 1))
@@ -516,17 +518,13 @@ class ParameterExplorer:
             slider = Slider(axis, "", low, high, valinit=self.parameters[key], valfmt="%0.6g", initcolor="none")
             slider.valtext.set_visible(False)
             slider.on_changed(lambda value, field=key: self.set_value(field, float(value)))
-            band = RANGES[key]
-            axis.axvspan(band["low"], band["high"], ymin=.12, ymax=.88, color="tab:green", alpha=.22, zorder=2)
-            axis.axvline(band["low"], color="tab:green", linewidth=1.8, zorder=4)
-            axis.axvline(band["high"], color="tab:green", linewidth=1.8, zorder=4)
             axis.axvline(REFERENCE[key], color="0.25", linestyle=":", linewidth=1, zorder=4)
             self.row_artists.append(self.figure.text(.70, y + .028,
-                f"Low {change_text(key, band['low'], REFERENCE[key])}",
-                fontsize=7.5, color="darkgreen", va="bottom"))
+                f"Low {change_text(key, low, REFERENCE[key])}",
+                fontsize=7.5, color="0.3", va="bottom"))
             self.row_artists.append(self.figure.text(.885, y + .028,
-                f"High {change_text(key, band['high'], REFERENCE[key])}",
-                fontsize=7.5, color="darkgreen", ha="right", va="bottom"))
+                f"High {change_text(key, high, REFERENCE[key])}",
+                fontsize=7.5, color="0.3", ha="right", va="bottom"))
             self.sliders[key] = slider
             number_axis = self.figure.add_axes([.918, y - .001, .072, .027])
             textbox = TextBox(number_axis, "", initial=f"{display_value(key, self.parameters[key]):.11g}")
@@ -538,11 +536,14 @@ class ParameterExplorer:
             for side, x, title in (("low", .614, "Lo"), ("high", .657, "Hi")):
                 button = Button(self.figure.add_axes([x, y - .001, .035, .027]), title)
                 button.label.set_fontsize(8)
-                button.on_clicked(lambda _, field=key, direction=side: self.set_value(field, RANGES[field][direction]))
+                endpoint = low if side == "low" else high
+                button.on_clicked(lambda _, field=key, value=endpoint: self.set_value(field, value))
                 self.row_axes.append(button.ax)
                 self.row_widgets.append(button)
                 self.boundary_buttons[key, side] = button
-            self.row_artists.append(self.figure.text(.025, y - .017, band_text(key), fontsize=7.9, color="0.25"))
+            self.row_artists.append(self.figure.text(.025, y - .017,
+                "Slider limits are exploration limits; passing ranges have not been recomputed for this baseline.",
+                fontsize=7.9, color="0.25"))
             delta = self.figure.text(.99, y - .017, "", ha="right", fontsize=8, color="0.25")
             self.row_artists.append(delta)
             self.delta_labels[key] = delta
@@ -554,7 +555,7 @@ class ParameterExplorer:
     def build_robustness_table(self):
         """Complete reference table; the slider tabs use these same endpoints."""
         records = []
-        for key, value in REFERENCE.items():
+        for key, value in LEGACY_REFERENCE.items():
             if key in RANGES:
                 band = RANGES[key]
                 span = f"{band['low']:.6g} - {band['high']:.6g}"
@@ -573,7 +574,7 @@ class ParameterExplorer:
         self.row_axes.append(axis)
         self.robustness_table = axis.table(
             cellText=[values for _, values in records],
-            colLabels=["Parameter", "Default", "Approx. passing range", "Change from default"],
+            colLabels=["Parameter", "Earlier default", "Earlier passing range", "Change from earlier default"],
             colWidths=[.36, .10, .28, .26], cellLoc="left", colLoc="left", bbox=[0, 0, 1, 1])
         self.robustness_table.auto_set_font_size(False)
         self.robustness_table.set_fontsize(7.4)
@@ -587,9 +588,9 @@ class ParameterExplorer:
             elif records[row - 1][0] not in RANGES:
                 cell.set_facecolor("0.94")
             elif col >= 2:
-                cell.set_facecolor("#e5f3e5")
+                cell.set_facecolor("0.94")
         self.row_artists.append(self.figure.text(.025, .405,
-            "8-day reference ranges: one parameter at a time; all others at default. Green = passing bands. Fixed values were not swept.",
+            "HISTORICAL 8-day ranges for the earlier baseline. These do not validate the current defaults or slider settings.",
             fontsize=8, color="0.25"))
 
     def current_failure_report(self):
@@ -778,11 +779,11 @@ class ParameterExplorer:
         e_day = [row["E_day"][1] for row in daily]
         e_sleep = [row["E_sleep"][1] for row in daily]
         e_cap = max(row["E_sleep"][2] for row in daily)
-        self.axes[0].set_title(f"Displayed E2 excursions: day median {min(e_day):.2f}-{max(e_day):.2f}; sleep median {min(e_sleep):.2f}-{max(e_sleep):.2f}; largest sleep {e_cap:.2f} pg/mL", fontsize=10)
+        self.axes[0].set_title(f"E2 excursions: day median {min(e_day):.2f}-{max(e_day):.2f}; sleep {min(e_sleep):.2f}-{max(e_sleep):.2f}\nLargest sleep excursion {e_cap:.2f} pg/mL", fontsize=9)
         nights = [row["sleep_count"] for row in daily]
         day_ipi = [row["LH_day_IPI"][1] for row in daily]
         self.axes[1].set_title("LH sleep peaks: " + " / ".join(map(str, nights))
-                               + f"; daytime median interval {min(day_ipi):.2f}-{max(day_ipi):.2f} min (target: 60-75)", fontsize=10)
+                               + f"\nDaytime median interval {min(day_ipi):.2f}-{max(day_ipi):.2f} min (target: 60-75)", fontsize=9)
         self.refresh_status()
         if self.group == "Failures":
             self.failure_page = 0
@@ -803,9 +804,9 @@ class ParameterExplorer:
             self.summary.set_text(f"Day {row['model_day']}: {row['criterion']}: {row['measured']}; required {row['required']}. See Failures for all details.")
             self.summary.set_color("firebrick")
         else:
-            self.summary.set_text("Green bands apply one parameter at a time, with all others at default."
+            self.summary.set_text("One parameter at a time; Reset restores the current ultradian baseline."
                                   if self.one_at_time else
-                                  "Joint changes: reference-based green bands do not predict their combined outcome.")
+                                  "Joint parameter changes; passing ranges have not been recomputed for this baseline.")
             self.summary.set_color("0.3")
         self.figure.canvas.draw_idle()
 
@@ -814,9 +815,6 @@ class ParameterExplorer:
             self.closed = True
             self.timer.stop()
             self.executor.shutdown(wait=False, cancel_futures=True)
-            # Closing the explorer also closes its companion spectrum window.
-            import matplotlib.pyplot as plt
-            plt.close(self.fft_figure)
 
 
 if __name__ == "__main__":
